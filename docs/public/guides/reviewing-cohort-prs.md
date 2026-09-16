@@ -66,6 +66,21 @@ student PRs. Checking out a PR there never touches your own uncommitted work, be
 different directories with different working trees over the same `.git`. Tear it down when the
 cohort's PR wave is over: `git worktree remove ../ttod-review`.
 
+**Escape hatch: a second review worktree, only when you actually need one.** One reused worktree
+is enough for the normal sequential loop below — check one PR out, decide, move to the next. The
+exception is when a PR's dev server needs to stay up for interactive testing (you're clicking
+through a behavioral acceptance criterion) while another PR is waiting on you at the same time.
+Don't make `gh pr checkout` fight the running server for that case — open a second, throwaway
+worktree instead:
+
+```bash
+git worktree add ../ttod-review-2 main
+```
+
+Use it exactly like the first, for that one PR, then remove it (`git worktree remove
+../ttod-review-2`) once it's no longer needed — this is a one-off for a specific collision, not a
+second standing worktree to maintain alongside the first.
+
 ## The core loop
 
 Run every command below from the `ttod-review` worktree, not your main checkout.
