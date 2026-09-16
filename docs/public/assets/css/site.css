@@ -1,6 +1,34 @@
 @import url("../visual-system/tokens.css");
 @import url("../visual-system/backgrounds.css");
 
+/*
+ * Public-docs-only palette inversion. tokens.css above is the canonical,
+ * app-and-docs-shared visual contract (kept byte-identical by
+ * scripts/sync_visual_system.py — never edit its values here). This site
+ * deliberately runs the same palette inverted: every hue and saturation
+ * below is lifted straight from tokens.css, only lightness is flipped, so
+ * this stays "the same palette" and not a different color scheme. The
+ * surface/surface-raised pair is hand-tuned rather than a literal per-token
+ * invert: naively inverting both leaves surface-raised (98.6% light in the
+ * app) darker than paper (96.5%) once flipped, which reverses which one
+ * reads as "elevated." Both instead step up from the inverted paper using
+ * the app's own surface hue/saturation, so elevation still reads correctly
+ * as lighter, not darker, in this dark version.
+ */
+:root {
+  color-scheme: dark;
+  --ttod-color-ink: #eae5de;
+  --ttod-color-muted: #ada599;
+  --ttod-color-paper: #0d0a05;
+  --ttod-color-surface: #241d0e;
+  --ttod-color-surface-raised: #392e16;
+  --ttod-color-accent: #e7c27b;
+  --ttod-color-botanical: #91b7a4;
+  --ttod-color-line: #978870;
+  --ttod-color-line-subtle: #51442a;
+  --ttod-color-focus: #6da6db;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
