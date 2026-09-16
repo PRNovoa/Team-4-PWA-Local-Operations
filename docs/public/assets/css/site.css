@@ -261,8 +261,8 @@ pre {
   color: var(--ttod-color-paper);
 }
 pre code { padding: 0; background: transparent; color: inherit; }
-table { width: 100%; border-collapse: collapse; margin-block: var(--ttod-space-6); }
-th, td { padding: var(--ttod-space-3); border-bottom: 1px solid var(--ttod-color-line-subtle); text-align: left; vertical-align: top; }
+table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin-block: var(--ttod-space-6); }
+th, td { padding: var(--ttod-space-3); border-bottom: 1px solid var(--ttod-color-line-subtle); text-align: left; vertical-align: top; overflow-wrap: normal; word-break: normal; white-space: normal; hyphens: none; }
 th { color: var(--ttod-color-accent); }
 .button {
   display: inline-block;

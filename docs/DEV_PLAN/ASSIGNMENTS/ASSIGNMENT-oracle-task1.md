@@ -5,12 +5,9 @@
 
 ## 1. Curriculum map
 
-This task exercises the core principles of **Unit 3 — React State & Effects** (specifically managing asynchronous state updates and side effects) and **Unit 5 — Testing strategy**.
+This task exercises asynchronous state and side effects on top of the framework island pattern from [Unit 3 — Astro advanced](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/) (multi-framework islands, data fetching), and its test shape follows [Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/).
 
-*   **Unit 3 Link:** [Unit 3 — React State & Effects](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-react-state-effects/)
-*   **Unit 5 Link:** [Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/)
-
-*Note: Specific lesson links for "Streaming UI Patterns" are not yet published in the web-atelier-udit FE II curriculum; this task relies on the general state management principles established in Unit 3.*
+*Note: no standalone "streaming UI" unit exists yet in the FE II track — there is no Unit titled "React State & Effects"; a prior draft of this brief invented one, with a dead link. This relies on Unit 3's general data-fetching and island-hydration principles instead.*
 
 ## 2. Worked example, from the real TTOD app
 

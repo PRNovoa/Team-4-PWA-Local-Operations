@@ -5,7 +5,7 @@
 
 ## 1. Curriculum map
 
-This task exercises the accessibility and state management principles found in **Unit 5 — Testing strategy** (specifically the verification of non-visual user flows) and **Unit 3 — Content and Routing** (ensuring semantic structure supports assistive technology). While the specific unit link for "Live Regions" may not yet be published as a standalone lesson in the web-atelier-udit FE II curriculum, the underlying discipline is covered in the general accessibility requirements of the course.
+This task exercises accessibility and state-management principles from [Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/) (verifying non-visual user flows) and [Unit 3 — Astro advanced](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/) (semantic structure and island hydration, not "Content and Routing" — that was a mislabel in a prior draft). No standalone "live regions" unit exists yet in the FE II track; the underlying discipline is the course's general accessibility requirements.
 
 ## 2. Worked example, from the real TTOD app
 

@@ -5,7 +5,7 @@
 
 ## 1. Curriculum map
 
-This task exercises the core principles of **SVG accessibility** and **state-driven UI** found in FE II. While specific unit links for "accessible node selection" are not yet published in the `assignments.md` "Lessons for these tasks" section, this work directly applies the accessibility standards defined in the module's Definition of Done. It reinforces the principle that interactive elements must be operable via keyboard and screen readers, a foundational concept in web development curricula.
+This task exercises SVG accessibility and state-driven UI on top of the same Svelte island covered in [Unit 2](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-2-astro-fundamentals/) and [Unit 3](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/) — no standalone "accessible SVG selection" unit exists yet in the FE II track, so this applies the accessibility standards from the module's own Definition of Done directly: interactive elements must be operable via keyboard and screen readers.
 
 ## 2. Worked example, from the real TTOD app
 

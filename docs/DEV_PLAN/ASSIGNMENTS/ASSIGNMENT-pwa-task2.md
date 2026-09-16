@@ -5,17 +5,15 @@
 
 ## 1. Curriculum map
 
-This task exercises the core concepts of **Unit 5 — Testing strategy** (specifically the verification of runtime behavior under constrained network conditions) and the service worker lifecycle concepts covered in **Unit 3** (routing and asset management).
-
-*Note: Specific unit links for "PWA/Offline" are not yet published in the `assignments.md` "Lessons for these tasks" section. This task relies on the general testing and routing principles established in the existing curriculum.*
+This task continues [Unit 4 — Progressive Web Apps & Offline Capabilities](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-4-pwa-offline/) directly — the same unit Task 1 draws on — and the caching mechanics are the browser's own [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) (MDN). Verifying the behavior under constrained network conditions reuses [Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/).
 
 ## 2. Worked example, from the real TTOD app
 
-The starter code already implements a minimal, working offline boundary for a single asset. You can observe this in `services/frontend/public/sw.js`.
+**This task depends on Task 1.** It assumes `services/frontend/public/sw.js` and its registration in the app shell already exist — built by Task 1, not present in the repo before it. Do not start this task until Task 1's stub is merged.
 
-The service worker defines `CACHE_NAME='ttod-pwa-stub-v1'` and explicitly caches `PROOF_ASSET='/visual-system/tokens.css'`. The `fetch` event listener implements a Cache-First strategy for this specific asset. This means that if you load the page, then disconnect from the network, and reload, the `tokens.css` file will still be served from the Cache Storage API, proving that the offline boundary exists for that specific file.
+Once Task 1 lands, the service worker defines a versioned `CACHE_NAME` (e.g. `'ttod-pwa-stub-v1'`) and caches one proof asset (e.g. `/visual-system/tokens.css`) Cache-First. That means: load the page, disconnect from the network, reload — the proof asset still serves from Cache Storage. That proves the *worker* is offline-capable, but only for that one static asset.
 
-Additionally, `services/frontend/src/layouts/Page.astro` registers the service worker via `navigator.serviceWorker.register('/sw.js')` and renders a `#ttod-network-boundary` banner. This banner currently listens to `window` `online` and `offline` events to update its `data-state` attribute. While this proves the browser knows it is offline, it does not yet prove that *content* is being served offline. Your task is to extend this proof to a piece of actual user-facing content.
+Task 1 also wires a `#ttod-network-boundary` banner (via `window` `online`/`offline` events) that reflects browser-level connectivity in a `data-state` attribute. That proves the *browser* knows it's offline — it does not yet prove *content* is being served offline. Your job here is to extend that proof to a piece of actual user-facing content.
 
 ## 3. What "done" looks like
 

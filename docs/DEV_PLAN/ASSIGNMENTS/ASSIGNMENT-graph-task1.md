@@ -5,7 +5,7 @@
 
 ## 1. Curriculum map
 
-This task exercises the core concepts of **Svelte 5 runes** (`$state`, `$derived`) and **Island hydration** in Astro, as defined in the module's Learning Outcomes. While the specific "Lessons for these tasks" links for this exact task are not yet published in `docs/public/teaching/assignments.md`, the underlying competencies align with the FE II units covering reactive state management and component integration.
+This task exercises **Svelte 5 runes** (`$state`, `$derived`) and **island hydration** in Astro, taught in [Unit 2 — Astro fundamentals](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-2-astro-fundamentals/) (first framework island) and extended in [Unit 3 — Astro advanced](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/) (multi-framework islands), which walks through this exact codebase's `GraphIsland.svelte` as its own worked example. Read both before starting. Official reference: [svelte.dev](https://svelte.dev/).
 
 ## 2. Worked example, from the real TTOD app
 

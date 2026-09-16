@@ -105,6 +105,14 @@ python -m unittest discover -s tests -p 'test_*.py'   # 161 tests, exit 0
 
 ## Proposed programme (Phase S DONE through S4; Phase R reference built; Phases T and U proposed)
 
+**Cross-surface technical proposal (2026-09-15, planning only):**
+[`TECHNICAL-PROPOSAL-2026-09-15-SEMANTIC-TAGS-AND-TAO-ALIGNMENT.md`](TECHNICAL-PROPOSAL-2026-09-15-SEMANTIC-TAGS-AND-TAO-ALIGNMENT.md)
+— transform TTOD `tags[]` → studio `semantic_tags` (themes · cidoc · getty_aat · dcterms · skos),
+and add TTOD pedagogy/provenance axes (`section` / `subsection` / `level` / `teaches` /
+`show_when` / `origin` / `rights` / relations) to the CT Tao of Creativity monograph.
+Does **not** authorize schema migration, `ttod.yml` mutation, or invent accept. Suggested
+future packages W0–W6; blocked on a W0 freeze decision.
+
 The research-and-documentation continuation is planned separately in
 [`../research/GUIDE-FORGE-PLAN.md`](../research/GUIDE-FORGE-PLAN.md). It does not reopen Phase R,
 authorize R6, generate guides, or authorize research use of student work. Its paste-ready

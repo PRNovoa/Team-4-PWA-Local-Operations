@@ -5,23 +5,30 @@
 
 ## 1. Curriculum map
 
-This task exercises the foundational concepts of **Unit 3 — Frontend Architecture & Routing** (specifically the client-side runtime environment and asset management) and introduces the lifecycle concepts that will be tested in **Unit 5 — Testing strategy** ([Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/)). While the specific PWA unit link is not yet published in the `assignments.md` "Lessons for these tasks" section, the underlying mechanics of service worker registration and manifest validation are core to the frontend architecture curriculum.
+This task exercises [Unit 4 — Progressive Web Apps & Offline Capabilities](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-4-pwa-offline/) directly — service-worker lifecycle, caching strategy, and install quality are that unit's own subject, not an inference from an adjacent one. Read it before starting this task. Cache-storage mechanics specifically are the browser's own [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) (MDN) — the `install`/`activate`/`fetch` lifecycle below is built on it. Lifecycle testing later reuses [Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/).
 
 ## 2. Worked example, from the real TTOD app
 
-The existing implementation in `services/frontend/src/layouts/Page.astro` already registers the service worker via `navigator.serviceWorker.register('/sw.js')` and renders the `#ttod-network-boundary` banner. The service worker itself, located at `services/frontend/public/sw.js`, currently implements a `CACHE_NAME` of `'ttod-pwa-stub-v1'` and a `PROOF_ASSET` of `'/visual-system/tokens.css'`. It handles `install`, `activate`, and `fetch` events, but only caches that single asset.
+**There is no service worker in the repo yet.** `services/frontend/public/sw.js` does not exist, and nothing in `services/frontend/src` calls `navigator.serviceWorker.register(...)`. This task is where that baseline gets created — do not go looking for an existing stub to "verify."
 
-*Out of scope for this task: the manifest's own icon-size completeness and Lighthouse installability check are Task 5's deliverable ("Install-quality checks"). This task's own scope is the lifecycle behavior of the already-registered worker — install/activate/fetch, client claiming, and cache-name versioning — not the manifest's content.*
+Build, from scratch:
+
+1.  `services/frontend/public/sw.js` — a minimal service worker with `install`, `activate`, and `fetch` handlers. Use a versioned `CACHE_NAME` (e.g. `'ttod-pwa-stub-v1'`) and cache at least one real static asset (e.g. `/visual-system/tokens.css`) as the proof target. Cache-First for that asset in `fetch`; clean up any cache key that doesn't match the current `CACHE_NAME` during `activate` (see the Cache API link above for `caches.open`, `caches.keys`, `caches.delete`).
+2.  A registration call — `navigator.serviceWorker.register('/sw.js')` — added to `services/frontend/src/layouts/Page.astro` (or wherever the app shell renders), plus a small `#ttod-network-boundary` banner driven by `window` `online`/`offline` events so the online/offline state is visible, not just present in devtools.
+3.  A minimal installable manifest (`site.webmanifest` or `manifest.json`) linked from the page `<head>`. Icon-size completeness and the Lighthouse installability check are **Task 5's** deliverable ("Install-quality checks") — this task only needs a manifest that satisfies the browser's install-eligibility minimum, not full icon coverage.
+
+*Out of scope for this task: manifest icon completeness and the Lighthouse audit (Task 5). This task's scope is standing up the worker and manifest for the first time and getting the lifecycle right — install/activate/fetch, client claiming, cache-name versioning.*
 
 ## 3. What "done" looks like
 
-**Visible result:** You can demonstrate that the service worker lifecycle (`install`, `activate`, `fetch`) behaves correctly. Specifically, you can show the worker claiming clients and updating its cache name on a new version.
+**Visible result:** A service worker registers on page load, caches the proof asset, and the app still serves that asset from cache when offline. You can demonstrate the lifecycle by changing `CACHE_NAME`, reloading, and showing the old cache gone from `caches.keys()`.
 
-**What it includes:** Explaining the lifecycle is itself a learning outcome. The defense will ask you to walk through what happens when the token/cache version changes. You must be able to articulate why the cache name is updated and how old caches are cleaned up.
+**What it includes:** Building the lifecycle is itself a learning outcome. The defense will ask you to walk through what happens when the cache version changes. You must be able to articulate why the cache name is versioned and how old caches get cleaned up.
 
 **What has to be done:**
-1.  **Deliberately trigger an update:** Change the `CACHE_NAME` in `services/frontend/public/sw.js` (e.g., to `'ttod-pwa-stub-v2'`), reload the page, and confirm that the old cache (`ttod-pwa-stub-v1`) is cleaned up during the `activate` event, not silently accumulated.
-2.  **Verify registration:** Confirm that `navigator.serviceWorker.register('/sw.js')` in `services/frontend/src/layouts/Page.astro` is still correctly wired and that the `#ttod-network-boundary` banner reflects the online/offline state driven by `window` online/offline events.
+1.  **Create the service worker:** write `services/frontend/public/sw.js` with `install` (pre-cache the proof asset), `activate` (delete any cache key not equal to the current `CACHE_NAME`), and `fetch` (serve the proof asset Cache-First).
+2.  **Register it:** wire `navigator.serviceWorker.register('/sw.js')` into the app shell and add the `#ttod-network-boundary` banner reflecting `window` online/offline events.
+3.  **Prove versioning works:** bump `CACHE_NAME` (e.g. to `'ttod-pwa-stub-v2'`), reload, and confirm the old cache key is deleted during `activate`, not silently accumulated.
 
 ## 4. Success criteria (functional)
 

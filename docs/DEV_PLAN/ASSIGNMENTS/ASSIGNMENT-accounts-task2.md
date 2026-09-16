@@ -5,9 +5,9 @@
 
 ## 1. Curriculum map
 
-This task exercises the **FE II Unit 3 — State and Data** concepts, specifically managing client-side state that persists across sessions and interacts with server-side storage. It also touches **FE II Unit 4 — Forms and Validation** for the UI interactions (save/remove buttons) and **FE II Unit 5 — Testing strategy** for verifying the state transitions.
+This task exercises [FE II Unit 3 — Astro advanced](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/) (data fetching, managing client-side state that persists across sessions and interacts with server-side storage) and [FE II Unit 5 — Testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/) for verifying the state transitions.
 
-*Note: Specific unit links are not yet published in `assignments.md` for this exact task; the above references the standard FE II curriculum structure that this module inherits.*
+*Note: a prior draft of this brief cited a "Unit 4 — Forms and Validation" — no such unit exists; the real Unit 4 is [PWA & Offline](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-4-pwa-offline/), unrelated to this task. Specific unit links for this exact task are not yet published in `assignments.md`.*
 
 ## 2. Worked example, from the real TTOD app
 

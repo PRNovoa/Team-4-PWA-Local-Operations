@@ -5,7 +5,7 @@
 
 ## 1. Curriculum map
 
-This task exercises the **FE II Unit 3 — Server-side rendering and routing** concepts, specifically the application of server-side guards in Astro frontmatter. It builds directly on the **FE I Framework-mode auth lesson** —
+This task exercises the server-side data-fetching and SSR concepts from [FE II Unit 3 — Astro advanced](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-3-astro-advanced/), specifically the application of server-side guards in Astro frontmatter. It builds directly on the **FE I Framework-mode auth lesson** —
 [HELIOS DECK's architecture](https://ruvebal.github.io/web-atelier-udit/tracks/es/geo-physical-aggregator/arch/),
 which documents the canonical `requireUser(request)` guard: reads the session in the *loader*,
 before the component renders, and redirects to `/auth/login` if there is no `userId`, backed by
