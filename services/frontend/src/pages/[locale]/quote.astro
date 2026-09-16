@@ -30,7 +30,7 @@ const quote: WisdomEntry = payload.find((entry) => entry?.lang === locale) ?? pa
       <p class="meta">{quote.id} · {quote.section} · {quote.origin} · {quote.lang}</p>
     </article>
     <footer class="meta">
-      © {quote.rights.holder ?? 'Rubén Vega Balbás'} · {quote.rights.license} ·
+      {quote.rights.holder ?? 'Rubén Vega Balbás'} · {quote.rights.license} ·
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
     </footer>
   </main>
