@@ -23,7 +23,7 @@ NPM := npm --prefix $(FE)
 	validate stats snapshot export test check \
 	docs docs-serve docs-clean docs-setup docs-privacy \
 	fe-dev fe-build fe-check \
-	review-queue pr-status \
+	review-queue review-pr pr-status \
 	clean
 
 # ─────────────────────────────────────────────────────────
@@ -159,6 +159,10 @@ review-queue: ## Read-only open PR queue (uses scripts/gh-review-queue.sh when p
 		gh pr list --state open --json number,title,isDraft,mergeStateStatus,reviewDecision,headRefName,url \
 			--jq '.[] | "#\(.number) [\(.mergeStateStatus // "?")/\(.reviewDecision // "none")] \(.headRefName)\n  \(.title)\n  \(.url)\(if .isDraft then " (draft)" else "" end)\n"'; \
 	fi
+
+review-pr: ## Free hybrid-rubric PR review via local Ollama — usage: make review-pr PR=<n> [POST=1]
+	@test -n "$(PR)" || (echo "Usage: make review-pr PR=<number> [POST=1]" && exit 1)
+	@scripts/pr-review/review-local.sh $(PR) $(if $(POST),--post,)
 
 pr-status: ## Show one PR's merge/check state (PR=2)
 	@test -n "$(PR)" || { printf 'usage: make pr-status PR=<n>\n' >&2; exit 2; }

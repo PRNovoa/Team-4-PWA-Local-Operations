@@ -1,10 +1,33 @@
-name: Automated PR review (comment-only)
+name: Automated PR review (comment-only) — Anthropic cloud backend, INACTIVE
+
+# ⚠️ INACTIVE BY DEFAULT — cost-gated, not broken.
+#
+# This is one of two backends for the same hybrid-rubric review (the prompt is
+# built by scripts/pr-review/build-prompt.sh, shared with the other backend).
+# It calls the Anthropic API, which costs real money per PR review — with a
+# cohort landing ~10 PRs/day, that adds up fast for no clear benefit over the
+# free alternative below. So the default path right now is:
+#
+#   scripts/pr-review/review-local.sh <PR_NUMBER> --post
+#
+# — same rubric, same prompt, run against your own local Ollama instance
+# (qwen2.5-coder:32b or any other locally-pulled code-capable model) at zero
+# marginal cost per review. See docs/public/guides/reviewing-cohort-prs.md for
+# the full comparison and when you might actually want this workflow instead
+# (e.g. once GitHub-hosted runners can reach a real inference endpoint you're
+# willing to pay for, or a self-hosted runner is reachable from this repo's
+# Actions and can reach your own Ollama).
+#
+# To reactivate:
+#   1. Uncomment the `pull_request:` trigger below.
+#   2. `gh secret set ANTHROPIC_API_KEY`.
+# Both steps deliberately require a conscious decision — this file is kept
+# working and reviewed as documentation of that alternative, not deleted.
 
 on:
-  # No `paths:` filter, matching ci.yml's own reasoning: this must fire on every student PR
-  # regardless of which module it touches, and a path-filtered trigger can silently never run.
-  pull_request:
-    types: [opened, synchronize, reopened]
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  workflow_dispatch: {} # manual-only trigger while the automatic one stays commented out
 
 permissions:
   contents: read
@@ -21,70 +44,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect module and task from branch name
-        id: module
+      - name: Build review prompt (shared with the local Ollama backend)
         env:
+          BASE_REF: ${{ github.event.pull_request.base.ref || 'main' }}
           BRANCH: ${{ github.head_ref }}
         run: |
-          # Convention: branch names should contain "<seam>-task<N>" somewhere, e.g.
-          # "content-task1-browse-routes" or "team1/content-task2-breadcrumbs".
-          # See docs/public/guides/contributing.md for the documented convention.
-          SEAM_TASK=$(echo "$BRANCH" | grep -oE '(content|graph|oracle|pwa|accounts)-task[0-9]+' | head -1 || true)
-          echo "seam_task=$SEAM_TASK" >> "$GITHUB_OUTPUT"
-          if [ -n "$SEAM_TASK" ]; then
-            echo "Detected task brief: docs/DEV_PLAN/ASSIGNMENTS/ASSIGNMENT-${SEAM_TASK}.md"
-          else
-            echo "No seam-task pattern in branch name '$BRANCH' — falling back to generic rubric only."
-          fi
-
-      - name: Build review prompt
-        id: prompt
-        env:
-          SEAM_TASK: ${{ steps.module.outputs.seam_task }}
-          BASE_REF: ${{ github.event.pull_request.base.ref }}
-        run: |
           set -euo pipefail
-          BRIEF_FILE="docs/DEV_PLAN/ASSIGNMENTS/ASSIGNMENT-${SEAM_TASK}.md"
-
-          {
-            echo "You are reviewing one student pull request for TTOD, a teaching codebase. Post"
-            echo "findings as PR review comments ONLY. You must never approve, request changes, or"
-            echo "imply the PR is merged/mergeable — a human is the only approver. Be concise:"
-            echo "group findings under the rubric headings below; skip a heading entirely if the"
-            echo "diff gives you nothing specific to say under it (never pad with generic praise)."
-            echo
-            echo "## Generic rubric (applies to every PR, from PHASE-V-FEII-COHORT-COLLABORATION-AND-ASSESSMENT.md §5)"
-            echo "- Contract adherence (25): uses the published \`src/types/domain.ts\` shapes exactly — no parallel/ad-hoc type invented for something a shared type already covers"
-            echo "- Correctness & acceptance criteria (25): does the change do what its task's acceptance criteria promise"
-            echo "- Test coverage (20): unit/component tests exist for new behavior; per Unit 5's Trophy-not-Pyramid doctrine, prefer integration-shaped tests over exhaustive unit tests of trivial functions"
-            echo "- Accessibility (10): keyboard-operable, one accessible name/label, no color-only distinction, respects prefers-reduced-motion"
-            echo "- CI green (10): note if the diff looks like it would fail lint/typecheck/build, but do not re-run CI yourself"
-            echo "- AI disclosure & process evidence (10): the PR description's AI Review Log table must be filled in, honestly — flag if it's missing or empty, this makes the PR incomplete per Unit 6"
-            echo
-
-            if [ -n "$SEAM_TASK" ] && [ -f "$BRIEF_FILE" ]; then
-              echo "## This task's own acceptance and quality criteria (from $BRIEF_FILE)"
-              echo '```markdown'
-              cat "$BRIEF_FILE"
-              echo '```'
-              echo
-              echo "Weigh the task-specific criteria above as heavily as the generic rubric — a PR"
-              echo "that satisfies the generic rubric but misses this task's own success criteria is"
-              echo "not done."
-            else
-              echo "## No task-specific brief matched"
-              echo "This PR's branch name didn't match the \`<seam>-task<N>\` convention (content,"
-              echo "graph, oracle, pwa, accounts), so only the generic rubric above applies. If this"
-              echo "PR does correspond to a numbered task, ask the student to rename their branch —"
-              echo "see docs/public/guides/contributing.md."
-            fi
-
-            echo
-            echo "## The diff"
-            echo '```diff'
-            git diff "origin/${BASE_REF}...HEAD" -- services/frontend services/backend | head -c 60000
-            echo '```'
-          } > /tmp/review-prompt.md
+          git diff "origin/${BASE_REF}...HEAD" -- services/frontend services/backend > /tmp/pr.diff
+          scripts/pr-review/build-prompt.sh "$BRANCH" /tmp/pr.diff > /tmp/review-prompt.md
 
       - name: Run review
         id: review
@@ -124,7 +91,7 @@ jobs:
 
           text = "".join(block.get("text", "") for block in result.get("content", []))
           with open("/tmp/review-body.md", "w") as f:
-              f.write("### 🤖 Automated review (hybrid rubric — comment only, not a review approval)\n\n")
+              f.write("### 🤖 Automated review (hybrid rubric — cloud claude-sonnet-5, comment only)\n\n")
               f.write(text)
               f.write("\n\n---\n*Posted automatically. Does not approve or block merge — a human review is still required.*\n")
           PYEOF

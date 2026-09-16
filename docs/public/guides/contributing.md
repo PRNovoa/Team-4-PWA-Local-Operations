@@ -56,19 +56,28 @@ approves the idea, the second approves the exact change.
 
 ## Automated review
 
-Every PR gets one automated comment (`.github/workflows/pr-review.yml`) scored against a **hybrid
-rubric**: the generic six-dimension rubric from
-`PHASE-V-FEII-COHORT-COLLABORATION-AND-ASSESSMENT.md` §5 (contract adherence, correctness, test
-coverage, accessibility, CI health, AI-disclosure honesty) *plus* your specific task's own
-acceptance and quality criteria, matched from your branch name (see above). It fires on every push
-to the PR, not just the first one.
+Every PR can get one automated comment scored against a **hybrid rubric**: the generic
+six-dimension rubric from `PHASE-V-FEII-COHORT-COLLABORATION-AND-ASSESSMENT.md` §5 (contract
+adherence, correctness, test coverage, accessibility, CI health, AI-disclosure honesty) *plus*
+your specific task's own acceptance and quality criteria, matched from your branch name (see
+above). One prompt, [`scripts/pr-review/build-prompt.sh`](https://github.com/ruvebal/ttod/blob/main/scripts/pr-review/build-prompt.sh),
+two possible backends behind it:
 
-This bot follows the same rule as everything else on this page: **it comments, it never approves,
-requests changes, or merges.** The required `typecheck-and-build` check and one human approval
-remain the only things that actually gate merge. Treat its comment as a first pass worth reading
-before a human reviewer looks — not a substitute for the reviewer, and not evidence you can skip
-writing your own AI Review Log entry (a bot reviewing your PR is a different event from you
-disclosing what you used while writing it).
+- **Local, free — the active default.** The instructor (or you) runs
+  `scripts/pr-review/review-local.sh <PR_NUMBER> --post` (or `make review-pr PR=<n> POST=1`)
+  against a local Ollama instance. Zero cloud-API cost, run on demand, not automatic.
+- **Cloud, automatic, currently inactive.** `.github/workflows/pr-review.yml` would fire this same
+  review on every push to every PR via the Anthropic API — kept in the repo, fully wired, but its
+  automatic trigger is commented out and no API key is configured, because paying per-PR at cohort
+  scale isn't worth it right now. See [Reviewing the cohort's PRs]({{ '/guides/reviewing-cohort-prs/' | relative_url }})
+  for the full comparison and how to turn it back on later.
+
+Either way, this follows the same rule as everything else on this page: **it comments, it never
+approves, requests changes, or merges.** The required `typecheck-and-build` check and one human
+approval remain the only things that actually gate merge. Treat its comment as a first pass worth
+reading before a human reviewer looks — not a substitute for the reviewer, and not evidence you
+can skip writing your own AI Review Log entry (a bot reviewing your PR is a different event from
+you disclosing what you used while writing it).
 
 ## For reviewers
 
