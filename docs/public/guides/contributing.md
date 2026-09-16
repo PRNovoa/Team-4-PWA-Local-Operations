@@ -13,9 +13,16 @@ reviewer processes it — before the governance principles they both rest on.
 
 ## Opening a PR (module work)
 
-1. Branch from the current teaching baseline: `git checkout -b <short-topic-name>`.
-2. Make the change inside your module's own files — check your module's `ASSIGNMENT.md` for
-   exactly which paths are yours.
+1. Branch from the current teaching baseline: `git checkout -b <seam>-task<N>-<short-topic-name>`
+   — e.g. `content-task2-browse-routes`. The `<seam>-task<N>` part (`content`, `graph`, `oracle`,
+   `pwa`, or `accounts`, plus the task number) is not just a naming nicety: the automated review
+   bot (below) parses it to find your task's own acceptance criteria. A branch name without that
+   pattern still works, it just only gets the generic rubric, not your task's specific one.
+2. Make the change inside your module's own files. **There is no `ASSIGNMENT.md` file inside the
+   app's own code** — your task's acceptance criteria live at
+   `/teaching/tasks/<seam>-task<N>/` on this site (linked from the [team task
+   board]({{ '/teaching/assignments/#team-task-board' | relative_url }})), which also links to its
+   own GitHub source at the bottom of the page. Check that page for exactly which paths are yours.
 3. Before pushing, run the same checks CI will run: `npm run check && npm run build` in
    `services/frontend` (or the equivalent for a backend change).
 4. Open the PR. The repository's PR template fills in automatically — it mirrors the grading
@@ -47,12 +54,28 @@ approves the idea, the second approves the exact change.
   <figcaption><a href="{{ '/assets/diagrams/ttod-proposal-review.html' | relative_url }}">Open the interactive review-pipeline diagram ↗</a> — the exact two-touchpoint gate this repository runs, not a simplified version of it.</figcaption>
 </figure>
 
+## Automated review
+
+Every PR gets one automated comment (`.github/workflows/pr-review.yml`) scored against a **hybrid
+rubric**: the generic six-dimension rubric from
+`PHASE-V-FEII-COHORT-COLLABORATION-AND-ASSESSMENT.md` §5 (contract adherence, correctness, test
+coverage, accessibility, CI health, AI-disclosure honesty) *plus* your specific task's own
+acceptance and quality criteria, matched from your branch name (see above). It fires on every push
+to the PR, not just the first one.
+
+This bot follows the same rule as everything else on this page: **it comments, it never approves,
+requests changes, or merges.** The required `typecheck-and-build` check and one human approval
+remain the only things that actually gate merge. Treat its comment as a first pass worth reading
+before a human reviewer looks — not a substitute for the reviewer, and not evidence you can skip
+writing your own AI Review Log entry (a bot reviewing your PR is a different event from you
+disclosing what you used while writing it).
+
 ## For reviewers
 
 - `make review-queue` lists open PRs waiting on you, proposal PRs specifically, and everything
   else open — read-only, it never approves or merges on your behalf.
-- Review against the module's own `ASSIGNMENT.md` acceptance criteria and the PR template's
-  checklist, not a generic impression of code quality.
+- Review against that task's own [detail sheet]({{ '/teaching/tasks/' | relative_url }})
+  acceptance criteria and the PR template's checklist, not a generic impression of code quality.
 - A PR missing its AI Review Log entry is incomplete, not merely under-documented.
 - For a quote-proposal PR specifically: your approval on the *original* proposal is not the same
   event as your approval on the *computed diff* the bot pushes back afterward — branch protection

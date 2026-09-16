@@ -24,6 +24,8 @@ en:
     children:
       - title: Contributing
         url: /guides/contributing/
+      - title: Reviewing the cohort's PRs
+        url: /guides/reviewing-cohort-prs/
       - title: Run it locally
         url: /guides/local-setup/
       - title: Use the product
