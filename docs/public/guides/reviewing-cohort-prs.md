@@ -3,6 +3,8 @@ title: Reviewing the cohort's PRs
 eyebrow: For the instructor, running review and your own work at once
 description: A git/gh workflow for triaging student pull requests in parallel with your own backend work, without stashing, blocking, or losing state.
 permalink: /guides/reviewing-cohort-prs/
+lang: en
+alt_lang_missing: true
 ---
 
 # Review ten PRs without stopping your own work
