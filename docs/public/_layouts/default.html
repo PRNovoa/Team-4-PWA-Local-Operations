@@ -6,6 +6,11 @@
     <main id="content" class="shell page-shell">
       {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
       {{ content }}
+      {% if page.seam and page.task_number %}
+      <p class="task-source-link"><em>This page is the published version of
+      <a href="https://github.com/ruvebal/ttod/blob/main/docs/DEV_PLAN/ASSIGNMENTS/ASSIGNMENT-{{ page.seam }}-task{{ page.task_number }}.md">ASSIGNMENT-{{ page.seam }}-task{{ page.task_number }}.md</a>
+      in the dev plan on GitHub — that file is the canonical source if the two ever drift.</em></p>
+      {% endif %}
     </main>
     {% include footer.html %}
   </body>

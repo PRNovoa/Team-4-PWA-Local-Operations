@@ -32,7 +32,7 @@ This existing implementation is the "hello-world" state. The task is to understa
 
 ## 3. What "done" looks like
 
-*Note: `docs/public/teaching/tasks.md` contains no existing prose for this specific item. The following description is grounded entirely in the module's `ASSIGNMENT.md` hello-world description and constraints.*
+*Note: `docs/public/teaching/tasks.md` contains no existing prose for this specific item. The following description is grounded entirely in this task's own detail sheet hello-world description and constraints.*
 
 **Visible result:**
 The graph island loads successfully from the governed API endpoints. All nodes received in the payload are laid out using the shared `radialLayout` function and rendered as SVG elements. The origin-color legend is visible. A single node can be selected via mouse click or keyboard (Enter/Space), and its text content is displayed in the accessible `<aside>` panel.

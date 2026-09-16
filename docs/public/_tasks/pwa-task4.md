@@ -18,7 +18,7 @@ alt_lang_missing: true
 
 ## 1. Curriculum map
 
-This task exercises the **PWA / local operations** unit of web-atelier-udit FE II, specifically the learning outcomes regarding **Service-worker lifecycle** and **Caching strategies** as defined in the module's `ASSIGNMENT.md`. It directly supports the "Offline queue flush on reconnect" acceptance criterion, requiring students to demonstrate how `install`, `activate`, and `fetch` events coordinate with network state changes to ensure data integrity.
+This task exercises the **PWA / local operations** unit of web-atelier-udit FE II, specifically the learning outcomes regarding **Service-worker lifecycle** and **Caching strategies** as defined in this task's own detail sheet. It directly supports the "Offline queue flush on reconnect" acceptance criterion, requiring students to demonstrate how `install`, `activate`, and `fetch` events coordinate with network state changes to ensure data integrity.
 
 ## 2. Worked example, from the real TTOD app
 

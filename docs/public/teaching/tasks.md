@@ -1,18 +1,20 @@
 ---
 title: Task details
 eyebrow: Every assignable task, expanded
-description: Per-task detail for the team task board — what visible result each task looks for, what it includes, and what has to be done, straight from each module's own ASSIGNMENT.md.
+description: Per-task detail for the team task board — what visible result each task looks for, what it includes, and what has to be done, straight from each task's own dev-plan brief.
 permalink: /teaching/tasks/
 ---
 
 # Every task, expanded
 
 The [team task board]({{ '/teaching/assignments/#team-task-board' | relative_url }}) lists ~10
-tasks per team. This page is the summary behind each one — grounded directly in the
-`ASSIGNMENT.md` file that ships inside the module's own code, not a separate retelling of it.
-Every task also has its own **full detail sheet** now — curriculum map, a worked example from the
-real TTOD app, success criteria, and quality criteria — linked from the board's own rows, or
-reachable directly at `/teaching/tasks/<team-seam>-task<n>/` (e.g.
+tasks per team. This page is the summary behind each one — grounded directly in that task's own
+brief in the dev plan (`docs/DEV_PLAN/ASSIGNMENTS/`), not a separate retelling of it. **There is no
+per-module `ASSIGNMENT.md` file inside the app's own code** — the task detail sheet on this site
+*is* the canonical acceptance-criteria document; each one links to its own GitHub source at the
+bottom. Every task also has its own **full detail sheet** now — curriculum map, a worked example
+from the real TTOD app, success criteria, and quality criteria — linked from the board's own rows,
+or reachable directly at `/teaching/tasks/<team-seam>-task<n>/` (e.g.
 [`/teaching/tasks/oracle-task4/`]({{ '/teaching/tasks/oracle-task4/' | relative_url }})). This page
 stays the fast overview; the detail sheets are where "what does 'done' actually mean" gets
 answered in full. Three tasks recur identically on every team's list (cross-module PR, cross-module
@@ -333,8 +335,8 @@ credit, and it's the one task that genuinely cannot be one-shotted by an AI codi
 requires reading and modifying code you didn't write.
 
 **Cross-module review.** Formally review at least one PR outside your own module, using that
-module's own `ASSIGNMENT.md` as your review checklist — the same document that told its own team
-what "done" looks like tells you what to check.
+task's own [detail sheet]({{ '/teaching/tasks/' | relative_url }}) as your review checklist — the
+same page that told its own team what "done" looks like tells you what to check.
 
 **Defense documentation.** Pick one real design decision you made — not a hypothetical one — and
 be ready to explain it, and a real alternative you considered, in the oral defense. "I didn't

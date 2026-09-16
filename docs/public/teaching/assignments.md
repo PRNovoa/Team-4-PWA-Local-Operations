@@ -97,8 +97,8 @@ explicitly grades (see [Why accessibility is a commitment](#why-accessibility-is
 for why the testing/accessibility tag applies to every row, every team, not just one).
 
 **This is the overview.** For what each task's visible result looks for, what it includes, and
-what actually has to be done — grounded in the real `ASSIGNMENT.md` file each module ships with,
-not a generic restatement — see [task details]({{ '/teaching/tasks/' | relative_url }}).
+what actually has to be done — grounded in that task's own brief in the dev plan, not a generic
+restatement, and linked back to its GitHub source — see [task details]({{ '/teaching/tasks/' | relative_url }}).
 
 **Lessons for these tasks.** The FE II track at web-atelier-udit teaches the Astro architecture
 every team builds on. All seven Unit 1–7 lessons are published — link text below names exactly

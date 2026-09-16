@@ -32,7 +32,7 @@ Additionally, `services/frontend/src/layouts/Page.astro` registers the service w
 
 ## 3. What "done" looks like
 
-`docs/public/teaching/tasks.md` does not currently contain specific prose for this exact board item. Therefore, the following definition of done is grounded directly in the module's `ASSIGNMENT.md` and the starter inventory.
+`docs/public/teaching/tasks.md` does not currently contain specific prose for this exact board item. Therefore, the following definition of done is grounded directly in this task's own detail sheet and the starter inventory.
 
 **Visible result:**
 When the browser is in an offline state (verified by the `#ttod-network-boundary` banner showing `data-state='offline'`), a specific piece of user-facing content (e.g., a text block, a component, or a specific route's HTML) remains fully readable and functional. It is not a blank screen, and it is not a network error message.
@@ -53,7 +53,7 @@ When the browser is in an offline state (verified by the `#ttod-network-boundary
 
 ## 4. Success criteria (functional)
 
-This task closes the following Acceptance Criteria from the parent module `ASSIGNMENT.md`:
+This task closes the following Acceptance Criteria from this task's own acceptance criteria:
 
 1.  **Cache-First static / Network-First API.** The service worker applies Cache-First to the static asset set the app needs to render offline. A repeat load of a static asset is served from Cache Storage.
     *   *Note: This task focuses on the "static asset set" part. The "Network-First API" part is covered in other tasks.*

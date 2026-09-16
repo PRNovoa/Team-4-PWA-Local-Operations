@@ -32,7 +32,7 @@ This existing pattern is the baseline. The task is to **confirm, harden, and ext
 
 ## 3. What "done" looks like
 
-*Note: No existing prose for this specific item exists in `docs/public/teaching/tasks.md`. The following is grounded in the module's `ASSIGNMENT.md` and the current hello-world state.*
+*Note: No existing prose for this specific item exists in `docs/public/teaching/tasks.md`. The following is grounded in this task's own detail sheet and the current hello-world state.*
 
 **Visible result:**
 When a user selects a node via mouse click or keyboard (Tab to focus, Enter/Space to select), the node’s associated text content is immediately displayed in a clearly labeled, accessible `<aside>` panel adjacent to the graph. The visual highlight (e.g., stroke color, size) is secondary to the textual feedback.

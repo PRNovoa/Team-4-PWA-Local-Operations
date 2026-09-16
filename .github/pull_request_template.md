@@ -7,7 +7,9 @@ at the end.
 
 ## What this PR does
 
-<!-- One or two sentences. Link the ASSIGNMENT.md acceptance criterion this satisfies. -->
+<!-- One or two sentences. Link the acceptance criterion this satisfies from your task's own
+     detail sheet — https://ruvebal.github.io/ttod/teaching/tasks/<seam>-task<N>/ — not an
+     in-app ASSIGNMENT.md; no such file exists in this repo. -->
 
 ## Contract adherence
 
@@ -16,7 +18,7 @@ at the end.
 
 ## Correctness & acceptance criteria
 
-- [ ] The specific acceptance line(s) in my module's `ASSIGNMENT.md` this PR satisfies:
+- [ ] The specific acceptance line(s) from my task's own detail sheet this PR satisfies:
 
 ## Test coverage
 

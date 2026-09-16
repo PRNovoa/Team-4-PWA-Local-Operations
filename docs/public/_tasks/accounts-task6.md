@@ -41,7 +41,7 @@ The `services/backend/tests/test_backend.py` file contains the real test `test_a
 ## 4. Success criteria (functional)
 
 *   The documentation page accurately lists the real endpoints available in `services/backend/app/main.py` (e.g., `/api/v1/auth/login`, `/api/v1/auth/token`, `/api/v1/auth/me`, `/api/v1/wisdom/sample`).
-*   The documentation clearly distinguishes between the session cookie authentication (for SSR pages) and the bearer token authentication (for non-browser clients), as defined in the module's `ASSIGNMENT.md` Learning Outcomes.
+*   The documentation clearly distinguishes between the session cookie authentication (for SSR pages) and the bearer token authentication (for non-browser clients), as defined in this task's own detail sheet Learning Outcomes.
 *   The example client script successfully executes against a running TTOD instance and demonstrates at least one successful authenticated API call.
 *   The documentation references the real type shapes from `services/frontend/src/types/domain.ts` (e.g., `User`, `FavoriteEntry`) rather than inventing new, undocumented types.
 

@@ -35,7 +35,7 @@ The starting point is not hypothetical — it is the real hello-world already on
   | 'tags')` (confirmed at line 31 of that file) — already written, **not yet called by any
   route**. This task's whole job is building the three routes that call it.
 - The three route files this task adds do not exist on the reference implementation — they were the instructor's own
-  deliberate removal, named explicitly in `wisdom/ASSIGNMENT.md`'s "instructor-removed routes"
+  deliberate removal, named explicitly in this task's own "instructor-removed routes"
   table, not an oversight to work around.
 
 ## 3. What "done" looks like
@@ -56,7 +56,7 @@ in that locale — not a blank page.
 
 ## 4. Success criteria (functional)
 
-Reused directly from `wisdom/ASSIGNMENT.md`'s own Acceptance criteria — this task closes items 1–3
+Reused directly from this task's own Acceptance criteria, below — this task closes items 1–3
 and the "real data" clause of item 6; items 4–5 (breadcrumbs, the explicit accessibility check) are
 this same module's Task 2 and a cross-cutting requirement respectively, not re-litigated here:
 
@@ -73,7 +73,7 @@ this same module's Task 2 and a cross-cutting requirement respectively, not re-l
 
 - **Reuse discipline, not reinvention.** `frequencies()` is called, not reimplemented as an inline
   filter — a review that finds a hand-rolled facet counter next to an unused `frequencies()`
-  import is a quality failure, not a style nitpick, per `wisdom/ASSIGNMENT.md`'s own "prefer
+  import is a quality failure, not a style nitpick, per this task's own "prefer
   `frequencies()`... rather than inventing a parallel counter" constraint.
 - **i18n as structural, not cosmetic.** Locale comes from `Astro.params.locale` and `isLocale()` —
   a route that works in `en` and silently 404s or shows English copy in `es` fails this task

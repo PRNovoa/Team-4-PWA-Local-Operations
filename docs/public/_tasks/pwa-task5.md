@@ -18,11 +18,11 @@ alt_lang_missing: true
 
 ## 1. Curriculum map
 
-This task exercises the **Installability** learning outcome from the PWA module, which aligns with **Unit 3 — PWA fundamentals** in the web-atelier-udit FE II curriculum. The specific focus on manifest correctness and icon sizing corresponds to the "Installability" section of the module's own `ASSIGNMENT.md`, which explicitly requires producing a manifest that a Chromium browser treats as installable, including icon sizes Lighthouse actually checks.
+This task exercises the **Installability** learning outcome from the PWA module, which aligns with **Unit 3 — PWA fundamentals** in the web-atelier-udit FE II curriculum. The specific focus on manifest correctness and icon sizing corresponds to the "Installability" section of this task's own detail sheet, which explicitly requires producing a manifest that a Chromium browser treats as installable, including icon sizes Lighthouse actually checks.
 
 ## 2. Worked example, from the real TTOD app
 
-The starter manifest at `services/frontend/public/manifest.webmanifest` already contains the minimum fields required for a technically valid manifest: `name`, `short_name`, `start_url`, `display: standalone`, `theme_color`, and a single icon entry. However, as noted in the module's own `ASSIGNMENT.md` Acceptance Criterion 3, "the stub's single SVG is not enough." The current manifest references one SVG icon, which is insufficient for Lighthouse's installability check, which requires specific raster icon sizes (typically 192x192 and 512x512 PNGs). This task extends the existing manifest by adding the required icon sizes and verifying that the install prompt appears correctly in a real Chromium browser.
+The starter manifest at `services/frontend/public/manifest.webmanifest` already contains the minimum fields required for a technically valid manifest: `name`, `short_name`, `start_url`, `display: standalone`, `theme_color`, and a single icon entry. However, as noted in this task's own detail sheet Acceptance Criterion 3, "the stub's single SVG is not enough." The current manifest references one SVG icon, which is insufficient for Lighthouse's installability check, which requires specific raster icon sizes (typically 192x192 and 512x512 PNGs). This task extends the existing manifest by adding the required icon sizes and verifying that the install prompt appears correctly in a real Chromium browser.
 
 ## 3. What "done" looks like
 

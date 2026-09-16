@@ -29,7 +29,7 @@ This task exercises the core principles of **Unit 3 — React State & Effects** 
 
 The instructor-provided hello-world implementation in `services/frontend/src/components/oracle/` already demonstrates the target behavior. Specifically, `OracleTerminal.tsx` consumes the `readOracleStream` helper from the colocated `sse.ts` to handle the Server-Sent Events (SSE) connection.
 
-*   **Real File:** `services/frontend/src/components/oracle/ASSIGNMENT.md` (module brief) and `OracleTerminal.tsx` (implementation)
+*   **Real File:** `services/frontend/src/components/oracle/OracleTerminal.tsx` (implementation) — there is no in-app `ASSIGNMENT.md`; this detail sheet is the acceptance-criteria source
 *   **Real Function:** `readOracleStream` (from `services/frontend/src/components/oracle/sse.ts`)
 *   **Real Behavior:** The current implementation sends a single prompt, receives a stream of `OracleResponseChunk` objects, and renders them sequentially. It already handles the `grounded` vs `creative` distinction in the payload and includes a busy/double-submit guard. This task requires you to understand, harden, and document this existing baseline, not build it from scratch.
 
@@ -49,10 +49,10 @@ A user submits a single prompt in the Oracle terminal. The response appears incr
 1.  **Verify Existing Implementation:** Confirm that the current hello-world code uses `readOracleStream` and `parseSseEvent` from `sse.ts` unmodified.
 2.  **Harden State Logic:** Ensure that React state updates are batched correctly to avoid layout thrashing during high-frequency chunk arrivals.
 3.  **Reduced-Motion Audit:** Verify that the streaming animation itself (not the live-region announcement — that is Task 2) is disabled for users with reduced-motion preferences.
-4.  **Document the Baseline:** Write a brief note in the module's `ASSIGNMENT.md` or a local `README` explaining how the streaming state is managed, citing the specific helper functions used.
+4.  **Document the Baseline:** Write a brief note in this task's own detail sheet or a local `README` explaining how the streaming state is managed, citing the specific helper functions used.
 5.  **Test the Guard:** Manually verify that submitting a second prompt while the first is streaming is prevented or queued (per the module's constraints, it should be prevented/guarded).
 
-*Note: `docs/public/teaching/tasks.md` does not contain existing prose for this specific item (Board Item 1). The above is grounded entirely in the module’s `ASSIGNMENT.md` hello-world description.*
+*Note: `docs/public/teaching/tasks.md` does not contain existing prose for this specific item (Board Item 1). The above is grounded entirely in the real TTOD app's hello-world implementation described in §2.*
 
 ## 4. Success criteria (functional)
 

@@ -18,7 +18,7 @@ alt_lang_missing: true
 
 ## 1. Curriculum map
 
-This task exercises the **Semantic HTML for humanities content** learning outcome from the module's `ASSIGNMENT.md`, specifically the requirement that "browse pages expose headings and breadcrumbs." It also reinforces the **i18n routing as a mandatory spine** outcome, ensuring that navigation elements respect the `/{locale}/` prefix.
+This task exercises the **Semantic HTML for humanities content** learning outcome from this task's own detail sheet, specifically the requirement that "browse pages expose headings and breadcrumbs." It also reinforces the **i18n routing as a mandatory spine** outcome, ensuring that navigation elements respect the `/{locale}/` prefix.
 
 *Note: Specific web-atelier-udit FE II unit links for this exact task are not yet published in `assignments.md`'s "Lessons for these tasks" section. The curriculum grounding is derived directly from the module's own Learning Outcomes §4 and Acceptance Criteria §4.*
 
