@@ -33,20 +33,22 @@ Two one-time steps. Do both before you need either.
 
 ## One worktree, not a habit of switching branches
 
+From your existing clone's root:
+
 ```bash
-cd ~/src/ttod
 git worktree add ../ttod-review main
 ```
 
-`~/src/ttod` stays your own workspace — your backend debugging branch, your half-finished changes,
-untouched. `~/src/ttod-review` is a second, independent checkout of the same repository you use
-*only* for checking out and running student PRs. Checking out a PR there never touches your own
-uncommitted work, because they're different directories with different working trees over the same
-`.git`. Tear it down when the cohort's PR wave is over: `git worktree remove ../ttod-review`.
+Your original clone stays your own workspace — your backend debugging branch, your half-finished
+changes, untouched. The new `../ttod-review` directory (a sibling of your clone, not inside it) is
+a second, independent checkout of the same repository you use *only* for checking out and running
+student PRs. Checking out a PR there never touches your own uncommitted work, because they're
+different directories with different working trees over the same `.git`. Tear it down when the
+cohort's PR wave is over: `git worktree remove ../ttod-review`.
 
 ## The core loop
 
-Run every command below from `~/src/ttod-review`, not your main checkout.
+Run every command below from the `ttod-review` worktree, not your main checkout.
 
 1. **See what's waiting.** `make review-queue` (already in the Makefile) lists open PRs, read-only
    — it never approves or merges on your behalf. Or `gh pr list` for the raw list.
@@ -87,12 +89,13 @@ you have and it didn't. Two situations call for you to run a review yourself, de
 
 ## Running this alongside your own backend work
 
-This is the actual point of the separate worktree: your backend debugging session in
-`~/src/ttod` never needs to know review is happening. Concretely:
+This is the actual point of the separate worktree: your backend debugging session in your main
+clone never needs to know review is happening. Concretely:
 
-- Keep `~/src/ttod` on your own working branch, mid-debug, dirty working tree and all.
-- Do all of the loop above from `~/src/ttod-review`, on a clean `main`-tracking checkout that only
-  ever holds one student's branch at a time (`gh pr checkout` replaces it each time, cleanly).
+- Keep your main clone on your own working branch, mid-debug, dirty working tree and all.
+- Do all of the loop above from the `ttod-review` worktree, on a clean `main`-tracking checkout
+  that only ever holds one student's branch at a time (`gh pr checkout` replaces it each time,
+  cleanly).
 - If a student's PR changes `services/frontend/src/types/domain.ts` (the shared contract) and your
   own backend work depends on that file, that's the one case worth a manual look before merging —
   a contract change ripples into every module, including whatever you're mid-debugging. Everything
@@ -104,5 +107,5 @@ This is the actual point of the separate worktree: your backend debugging sessio
 | --- | --- | --- |
 | No bot comment appears on a new PR | `ANTHROPIC_API_KEY` repo secret not set — see Set up once, above | `gh secret set ANTHROPIC_API_KEY` |
 | Bot comment only shows the generic rubric | Branch name didn't match `<seam>-task<N>` | Ask the student to rename the branch, or just run `/code-review <N> --comment` yourself for that one |
-| `gh pr checkout <N>` fails or leaves stray files | You ran it from `~/src/ttod` instead of the review worktree | `cd ~/src/ttod-review` first — this is the one command in this whole guide that must run from the right directory |
+| `gh pr checkout <N>` fails or leaves stray files | You ran it from your main clone instead of the review worktree | `cd` into the `ttod-review` worktree first — this is the one command in this whole guide that must run from the right directory |
 | Merge blocked despite an approval | `typecheck-and-build` hasn't reported yet, or reports failing | `gh pr checks <N>` to see which; don't override with an admin merge unless you know exactly why it's failing |
