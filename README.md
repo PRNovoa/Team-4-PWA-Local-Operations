@@ -78,6 +78,7 @@ suite, is listed in [`AGENTS.md`](AGENTS.md).
 ## Development Team
 
 **Rubén Vega Balbás, PhD. <ruben.vega@udit.es>**:  Product owner, product manager
+**Pablo Novoa Rodríguez. <pvrnovoa@gmail.com>**: Developer PWA-Local-Operations
 
 
 ## License
