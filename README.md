@@ -74,9 +74,19 @@ When `docs/public` changes, also run the publication privacy watcher over that t
 rendered output after a Jekyll build). The full agent verification set, including the ttod-bridge
 suite, is listed in [`AGENTS.md`](AGENTS.md).
 
-**License:** code is MIT ([`LICENSE-CODE`](LICENSE-CODE)); content — `ttod.yml` quotes, `docs/`,
+
+## Development Team
+
+**Rubén Vega Balbás, PhD. <ruben.vega@udit.es>**:  Product owner, product manager
+
+
+## License
+
+Code is MIT ([`LICENSE-CODE`](LICENSE-CODE)); content — `ttod.yml` quotes, `docs/`,
 `sources/` — is CC BY-NC-SA 4.0 ([`LICENSE-CONTENT`](LICENSE-CONTENT)), per
 [`docs/DEV_PLAN/DECISIONS/Q0-2026-08-18-RIGHTS-LICENSE-NC.md`](docs/DEV_PLAN/DECISIONS/Q0-2026-08-18-RIGHTS-LICENSE-NC.md).
 
-**Agent contract:** [`AGENTS.md`](AGENTS.md)
+# Agent contract
+
+[`AGENTS.md`](AGENTS.md)
 ([agentsmd standard](https://github.com/agentsmd/agents.md)).
