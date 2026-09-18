@@ -33,10 +33,27 @@ the classroom analogue of the second approval that lands a quote-accept diff.
 
 ```text
 Execute AG5 only. Run full verification. Add the pedagogical merge note.
-Prepare PR description from the orchestrator §5–§6. Do not merge. Do not
-force-push. Stop at VERIFYING with MERGE_* decision left for the human.
+Prepare PR description from the orchestrator §5–§6. Push the branch and open
+the PR with `gh pr create` (commands below). Do not merge. Do not force-push.
+Stop at VERIFYING with MERGE_* decision left for the human.
 Do not mark DONE; hand off for cold review. After cold review, only a named
 human may record MERGE_APPROVED and perform the merge.
+```
+
+## Commands (exact — agent runs PR creation only, never merge)
+
+```bash
+# Agent, after verification is green and the PR body is drafted in the report:
+git push -u origin agentic/homogenize-landings   # only if the human asked for a push
+gh pr create --base main --head agentic/homogenize-landings \
+  --title "agentic: homogenize rules/skills/agents; .cursor/.claude as landings" \
+  --body-file <path to the PR-body section drafted in PHASE-AG5-REPORT.md>
+
+# HUMAN ONLY — never run by the agent, never in the same session that opened the PR:
+# 1. Read PHASE-AG5-COLD-REVIEW.md; confirm no blocking findings remain.
+# 2. Confirm `git diff main...agentic/homogenize-landings -- ttod.yml` is empty.
+# 3. Record MERGE_APPROVED in PHASE-AG5-REPORT.md.
+# 4. gh pr merge --merge --delete-branch   # or --squash, human's call
 ```
 
 ## Acceptance
@@ -52,6 +69,8 @@ human may record MERGE_APPROVED and perform the merge.
 - [ ] Report status is DONE only when human recorded merge decision; if merge
       deferred, status may be DONE for the *verification* work with
       `MERGE_DEFERRED` explicit.
+- [ ] `gh pr merge` never appears in this phase's own execution transcript —
+      only in the report as a command block left for the human.
 
 ## Pedagogical merge checklist (for the human)
 

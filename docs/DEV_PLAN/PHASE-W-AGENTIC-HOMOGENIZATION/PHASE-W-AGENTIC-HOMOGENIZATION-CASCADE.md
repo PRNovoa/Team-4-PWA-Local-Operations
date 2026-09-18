@@ -26,8 +26,8 @@ privacy). Dual-model / extra MCP validators are specified in
 
 | Step | File | Deliverable | Gate |
 | ---- | ---- | ----------- | ---- |
-| AG0 | [PHASES/AG0-inventory-and-naming-freeze.md](PHASES/AG0-inventory-and-naming-freeze.md) | Decision record: canonical home map (`agentic/` vs `~/src/.agents/`); inventory table frozen; IDE vs Docker MCP ontology | READY until product-owner sign-off; then DONE when `DECISIONS/W0-…-AGENTIC-HOME.md` exists and FINDINGS F1/F3/F7–F10 are closed or deferred with IDs |
-| AG1 | [PHASES/AG1-branch-and-target-layout.md](PHASES/AG1-branch-and-target-layout.md) | Target tree sketch + **branch name frozen**; branch creation commands in report (executed only when authorized) | BLOCKED on AG0 DONE; READY when branch name ≠ `agentic/gh-pack`; DONE when branch exists *or* report explicitly records “creation deferred to human” with exact command |
+| AG0 | [PHASES/AG0-inventory-and-naming-freeze.md](PHASES/AG0-inventory-and-naming-freeze.md) | Decision record: canonical home map (`agentic/` vs `~/src/.agents/`); inventory table frozen; IDE vs Docker MCP ontology | **DONE** (2026-09-18) — `DECISIONS/W0-2026-09-18-AGENTIC-HOME.md` frozen, FINDINGS F1/F3 closed, cold-reviewed PASS ([`PHASE-AG0-REPORT.md`](PHASE-AG0-REPORT.md)) |
+| AG1 | [PHASES/AG1-branch-and-target-layout.md](PHASES/AG1-branch-and-target-layout.md) | Target tree sketch + **branch name frozen**; branch creation commands in report (executed only when authorized) | **PARTIAL** (2026-09-18) — tree + name frozen, cold-reviewed clean ([`PHASE-AG1-REPORT.md`](PHASE-AG1-REPORT.md)); branch creation deferred, exact commands recorded for the human |
 | AG2 | [PHASES/AG2-migrate-bodies-into-agentic.md](PHASES/AG2-migrate-bodies-into-agentic.md) | Bodies of TTOD-scoped rules/skills/agents live under `agentic/`; `report-steward` undisturbed; seed `agentic/README.md` pointing at harness annex | BLOCKED on AG1; DONE when byte-diff of moved bodies matches pre-move and `make check` / full unittest green on the branch |
 | AG3 | [PHASES/AG3-landing-stubs.md](PHASES/AG3-landing-stubs.md) | `.cursor/` and `.claude/` stubs with real frontmatter + redirect only (`.cursor/mcp.json` is AG6 tooling, not a skill body) | BLOCKED on AG2; DONE when stub files contain no duplicated procedure body (word-count / grep gate in runbook) |
 | AG4 | [PHASES/AG4-rewrite-references.md](PHASES/AG4-rewrite-references.md) | Evergreen docs, generators, CI path comments updated; discovery map includes IDE harness pointer | BLOCKED on AG3; DONE when `git grep` for edit-home claims passes the allowlist in the runbook |
@@ -113,7 +113,10 @@ it into `ttod/agentic/`; amend AG0/AG2 scope in the same commit as the phase rep
 | Creation (AG1, when authorized) | `git switch -c agentic/homogenize-landings` from clean `main` | Optional: worktree via `cascade-harness.sh` if harness is used |
 | Push | Only when human asks | `git push -u origin HEAD` |
 | PR title (proposed) | `agentic: homogenize rules/skills/agents; .cursor/.claude as landings` | Links Phase W INDEX |
+| PR creation (AG5, agent may run) | `gh pr create --base main --head agentic/homogenize-landings --title "agentic: homogenize rules/skills/agents; .cursor/.claude as landings" --body-file <PHASE-AG5-REPORT.md PR-body section>` | Agent opens the PR; this is not a merge |
 | Merge authority | Named human (product owner) after AG5 | Agent opens PR; agent does not merge |
+| Merge (human-only, after cold review + `MERGE_APPROVED`) | `gh pr merge --merge --delete-branch` (or `--squash` if the human prefers a single commit) | **Never run by the agent.** Requires the human to have read `PHASE-AG5-COLD-REVIEW.md` and recorded `MERGE_APPROVED` in `PHASE-AG5-REPORT.md` first |
+| Rollback if merged in error | `git revert -m 1 <merge-sha>` on `main` | Prefer revert over `reset --hard`; this branch only touches docs/agent-tree paths, not `ttod.yml` |
 
 AG1 may amend the branch string if `agentic/homogenize-landings` is taken; record the
 final string in `PHASE-AG1-REPORT.md` before any commits land on it.

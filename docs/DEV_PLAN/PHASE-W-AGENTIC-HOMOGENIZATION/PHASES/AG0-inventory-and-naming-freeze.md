@@ -1,6 +1,7 @@
 # AG0 — Inventory confirmation and naming freeze
 
-**Status:** READY (planning complete; execution awaits product-owner sign-off)  
+**Status:** DONE (2026-09-18; decision frozen at `DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`,
+cold-reviewed PASS at `../PHASE-AG0-COLD-REVIEW.md`, report at `../PHASE-AG0-REPORT.md`)
 **Depends on:** Phase W INDEX + FINDINGS-2026-09-18  
 **Does not authorize:** branch creation, file moves, or commits
 

@@ -6,9 +6,10 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 
 # Phase W — Agentic Homogenization
 
-**Status:** PROPOSED cascade (AG0–AG5) · planning increment only. No phase is
-authorized, no git branch exists yet, and no file has been moved merely because
-this pack exists.
+**Status:** AG0 DONE (2026-09-18; decision frozen at
+[`DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`](../DECISIONS/W0-2026-09-18-AGENTIC-HOME.md),
+cold-reviewed PASS). AG1–AG6 remain PROPOSED. No git branch exists yet, and no file has
+been moved — AG0 only produced its own decision record.
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 
