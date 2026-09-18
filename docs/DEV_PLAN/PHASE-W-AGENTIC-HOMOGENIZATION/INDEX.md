@@ -6,15 +6,15 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 
 # Phase W — Agentic Homogenization
 
-**Status:** AG0–AG4 DONE (2026-09-18). Decision frozen at
+**Status:** AG0–AG5 DONE (2026-09-18; AG5 is DONE-with-MERGE_DEFERRED). Decision frozen at
 [`DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`](../DECISIONS/W0-2026-09-18-AGENTIC-HOME.md),
-cold-reviewed PASS. Branch `agentic/homogenize-landings` created from `main`@`7a738cae`
-([`PHASE-AG1-REPORT.md`](PHASE-AG1-REPORT.md)). TTOD-scoped bodies now live under `agentic/`
-([`PHASE-AG2-REPORT.md`](PHASE-AG2-REPORT.md)), `.cursor` rule/skill are now thin redirect
-stubs ([`PHASE-AG3-REPORT.md`](PHASE-AG3-REPORT.md)), and `AGENTS.md` now carries the
-edit-home table + discovery map linking `agentic/`, `services/mcp/`, and Astro as MCP client
-([`PHASE-AG4-REPORT.md`](PHASE-AG4-REPORT.md)) — all four cold-reviewed PASS with zero
-findings. AG5–AG6 remain PROPOSED — no merge prepared yet, no student IDE harness shipped.
+cold-reviewed PASS. Branch `agentic/homogenize-landings` pushed to `origin`; **[PR
+#21](https://github.com/ruvebal/ttod/pull/21) open against `main`**, cold-reviewed PASS, not
+yet merged. All AG0–AG5 work (edit-home + discovery map in `AGENTS.md`, bodies under
+`agentic/`, `.cursor` landings) cold-reviewed PASS with zero blocking findings across five
+independent reviews. AG6 remains PROPOSED — no student IDE harness shipped; `AG6_DEFERRED`
+recorded, does not block the merge decision. **Next action: product owner reviews PR #21 and
+records MERGE_APPROVED / MERGE_REJECTED** — merge itself is outside any agent's authority.
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 

@@ -1,6 +1,7 @@
 # PHASE-AG5-REPORT.md
 
-**Status:** VERIFYING (for AG5's own scope) — implementer does not self-certify DONE;
+**Status:** DONE-with-MERGE_DEFERRED (2026-09-18) — cold-reviewed PASS, zero blocking
+findings. See [`PHASE-AG5-COLD-REVIEW.md`](PHASE-AG5-COLD-REVIEW.md).
 **MERGE_DEFERRED** — see § Merge decision below
 **Runbook:** [`PHASES/AG5-verify-and-merge-gate.md`](PHASES/AG5-verify-and-merge-gate.md)
 **Branch:** `agentic/homogenize-landings` @ `c0bd15f9` (pushed)
@@ -69,5 +70,9 @@ separate, later phase per its own runbook, explicitly out of scope for this merg
 - [x] Report status reflects verification DONE-able only after cold review; merge explicitly
       `MERGE_DEFERRED`, not silently assumed.
 
-Stopping here at VERIFYING for the merge decision. Do not mark DONE — handing off for cold
-review of this report and the PR diff.
+Cold review found zero blocking findings, independently re-ran every check including a live
+GitHub query (`gh pr view`, `gh api .../reviews`) confirming no approval or merge exists yet,
+and judged the merge-deferral reasoning correct against the runbook's own text rather than
+accepting this report's framing. Verification/PR-preparation portion promoted to DONE. The
+merge decision itself remains `MERGE_DEFERRED`, unchanged — that line is the product owner's
+to write, not any implementer's or reviewer's.

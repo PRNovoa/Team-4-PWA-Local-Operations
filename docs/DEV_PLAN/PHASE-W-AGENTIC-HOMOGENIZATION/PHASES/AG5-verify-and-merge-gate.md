@@ -1,9 +1,10 @@
 # AG5 — Verify, pedagogical merge note, and human merge gate
 
-**Status:** READY — AG0–AG4 all DONE 2026-09-18 on `agentic/homogenize-landings`. Awaiting
-separate explicit authorization to run this phase (this phase's own prompt requires it).
-Note: this phase stops before merge regardless — merge is a named-human act, never this
-implementer's to grant.  
+**Status:** DONE-with-MERGE_DEFERRED (2026-09-18) — full verification green, pedagogical note
+landed in `AGENTS.md`, PR [#21](https://github.com/ruvebal/ttod/pull/21) opened against
+`main`, cold-reviewed PASS with zero blocking findings. **Not merged** — merge is a
+named-human act; see `../PHASE-AG5-REPORT.md` § Merge decision for the exact commands left
+for the product owner.  
 **Depends on:** AG0–AG4 complete on `agentic/homogenize-landings` — satisfied, see
 `../PHASE-AG4-REPORT.md`
 
