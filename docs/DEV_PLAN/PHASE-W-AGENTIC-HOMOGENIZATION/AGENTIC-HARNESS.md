@@ -1,0 +1,151 @@
+# Agentic harness — roles (planning annex for Phase W)
+
+**Status:** planning annex · 2026-09-18 · becomes living `agentic/README.md` prose in AG2/AG6  
+**Audience:** instructors, co-developer students, cascade implementers
+
+This page answers: what each piece is for, what runs where, and what is **not**
+ready yet. It is not authorization to install packages or open the branch.
+
+## 1. Two stacks (do not conflate)
+
+| Stack | Where it lives | Who it serves | LLM |
+| --- | --- | --- | --- |
+| **Application (product)** | `docker-compose` · `services/mcp` · `services/backend` · `services/frontend` (Astro) | End users / Oracle / graph | **Local Ollama only** (`make up` / `make ollama-pull`) |
+| **Development (IDE agents)** | `AGENTS.md` · `agentic/` · `.cursor` / `.claude` landings · **IDE MCP client configs** | Students & instructors coding the product | Often a **frontier** model in Cursor/Claude as orchestrator; may also call local Ollama for bounded jobs |
+
+Docker MCP (`services/mcp`) is **application-level retrieval** for the Oracle.
+It is **not** the development MCP harness students add for Astro/Svelte docs.
+
+## 2. Role of each piece
+
+| Piece | Role | Ready today? |
+| --- | --- | --- |
+| `AGENTS.md` | Root contract + discovery index | Yes (needs AG4 map) |
+| `agentic/` | Tool-neutral **edit-home** for rules, skills, packs | Partial (`report-steward` only) |
+| `agentic/report-steward/` | Evidence reports + public-privacy watcher (CI) | Yes |
+| `.cursor/` · `.claude/` | **Landings** (tool discovery); after AG3, stubs only | Partial (bodies still fat in `.cursor`) |
+| `cascade-phase-executor` | Implements one cascade phase; stops at VERIFYING | Yes (stub → `~/src/.agents/`) |
+| `cascade-cold-reviewer` | Independent Acceptance audit; never self-DONE | Yes (stub → `~/src/.agents/`) |
+| `services/mcp` (Compose) | Product FastMCP read-only corpus retrieval | Yes (Phase R2) |
+| Astro frontend | Document shell + islands; **client** of Oracle/backend | Yes (reference) |
+| IDE MCP: Astro docs | Official docs tools for agents writing Astro | Config **not** in repo yet → AG6 |
+| IDE MCP: Svelte (`@sveltejs/mcp`) | Official Svelte docs/tools/autofixer | Config **not** in repo yet → AG6 |
+| IDE MCP: React (Smithery `@Streen9/react-mcp`) | Third-party; Windows-path install sample | **Not cohort-default** — AG6 evaluates or defers |
+| `llms.txt` / Svelte prompts index | Agent-readable prompt/docs index | Vendor + verify in AG6 |
+| Dual-model cascade (frontier orchestrator + Ollama validators) | Optional execution mode for Phase W itself | **Not wired** — see §3 |
+
+## 3. Is Phase W orchestrated as “local Ollama workload + frontier orchestrator”?
+
+**No — not as written in AG0–AG5.** Those steps are a **layout/governance** cascade
+(homogenize `agentic/`, landings, docs). Closing protocol already names
+`cascade-phase-executor` → VERIFYING → `cascade-cold-reviewer`; it does **not**
+yet prescribe:
+
+- which model runs the implementer vs the cold reviewer,
+- an Ollama-only validator fleet,
+- or automated MCP-existence probes as subagents.
+
+| Role | Recommended when executing Phase W / FE II labs | Ready? |
+| --- | --- | --- |
+| Orchestrator / integrator | Frontier IDE agent (Cursor/Claude) pasting the master prompt | Human + IDE — ready as process |
+| Phase implementer | `cascade-phase-executor` (same or separate session) | Ready |
+| Cold validator | `cascade-cold-reviewer` in a **fresh** session | Ready |
+| Privacy / evidence validator | `report-steward` + `check_public_privacy.py` | Ready |
+| Local Ollama workload | Product stack (`llama3.2:1b`, `nomic-embed-text`); optional local coder for draft/translate | Ready for **app**; not required for AG0–AG5 file moves |
+| Extra MCP “existence” validators | Scripted probes (`npx`/`curl` to Astro/Svelte MCP) | **To build in AG6** — not ready |
+| React MCP validator | Deferred unless AG0 promotes it | Not ready |
+
+**Honesty rule:** do not claim a multi-validator Ollama fleet exists until AG6’s
+probe script and a short runbook are DONE. Cascade-forge already warns against
+self-certified DONE; that is the validator bar we actually have.
+
+## 4. Project level vs studio level
+
+| Asset | Install / commit where | Why |
+| --- | --- | --- |
+| TTOD rules/skills bodies | **Project** `ttod/agentic/` | Students clone one repo and benefit |
+| Cursor landings | **Project** `ttod/.cursor/rules|skills` (stubs) | Cursor loads them |
+| Cursor IDE MCP servers (Astro, Svelte) | **Project** `ttod/.cursor/mcp.json` (committed) | Shared cohort config; overrides global same-name |
+| Canonical MCP template + notes | **Project** `ttod/agentic/ide-mcp/` | Edit-home; landings may symlink/copy |
+| Claude Code project MCP | **Project** `.mcp.json` (if used) — mirror of the same server list | Tool-specific landing |
+| Claude Desktop / user-global clients | **User home** only — provide **example** under `agentic/ide-mcp/examples/` | Cannot commit into classmates’ Application Support |
+| Studio skills (`ttod-bridge`, `cascade-forge`) | **Studio** `~/src/.cursor/skills` or `~/src/.agents` until studio migration | Not in student cohort artifact unless generator copies a subset |
+| Product MCP server | **Project** `services/mcp` via Compose | Application, not IDE |
+
+**Yes — go project-level** for Astro + Svelte IDE MCPs and the harness README so
+every co-developer student gets them on clone. Keep studio-only skills studio-side.
+
+**Multi-root caveat:** Cursor may fail to load project `.cursor/mcp.json` from a
+multi-root `.code-workspace`. Teaching baseline: open the **ttod folder** (or the
+student skeleton folder) as a single root.
+
+## 5. Where students save MCP JSON
+
+| Client | Path students use | Source of truth in git |
+| --- | --- | --- |
+| Cursor | `.cursor/mcp.json` (project) | Same file committed; template also under `agentic/ide-mcp/mcp.cursor.json` |
+| Claude Code | project `.mcp.json` (when applicable) | `agentic/ide-mcp/mcp.claude-code.json` → copy/landing |
+| Claude Desktop / Codex / Zed / etc. | Vendor-specific **user** config | `agentic/ide-mcp/examples/<client>.json` — copy manually |
+| Streamable HTTP vs stdio | Prefer **one** documented default per server in AG6 | Astro: prefer official HTTP URL if client supports `type: http`; else `npx mcp-remote`. Svelte: official stdio `npx -y @sveltejs/mcp` |
+
+**Proposed default cohort block (AG6 freezes exact JSON):**
+
+```json
+{
+  "mcpServers": {
+    "astro-docs": {
+      "type": "http",
+      "url": "https://mcp.docs.astro.build/mcp"
+    },
+    "svelte": {
+      "command": "npx",
+      "args": ["-y", "@sveltejs/mcp"]
+    }
+  }
+}
+```
+
+Fallback for clients without HTTP MCP: Astro via
+`npx -y mcp-remote https://mcp.docs.astro.build/mcp`.
+
+**React MCP:** do **not** put the Smithery OneDrive-path sample in the cohort
+default. AG6 either finds a portable `npx`-based install that cold-review trusts,
+or marks React as “docs + ESLint/testing, no IDE MCP” for Entrega 1.
+
+## 6. Do students need `@modelcontextprotocol/server` / `client` / `node`?
+
+| Need | Install? |
+| --- | --- |
+| Use Astro/Svelte **docs** MCP from the IDE | **No** — `npx -y …` is enough; no app `package.json` change |
+| Author a **custom** MCP server as optional coursework | Yes — then add SDK deps in a **lab package**, not in the Oracle frontend by default |
+| Run the **product** MCP | Already Python FastMCP under `services/mcp` — not the TS SDK |
+
+Do **not** add `@modelcontextprotocol/*` to `services/frontend/package.json` just
+to consume docs MCPs. That confuses application dependencies with IDE tooling.
+
+## 7. `llms.txt` indexing
+
+AG6 vendors (or pin-fetches) agent indexes under e.g.:
+
+```text
+agentic/ide-mcp/llms/
+  README.md                 # how agents should use these files
+  svelte-prompts-llms.txt   # from https://svelte.dev/docs/ai/prompts/llms.txt
+  (optional) astro-*.txt    # if Astro publishes a stable llms index
+```
+
+Verification: script checks URL reachability **or** on-disk digest match; CI may
+run the offline digest check only (no network flakiness in required gates).
+
+## 8. Verification of existence (student / CI)
+
+AG6 delivers `agentic/ide-mcp/scripts/verify-ide-mcp.sh` (or `.py`) that:
+
+1. Asserts `.cursor/mcp.json` parses and lists required server keys.
+2. Optionally dry-runs `npx -y @sveltejs/mcp --help` (or equivalent) when network
+   allowed.
+3. Optionally `curl -I` / MCP initialize against Astro HTTP endpoint when network
+   allowed.
+4. Prints a student-facing PASS/FAIL checklist for Week-0 setup.
+
+Product Docker MCP health remains `make up` + existing MCP tests — separate check.

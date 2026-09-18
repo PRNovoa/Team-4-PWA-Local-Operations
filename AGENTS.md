@@ -1,6 +1,6 @@
 # AGENTS.md — 道 The Tao of Development (TTOD)
 
-> *"Name your variables as if you were baptising stars."*
+> _"Name your variables as if you were baptising stars."_
 
 **Repository:** `/Users/ruvebal/src/ttod`
 **Author:** Rubén Vega Balbás PhD — `ruvebal@crea-comm.net`
@@ -49,15 +49,15 @@ speed outside Docker on macOS) is a personal, manual override, not a `make` targ
 `OLLAMA_MODE=host` and `OLLAMA_BASE_URL` in your own `.env` if you want it. See the `ollama`
 service in `docker-compose.yml` and the comments in `.env.example` for both paths.
 
-| Path | Role |
-| --- | --- |
-| `ttod.yml` | Canonical quote database (human-governed) |
-| `cli.py` | validate · stats · snapshot · export · migrate · proposal · bridge · add · deprecate · erase |
-| `.cursor/rules/ttod-editing.mdc` | Strict YAML editing checklist |
-| `schema/` | v3 schema surface (Phase Q complete) |
-| `exports/` | Derived JSON/graph (gitignored) |
-| `sources/tao-of-ai-development/` | Parked chapter — **not merged**; read README before extracting IDs |
-| `sources/tao-of-human-centered-design/` | Parked HCD chapter (hc-app-design) — **not merged**; read README before extracting IDs |
+| Path                                    | Role                                                                                         |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ttod.yml`                              | Canonical quote database (human-governed)                                                    |
+| `cli.py`                                | validate · stats · snapshot · export · migrate · proposal · bridge · add · deprecate · erase |
+| `.cursor/rules/ttod-editing.mdc`        | Strict YAML editing checklist                                                                |
+| `schema/`                               | v3 schema surface (Phase Q complete)                                                         |
+| `exports/`                              | Derived JSON/graph (gitignored)                                                              |
+| `sources/tao-of-ai-development/`        | Parked chapter — **not merged**; read README before extracting IDs                           |
+| `sources/tao-of-human-centered-design/` | Parked HCD chapter (hc-app-design) — **not merged**; read README before extracting IDs       |
 
 **Do not** hand-append YAML to `ttod.yml`. Mutations go through `proposal accept`, `add`
 (requires `--reviewer-id`), or `migrate apply --approve` (one-time v2→v3 only) via
@@ -103,26 +103,26 @@ Use the **ttod-bridge** skill for propose/search/read — never parse `ttod.yml`
 
 ```yaml
 - id: arch-001
-  schema_version: '3.1.0'         # after Phase S S2′; fixtures may still show 3.0.0+lang during S1′
+  schema_version: '3.1.0' # after Phase S S2′; fixtures may still show 3.0.0+lang during S1′
   content_digest: '<sha256 via TTOD-C14N-v1>'
   text: 'The aphorism itself.'
   section: architecture
   subsection: boundaries
-  level: advanced                 # beginner | intermediate | advanced | master
-  lang: en                        # ISO 639-1; required. Translations are separate IDs.
-  tags: [boundaries, coupling]    # from tag_taxonomy
+  level: advanced # beginner | intermediate | advanced | master
+  lang: en # ISO 639-1; required. Translations are separate IDs.
+  tags: [boundaries, coupling] # from tag_taxonomy
   teaches: 'What the student learns'
   related: [arch-002, cc-001]
-  relation_edges:                 # optional typed edges
-    - {target: arch-060, relation_type: translation_of}  # Spanish twin points here; never arch-001-es
+  relation_edges: # optional typed edges
+   - { target: arch-060, relation_type: translation_of } # Spanish twin points here; never arch-001-es
   lesson: lesson-slug
   source: source-slug
-  origin: human                   # human | studio | blackbox | legacy-unknown
+  origin: human # human | studio | blackbox | legacy-unknown
   rights:
-    access: public
-    license: CC-BY-NC-SA-4.0
-    holder: ruvebal@crea-comm.net
-    permission_basis: rights-holder-relicense-2026-08-18
+   access: public
+   license: CC-BY-NC-SA-4.0
+   holder: ruvebal@crea-comm.net
+   permission_basis: rights-holder-relicense-2026-08-18
   created_at: '2025-12-06'
 ```
 
@@ -132,11 +132,11 @@ Use the **ttod-bridge** skill for propose/search/read — never parse `ttod.yml`
 
 **Origin contract**
 
-| `origin` | Meaning |
-| --- | --- |
-| `human` | Original authorship |
-| `studio` | Distilled by the developer during work |
-| `blackbox` | Proposed by AI — requires validated human review block |
+| `origin`         | Meaning                                                       |
+| ---------------- | ------------------------------------------------------------- |
+| `human`          | Original authorship                                           |
+| `studio`         | Distilled by the developer during work                        |
+| `blackbox`       | Proposed by AI — requires validated human review block        |
 | `legacy-unknown` | Pre-v3 records with no recorded origin (not human-by-default) |
 
 ---
@@ -170,21 +170,21 @@ If you only staged a proposal, confirm `ttod.yml` hash unchanged and `pending/*.
 
 ## Integration
 
-| Consumer | How |
-| --- | --- |
-| Web Atelier | Jekyll `site.data.ttod` |
-| DevIAC MCP | `exports/ttod.json` → pgvector ingest |
-| Fine-tuning | `prepare_data.py` reads `ttod.yml` |
-| ttod-bridge | Read/search/propose port for forge skills |
-| Arkadia / portfolio | Future RAG + 3D graph visualization |
+| Consumer         | How                                       |
+| ---------------- | ----------------------------------------- |
+| Web Atelier      | Jekyll `site.data.ttod`                   |
+| DevIAC MCP       | `exports/ttod.json` → pgvector ingest     |
+| Fine-tuning      | `prepare_data.py` reads `ttod.yml`        |
+| ttod-bridge      | Read/search/propose port for forge skills |
+| Knowledge Engine | Future RAG + 3D graph visualization       |
 
 ---
 
 ## Related docs
 
-| Doc | When |
-| --- | --- |
-| [`INDEX.md`](INDEX.md) | Public readme + constitutional boundary |
-| [`docs/DEV_PLAN/INDEX.md`](docs/DEV_PLAN/INDEX.md) | Phase Q programme state |
-| [`~/src/.cursor/skills/ttod-bridge/SKILL.md`](../../.cursor/skills/ttod-bridge/SKILL.md) | Propose/read contract |
-| [`.cursor/rules/ttod-editing.mdc`](.cursor/rules/ttod-editing.mdc) | YAML editing gate |
+| Doc                                                                                      | When                                    |
+| ---------------------------------------------------------------------------------------- | --------------------------------------- |
+| [`INDEX.md`](INDEX.md)                                                                   | Public readme + constitutional boundary |
+| [`docs/DEV_PLAN/INDEX.md`](docs/DEV_PLAN/INDEX.md)                                       | Phase Q programme state                 |
+| [`~/src/.cursor/skills/ttod-bridge/SKILL.md`](../../.cursor/skills/ttod-bridge/SKILL.md) | Propose/read contract                   |
+| [`.cursor/rules/ttod-editing.mdc`](.cursor/rules/ttod-editing.mdc)                       | YAML editing gate                       |
