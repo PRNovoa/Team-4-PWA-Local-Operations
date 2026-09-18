@@ -1,7 +1,9 @@
 # AG4 — Rewrite evergreen references (not historical reports)
 
-**Status:** BLOCKED on AG3 DONE  
-**Depends on:** landings live; bodies under `agentic/`
+**Status:** DONE (2026-09-18) — `AGENTS.md` rewritten with edit-home table, discovery map,
+and the old `.cursor`-read instruction fixed; cold-reviewed PASS, zero findings. See
+`../PHASE-AG4-REPORT.md` and `../PHASE-AG4-COLD-REVIEW.md`.  
+**Depends on:** landings live; bodies under `agentic/` — both satisfied, see `../PHASE-AG3-REPORT.md`
 
 ## Goal
 

@@ -1,7 +1,9 @@
 # AG3 — Convert `.cursor` / `.claude` into landings
 
-**Status:** BLOCKED on AG2 DONE  
-**Depends on:** bodies present under `agentic/`
+**Status:** DONE (2026-09-18) — `.cursor` rule/skill hollowed to 3-line redirect stubs;
+`.claude` correctly left untouched per W0 §2; cold-reviewed PASS, no findings. See
+`../PHASE-AG3-REPORT.md` and `../PHASE-AG3-COLD-REVIEW.md`.  
+**Depends on:** bodies present under `agentic/` — satisfied, see `../PHASE-AG2-REPORT.md`
 
 ## Goal
 

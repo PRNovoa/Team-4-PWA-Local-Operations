@@ -1,6 +1,7 @@
 # PHASE-AG1-REPORT.md
 
-**Status:** PARTIAL — target tree and branch name frozen; branch creation deferred to the human
+**Status:** DONE (2026-09-18) — target tree and branch name frozen, cold-reviewed clean, and
+branch created at explicit human authorization ("create the branch now")
 **Runbook:** [`PHASES/AG1-branch-and-target-layout.md`](PHASES/AG1-branch-and-target-layout.md)
 **Depends on:** AG0 DONE ([`PHASE-AG0-REPORT.md`](PHASE-AG0-REPORT.md)) — satisfied
 **Cold review:** [`PHASE-AG1-COLD-REVIEW.md`](PHASE-AG1-COLD-REVIEW.md) — clean, honest PARTIAL confirmed, no amendment required
@@ -62,16 +63,24 @@ This satisfies AG1's Acceptance bullet on target-tree contents via the "AG0-appr
 equivalent" clause: `agentic/agents/` is listed as reserved-but-empty rather than populated,
 because W0 froze that neither cascade subagent is TTOD-scoped content to move there.
 
-## 4. Deferred branch-creation commands (for the human to run)
+## 4. Branch creation — executed
+
+The human explicitly authorized creation ("create the branch now") after committing the
+pending Phase W doc pack (AG0/AG1 reports, cold reviews, W0 decision) directly to `main` as
+commit `7a738caefddc4b75fab2a7bf98e4c39f77342cfb` — one commit past the SHA originally
+recorded in §1 above. `main` was clean at that point, so the branch was cut from the current
+tip rather than the stale recorded SHA, exactly as this section's own command comment allowed
+("expect …, or the current tip").
 
 ```bash
-git status                       # confirm clean before branching (see note below)
-git rev-parse HEAD               # expect 950dc03290432d1a411f344398b9017bb8309b3, or the current tip
+git status                       # confirmed clean
+git rev-parse HEAD                # 7a738caefddc4b75fab2a7bf98e4c39f77342cfb
 git switch -c agentic/homogenize-landings
+# Switched to a new branch 'agentic/homogenize-landings'
 ```
 
-Not run in this phase. No push, no file moves — those remain AG2 (bodies) and AG1-authorized
-creation (branch itself), each gated on separate explicit authorization.
+No push performed (not authorized). No file moves — those remain AG2, gated on separate
+explicit authorization.
 
 ## Acceptance
 
@@ -81,14 +90,21 @@ creation (branch itself), each gated on separate explicit authorization.
       reserved-empty, an AG0-approved equivalent) plus preserved `agentic/report-steward/`.
 - [x] Branch does not exist locally; report status is PARTIAL with deferred creation and no
       accidental branch (`git branch -a` shows no new `agentic/homogenize-*` ref).
-- [ ] `git status` clean aside from AG1 doc edits — **not fully clean**: the working tree still
-      carries the Phase W planning-pack edits from AG0 and earlier this session (new DECISIONS
-      file, AG0/AG0-COLD-REVIEW/AG0-REPORT, and prior link/command fixes to the cascade and AG5
-      files), none of which are committed yet. This is pre-existing session state, not something
-      AG1 introduced, and none of it is a code or `ttod.yml` change — flagged here rather than
-      silently checked off, per this cascade's own honesty rule.
+- [x] `git status` clean aside from AG1 doc edits — the pending Phase W doc pack was committed
+      to `main` by the human before branch creation; the tree was clean at cut time and remains
+      clean on `agentic/homogenize-landings`.
+- [x] Branch created: `agentic/homogenize-landings`, from clean `main` at `7a738caefddc4b75fab2a7bf98e4c39f77342cfb`.
+
+## Amendment note (post cold-review)
+
+This report was cold-reviewed at the PARTIAL stage (`PHASE-AG1-COLD-REVIEW.md`) — no findings
+required amendment. The subsequent update to DONE reflects only the human's explicit branch
+authorization and the resulting clean-tree state; it does not reopen or contradict anything the
+cold review checked. A re-review is not required for this closing amendment, since it changes no
+target-tree or branch-naming claim the reviewer already verified — only records that the
+previously-deferred, already-reviewed command actually ran.
 
 ## Next step
 
-AG2 remains BLOCKED until a human runs the branch-creation commands above (or explicitly defers
-further). This report itself authorizes nothing beyond the freeze.
+AG2 is now unblocked on the branch existing. It remains gated on its own separate explicit
+authorization before any file body is moved.

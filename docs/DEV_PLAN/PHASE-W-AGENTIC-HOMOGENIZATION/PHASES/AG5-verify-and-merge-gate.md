@@ -1,7 +1,11 @@
 # AG5 — Verify, pedagogical merge note, and human merge gate
 
-**Status:** BLOCKED on AG4 DONE  
-**Depends on:** AG0–AG4 complete on `agentic/homogenize-landings` (or AG1’s name)
+**Status:** READY — AG0–AG4 all DONE 2026-09-18 on `agentic/homogenize-landings`. Awaiting
+separate explicit authorization to run this phase (this phase's own prompt requires it).
+Note: this phase stops before merge regardless — merge is a named-human act, never this
+implementer's to grant.  
+**Depends on:** AG0–AG4 complete on `agentic/homogenize-landings` — satisfied, see
+`../PHASE-AG4-REPORT.md`
 
 ## Goal
 

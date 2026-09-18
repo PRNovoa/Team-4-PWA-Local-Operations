@@ -1,7 +1,9 @@
 # AG2 — Migrate TTOD-scoped bodies into `agentic/`
 
-**Status:** BLOCKED on AG1 (branch ready or explicitly deferred-with-human-created)  
-**Depends on:** AG0 map; AG1 target paths
+**Status:** DONE (2026-09-18) — bodies moved byte-identical to `agentic/rules/` and
+`agentic/skills/public-docs-i18n/`; `agentic/README.md` seeded; cold-reviewed PASS. See
+`../PHASE-AG2-REPORT.md` and `../PHASE-AG2-COLD-REVIEW.md`.  
+**Depends on:** AG0 map; AG1 target paths — both satisfied, see `../PHASE-AG1-REPORT.md`
 
 ## Goal
 

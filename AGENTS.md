@@ -53,7 +53,8 @@ service in `docker-compose.yml` and the comments in `.env.example` for both path
 | --------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ttod.yml`                              | Canonical quote database (human-governed)                                                    |
 | `cli.py`                                | validate · stats · snapshot · export · migrate · proposal · bridge · add · deprecate · erase |
-| `.cursor/rules/ttod-editing.mdc`        | Strict YAML editing checklist                                                                |
+| `agentic/`                              | **Edit-home** for TTOD-scoped agent rules/skills (e.g. `agentic/rules/ttod-editing.md`); `.cursor`/`.claude` are load-path landings only, not a second copy — see `agentic/README.md` |
+| `.cursor/rules/ttod-editing.mdc`        | Load-path landing (Cursor) → `agentic/rules/ttod-editing.md`; strict YAML editing checklist  |
 | `schema/`                               | v3 schema surface (Phase Q complete)                                                         |
 | `exports/`                              | Derived JSON/graph (gitignored)                                                              |
 | `sources/tao-of-ai-development/`        | Parked chapter — **not merged**; read README before extracting IDs                           |
@@ -91,7 +92,8 @@ Use the **ttod-bridge** skill for propose/search/read — never parse `ttod.yml`
 
 ### Edit existing quotes (human, post-Q3)
 
-1. Read `.cursor/rules/ttod-editing.mdc`.
+1. Read `agentic/rules/ttod-editing.md` — Cursor loads the same content via the
+   `.cursor/rules/ttod-editing.mdc` landing.
 2. Pick section + next free ID prefix (`meta.last_id_by_section`).
 3. Tags only from `tag_taxonomy` (extend taxonomy first if needed).
 4. Run `python cli.py validate` — **zero errors** before finishing.
@@ -177,6 +179,35 @@ If you only staged a proposal, confirm `ttod.yml` hash unchanged and `pending/*.
 | Fine-tuning      | `prepare_data.py` reads `ttod.yml`        |
 | ttod-bridge      | Read/search/propose port for forge skills |
 | Knowledge Engine | Future RAG + 3D graph visualization       |
+| `services/mcp/`  | Product FastMCP — read-only corpus retrieval for the Oracle/Astro stack (`make up`). Not a skill pack; not nested under `agentic/`. |
+| `services/frontend` (Astro) / `services/backend` | Astro UI + Oracle island; backend is the FastMCP **client** that talks to `services/mcp/` |
+
+### Discovery map
+
+`AGENTS.md` is the single discovery index for both agent-facing tooling and the running product:
+
+```text
+AGENTS.md                          ← root contract (read first)
+  ├── agentic/                     ← IDE agent harness (rules, skills, packs)
+  │     └── report-steward/        ← evidence + privacy watcher (CI uses this)
+  ├── .cursor/ · .claude/          ← landings only (tool loaders)
+  ├── services/mcp/                ← product FastMCP (read-only corpus retrieval)
+  ├── services/frontend/ (Astro)   ← UI; Oracle island talks to backend
+  ├── services/backend/            ← FastMCP *client* → mcp-server
+  └── studio ttod-bridge           ← propose/read (outside this repo's agentic/)
+```
+
+**Agent harness:** edit under [`agentic/`](agentic/); tools load via `.cursor` /
+`.claude` landings. **Product MCP:** [`services/mcp/`](services/mcp/) — read-only FastMCP for
+the Oracle/Astro stack (`make up`). Not a skill pack; do not relocate under `agentic/`.
+**Studio MCP ingest:** `exports/ttod.json` → DevIAC (separate consumer, table above).
+
+**Why this layout, in one classroom line:** `.cursor` and `.claude` are doorways. `agentic/`
+is the room. Merging a homogenization branch like `agentic/homogenize-landings` is like
+accepting a quote proposal: the PR is the review; the merge is the human act that makes the
+new layout real. Same discipline as `proposal accept`, different write surface — this never
+touches `ttod.yml`. See `docs/DEV_PLAN/PHASE-W-AGENTIC-HOMOGENIZATION/PHASE-W-AGENTIC-HOMOGENIZATION-CASCADE.md`
+§6 for the full isomorphism.
 
 ---
 
@@ -186,5 +217,6 @@ If you only staged a proposal, confirm `ttod.yml` hash unchanged and `pending/*.
 | ---------------------------------------------------------------------------------------- | --------------------------------------- |
 | [`INDEX.md`](INDEX.md)                                                                   | Public readme + constitutional boundary |
 | [`docs/DEV_PLAN/INDEX.md`](docs/DEV_PLAN/INDEX.md)                                       | Phase Q programme state                 |
-| [`~/src/.cursor/skills/ttod-bridge/SKILL.md`](../../.cursor/skills/ttod-bridge/SKILL.md) | Propose/read contract                   |
-| [`.cursor/rules/ttod-editing.mdc`](.cursor/rules/ttod-editing.mdc)                       | YAML editing gate                       |
+| [`~/src/.cursor/skills/ttod-bridge/SKILL.md`](../../.cursor/skills/ttod-bridge/SKILL.md) | Propose/read contract (studio skill — cited, not absorbed into `agentic/`; see `docs/DEV_PLAN/DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`) |
+| [`agentic/README.md`](agentic/README.md)                                                | Map of TTOD's agent-facing tree: edit-home vs landings vs product MCP |
+| [`agentic/rules/ttod-editing.md`](agentic/rules/ttod-editing.md)                         | YAML editing gate (edit-home; loaded via the `.cursor/rules/ttod-editing.mdc` landing) |

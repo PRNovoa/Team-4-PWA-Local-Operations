@@ -6,10 +6,15 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 
 # Phase W — Agentic Homogenization
 
-**Status:** AG0 DONE (2026-09-18; decision frozen at
+**Status:** AG0–AG4 DONE (2026-09-18). Decision frozen at
 [`DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`](../DECISIONS/W0-2026-09-18-AGENTIC-HOME.md),
-cold-reviewed PASS). AG1–AG6 remain PROPOSED. No git branch exists yet, and no file has
-been moved — AG0 only produced its own decision record.
+cold-reviewed PASS. Branch `agentic/homogenize-landings` created from `main`@`7a738cae`
+([`PHASE-AG1-REPORT.md`](PHASE-AG1-REPORT.md)). TTOD-scoped bodies now live under `agentic/`
+([`PHASE-AG2-REPORT.md`](PHASE-AG2-REPORT.md)), `.cursor` rule/skill are now thin redirect
+stubs ([`PHASE-AG3-REPORT.md`](PHASE-AG3-REPORT.md)), and `AGENTS.md` now carries the
+edit-home table + discovery map linking `agentic/`, `services/mcp/`, and Astro as MCP client
+([`PHASE-AG4-REPORT.md`](PHASE-AG4-REPORT.md)) — all four cold-reviewed PASS with zero
+findings. AG5–AG6 remain PROPOSED — no merge prepared yet, no student IDE harness shipped.
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 

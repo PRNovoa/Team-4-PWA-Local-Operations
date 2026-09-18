@@ -1,7 +1,8 @@
 # AG1 — Branch creation plan and target layout freeze
 
-**Status:** PARTIAL (2026-09-18) — target tree + branch name frozen, branch creation deferred
-to the human; cold-reviewed clean, no amendment required. See `../PHASE-AG1-REPORT.md` and
+**Status:** DONE (2026-09-18) — target tree + branch name frozen, cold-reviewed clean; branch
+`agentic/homogenize-landings` created at explicit human authorization from `main` @
+`7a738caefddc4b75fab2a7bf98e4c39f77342cfb`. See `../PHASE-AG1-REPORT.md` and
 `../PHASE-AG1-COLD-REVIEW.md`.  
 **Depends on:** `DECISIONS/W0-2026-09-18-AGENTIC-HOME.md` — frozen  
 **Does not authorize (until product owner says so):** actually running `git switch -c`
