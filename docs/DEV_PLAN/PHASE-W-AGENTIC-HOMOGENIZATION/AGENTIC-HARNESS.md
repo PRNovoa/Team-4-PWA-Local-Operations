@@ -30,7 +30,10 @@ It is **not** the development MCP harness students add for Astro/Svelte docs.
 | Astro frontend | Document shell + islands; **client** of Oracle/backend | Yes (reference) |
 | IDE MCP: Astro docs | Official docs tools for agents writing Astro | Config **not** in repo yet → AG6 |
 | IDE MCP: Svelte (`@sveltejs/mcp`) | Official Svelte docs/tools/autofixer | Config **not** in repo yet → AG6 |
-| IDE MCP: React (Smithery `@Streen9/react-mcp`) | Third-party; Windows-path install sample | **Not cohort-default** — AG6 evaluates or defers |
+| IDE MCP: Playwright (`@playwright/mcp`) | Official (Microsoft) browser automation via accessibility snapshots; framework-agnostic testing | Config **not** in repo yet → AG6 |
+| IDE MCP: MCP-org reference servers (`server-filesystem` scoped to repo root, `server-git`, `server-fetch`) | Official, general-purpose — sandboxed file access, repo tools, web fetch for frameworks with no dedicated docs MCP | Config **not** in repo yet → AG6 |
+| IDE MCP: React | **No official server exists (Meta publishes none).** Settled: no IDE MCP entry, not a third-party substitute, not a "revisit later" | Settled in AG6 — see official-only policy |
+| IDE MCP: GitHub (`github/github-mcp-server`) | Official, but requires OAuth/PAT | **Opt-in example only** (`agentic/ide-mcp/examples/`), never the committed default — credential-in-git rule |
 | `llms.txt` / Svelte prompts index | Agent-readable prompt/docs index | Vendor + verify in AG6 |
 | Dual-model cascade (frontier orchestrator + Ollama validators) | Optional execution mode for Phase W itself | **Not wired** — see §3 |
 
@@ -52,8 +55,8 @@ yet prescribe:
 | Cold validator | `cascade-cold-reviewer` in a **fresh** session | Ready |
 | Privacy / evidence validator | `report-steward` + `check_public_privacy.py` | Ready |
 | Local Ollama workload | Product stack (`llama3.2:1b`, `nomic-embed-text`); optional local coder for draft/translate | Ready for **app**; not required for AG0–AG5 file moves |
-| Extra MCP “existence” validators | Scripted probes (`npx`/`curl` to Astro/Svelte MCP) | **To build in AG6** — not ready |
-| React MCP validator | Deferred unless AG0 promotes it | Not ready |
+| Extra MCP “existence” validators | Scripted probes (`npx`/`curl` to Astro/Svelte/Playwright MCP + official-servers allowlist check) | **To build in AG6** — not ready |
+| React MCP validator | **N/A — settled, no server ships** (no official server exists); nothing to validate | Not applicable |
 
 **Honesty rule:** do not claim a multi-validator Ollama fleet exists until AG6’s
 probe script and a short runbook are DONE. Cascade-forge already warns against
@@ -65,15 +68,19 @@ self-certified DONE; that is the validator bar we actually have.
 | --- | --- | --- |
 | TTOD rules/skills bodies | **Project** `ttod/agentic/` | Students clone one repo and benefit |
 | Cursor landings | **Project** `ttod/.cursor/rules|skills` (stubs) | Cursor loads them |
-| Cursor IDE MCP servers (Astro, Svelte) | **Project** `ttod/.cursor/mcp.json` (committed) | Shared cohort config; overrides global same-name |
+| Cursor IDE MCP servers (Astro, Svelte, Playwright, MCP-org reference) | **Project** `ttod/.cursor/mcp.json` (committed) | Shared cohort config; overrides global same-name; every entry vendor-official or MCP-org reference |
+| GitHub MCP (official, but credentialed) | **User home / opt-in example** under `agentic/ide-mcp/examples/github.json` | Never committed default — OAuth/PAT can't go in git |
 | Canonical MCP template + notes | **Project** `ttod/agentic/ide-mcp/` | Edit-home; landings may symlink/copy |
 | Claude Code project MCP | **Project** `.mcp.json` (if used) — mirror of the same server list | Tool-specific landing |
 | Claude Desktop / user-global clients | **User home** only — provide **example** under `agentic/ide-mcp/examples/` | Cannot commit into classmates’ Application Support |
 | Studio skills (`ttod-bridge`, `cascade-forge`) | **Studio** `~/src/.cursor/skills` or `~/src/.agents` until studio migration | Not in student cohort artifact unless generator copies a subset |
 | Product MCP server | **Project** `services/mcp` via Compose | Application, not IDE |
 
-**Yes — go project-level** for Astro + Svelte IDE MCPs and the harness README so
-every co-developer student gets them on clone. Keep studio-only skills studio-side.
+**Yes — go project-level** for Astro + Svelte + Playwright + MCP-org reference IDE
+MCPs and the harness README so every co-developer student gets them on clone.
+Keep studio-only skills studio-side, keep credentialed servers (GitHub) out of
+the committed config entirely, and keep React without any IDE MCP entry since
+none is official.
 
 **Multi-root caveat:** Cursor may fail to load project `.cursor/mcp.json` from a
 multi-root `.code-workspace`. Teaching baseline: open the **ttod folder** (or the
@@ -100,6 +107,14 @@ student skeleton folder) as a single root.
     "svelte": {
       "command": "npx",
       "args": ["-y", "@sveltejs/mcp"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
     }
   }
 }
@@ -108,9 +123,38 @@ student skeleton folder) as a single root.
 Fallback for clients without HTTP MCP: Astro via
 `npx -y mcp-remote https://mcp.docs.astro.build/mcp`.
 
-**React MCP:** do **not** put the Smithery OneDrive-path sample in the cohort
-default. AG6 either finds a portable `npx`-based install that cold-review trusts,
-or marks React as “docs + ESLint/testing, no IDE MCP” for Entrega 1.
+`git` and `fetch` reference servers (`@modelcontextprotocol/server-git`,
+`@modelcontextprotocol/server-fetch`) are documented as an easy opt-in block in
+`agentic/ide-mcp/README.md` rather than committed by default — AG6's call on
+default-on vs opt-in, but either way they are on the official allowlist.
+
+**Official-only policy:** every server key above is either vendor-official
+(Astro, Svelte, Playwright/Microsoft) or MCP-org reference
+(`@modelcontextprotocol/server-*`). No third-party/marketplace server is
+cohort-default, ever — this is a standing rule, not a per-framework judgment
+call. `verify-ide-mcp` enforces it mechanically (§8).
+
+**React MCP: settled, not deferred.** No entry ships, because no official
+server exists (Meta publishes none) — not because the Smithery OneDrive-path
+sample specifically was unacceptable. Do not substitute any other third-party
+React MCP later without first checking whether a vendor-official one has
+shipped. React context stays file/docs-based for students.
+
+**GitHub MCP: opt-in only.** `github/github-mcp-server` is official but
+requires OAuth or a personal access token; this project's no-credentials-in-git
+rule keeps it out of the committed default. Document it only under
+`agentic/ide-mcp/examples/github.json` for students/instructors who want it
+individually.
+
+**Rejected alternative — studio-hosted MCP gateway for students:** DevIAC's
+own `mcp.crea-comm.loc` gateway is LAN-only by permanent architectural
+constraint (`deviac/docs/DEV_PLAN/DEVIAC-STUDIO-READINESS/RATIONALE.md`:
+"No WAN exposure, public SaaS, or automatic credential distribution"), so it
+is unreachable to students off the studio's physical network (university,
+home). This is not a timing gap that resolves once DevIAC's own React-catalogue
+work (`DEVIAC-STUDIO-READINESS` DR3) ships — it is permanent. AG6's IDE MCP
+choices must always be either vendor-hosted-public or run locally per student,
+never dependent on the studio gateway.
 
 ## 6. Do students need `@modelcontextprotocol/server` / `client` / `node`?
 

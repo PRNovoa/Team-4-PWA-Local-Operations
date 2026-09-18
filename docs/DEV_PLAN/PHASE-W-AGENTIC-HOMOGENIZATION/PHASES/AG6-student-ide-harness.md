@@ -1,77 +1,141 @@
 # AG6 — Student IDE harness (MCP configs, llms index, existence probes)
 
-**Status:** BLOCKED on AG4 DONE (may draft docs in parallel after AG0 freeze; no
-commit of `.cursor/mcp.json` until AG3 landings policy is clear)  
-**Depends on:** AG0 discovery-map freeze; AG5 may merge without AG6 only if product
-owner explicitly defers AG6 (record `AG6_DEFERRED` in AG5 report)
+**Status:** READY — AG0 map, AG3 landings policy, and AG4 discovery map are all DONE
+(2026-09-18); `AG6_DEFERRED` is recorded in `PHASE-AG5-REPORT.md`, so this phase does not
+block PR #21's merge and may proceed independently, on its own branch or the same one, at
+separate explicit authorization.  
+**Depends on:** AG0 discovery-map freeze — satisfied, see `../PHASE-AG0-REPORT.md` and
+`../PHASE-AG4-REPORT.md`
 
 ## Goal
 
 Give co-developer students a **project-level** IDE agent harness: committed MCP
-client config (Astro docs + Svelte official), an indexed `llms.txt` tree agents can
-read, a short “role of each piece” section (from
+client config for **official, vendor-maintained servers only** (Astro docs,
+Svelte official, Playwright official, plus the general-purpose
+`modelcontextprotocol`-org reference servers where useful), an indexed
+`llms.txt` tree agents can read, a short “role of each piece” section (from
 [`AGENTIC-HARNESS.md`](../AGENTIC-HARNESS.md)), and a **verification** script that
 proves the config exists and (when network is allowed) that servers respond.
 Keep **Docker / `services/mcp`** strictly application-level and out of this file set
 except as a named sibling in the discovery map.
 
+**Official-only policy (hard rule, not a preference):** a server qualifies for the
+cohort default only if it is published and maintained by the framework/tool vendor
+itself (e.g. Astro's own `mcp.docs.astro.build`, Svelte's own `@sveltejs/mcp`,
+Microsoft's own `@playwright/mcp`) or by the `modelcontextprotocol` reference-server
+org itself (`@modelcontextprotocol/server-*`). Third-party/community/marketplace
+listings (Smithery, unaudited npm packages claiming to wrap a framework's docs) are
+never cohort-default, regardless of how convenient the install looks. This is not
+specific to React — it is the general rule React's case exposed: **React has no
+official MCP server (Meta does not publish one)**, so React gets no IDE MCP entry
+at all, not a third-party substitute.
+
 ## Deliverables
 
-1. `agentic/ide-mcp/README.md` — student setup; HTTP vs stdio; single-folder Cursor warning.
+1. `agentic/ide-mcp/README.md` — student setup; HTTP vs stdio; single-folder Cursor warning;
+   states the official-only policy above and why (untrusted-server attack surface on every
+   student machine, not just a taste preference).
 2. `agentic/ide-mcp/mcp.cursor.json` + committed landing `.cursor/mcp.json` (same content
    or generated copy — AG6 picks one mechanism and documents it).
 3. Optional `agentic/ide-mcp/mcp.claude-code.json` / `examples/*.json` for Desktop etc.
 4. `agentic/ide-mcp/llms/` — vendored Svelte prompts `llms.txt` (+ README); optional Astro
    index if a stable URL is frozen in AG0.
 5. `agentic/ide-mcp/scripts/verify-ide-mcp.sh` (or Python) + a unittest or Makefile target
-   that runs the **offline** subset in CI.
-6. Decision row on **React MCP**: portable install accepted **or** deferred with reason
-   (Smithery OneDrive sample is not acceptable as default).
-7. Explicit non-install: no `@modelcontextprotocol/server|client` in frontend
-   `package.json` unless a separate optional lab is authorized.
+   that runs the **offline** subset in CI. The script also asserts that every server key in
+   `.cursor/mcp.json` is on the named official-servers allowlist (§ below) — a config drift
+   toward an unaudited server fails CI, not just a human review.
+6. **React MCP: settled, not deferred for reconsideration.** No entry ships. Document in
+   `README.md` that this is permanent pending Meta ever publishing an official server, not a
+   "revisit later" TODO — react.dev context stays file/docs-based (existing course materials,
+   `context7`-style copy-paste, or a future *studio-hosted* option is explicitly out of reach
+   for students off the LAN; see rejected-alternatives note in `AGENTIC-HARNESS.md` §4).
+7. **Official studio dev-tools MCP pack** — beyond the two framework-doc servers, add to the
+   committed cohort config (or document as an easy opt-in block in the README, instructor's
+   call which are default-on vs opt-in):
+   - `@playwright/mcp` (Microsoft, official) — browser automation via accessibility snapshots;
+     directly useful for students testing the Astro/Svelte frontend they are building, and
+     framework-agnostic so it is the closest thing to a "React-shaped" capability available
+     without a React-specific server.
+   - `@modelcontextprotocol/server-filesystem` (MCP-org reference), scoped to the repo root
+     only (never the student's home directory) — safe, sandboxed file access for agents.
+   - `@modelcontextprotocol/server-git` (MCP-org reference) — repo history/search tools.
+   - `@modelcontextprotocol/server-fetch` (MCP-org reference) — general web-content fetch,
+     useful when a framework has no dedicated docs MCP (covers gaps like React's).
+   - GitHub's official `github-mcp-server` (`github/github-mcp-server`) is **explicitly not
+     cohort-default**: it requires OAuth or a PAT, and this project's own rule bars credential
+     distribution in git. Document it only as an **individually opt-in, instructor-approved**
+     example under `agentic/ide-mcp/examples/github.json`, never in the committed
+     `.cursor/mcp.json`.
+   - No official standalone TypeScript-language-server MCP was found as of this phase's
+     authoring; do not fabricate one into the pack. Re-check when AG6 executes, not before.
+8. Explicit non-install: no `@modelcontextprotocol/server|client` in frontend
+   `package.json` unless a separate optional lab is authorized. (Running reference servers via
+   `npx` at IDE-config time does not add them to `package.json` — that distinction stays intact.)
 
 ## Scope
 
 | In | Out |
 | --- | --- |
-| Project-level IDE MCP for Astro + Svelte | Moving `services/mcp` into `agentic/` |
+| Project-level IDE MCP for Astro + Svelte + Playwright + MCP-org reference servers | Moving `services/mcp` into `agentic/` |
 | llms.txt vendor + offline verify | Requiring cloud frontier API keys in git |
 | Existence probes (config + optional live) | Replacing product Ollama with cloud LLM |
 | Harness role section linked from `AGENTS.md` | Mandating Claude Desktop for all students |
+| Official-servers allowlist, enforced by `verify-ide-mcp` | Third-party/community MCP servers (Smithery or any unaudited marketplace listing) as cohort-default |
+| GitHub MCP as a documented, individually opt-in example | GitHub MCP (or any credentialed server) in the committed default config |
 
 ## Prompt (paste when executing)
 
 ```text
 Execute AG6 only per
 docs/DEV_PLAN/PHASE-W-AGENTIC-HOMOGENIZATION/PHASES/AG6-student-ide-harness.md.
-Read ../AGENTIC-HARNESS.md first. Commit project-level Astro+Svelte MCP config,
-vendor svelte llms.txt, add verify script (offline CI + optional live).
-Do not add @modelcontextprotocol/* to services/frontend unless a separate lab
-is explicitly authorized. Do not treat Docker MCP as IDE MCP. React MCP: portable
-npx or defer — never ship OneDrive absolute paths. Full suite + offline verify
-green. Stop at VERIFYING. Do not mark DONE; hand off for cold review.
+Read ../AGENTIC-HARNESS.md first. Commit project-level MCP config for Astro,
+Svelte, and Playwright (all official/vendor-maintained) plus needed
+modelcontextprotocol-org reference servers (filesystem scoped to repo root,
+git, fetch); vendor svelte llms.txt; add verify script (offline CI + optional
+live) that also enforces the official-servers allowlist. Do not add
+@modelcontextprotocol/* to services/frontend unless a separate lab is
+explicitly authorized. Do not treat Docker MCP as IDE MCP. React MCP: no
+entry — no official server exists; do not substitute a third-party one.
+GitHub MCP: opt-in example only, never in the committed default (credential
+handling). Full suite + offline verify green. Stop at VERIFYING. Do not mark
+DONE; hand off for cold review.
 ```
 
 ## Acceptance
 
-- [ ] `.cursor/mcp.json` exists in git and lists `astro-docs` (or AG0 name) and `svelte`.
+- [ ] `.cursor/mcp.json` exists in git and lists `astro-docs` (or AG0 name), `svelte`,
+      and `playwright`.
 - [ ] Astro entry uses HTTP URL **or** documented `mcp-remote` stdio fallback — both
       documented; one marked default.
 - [ ] Svelte entry is `npx -y @sveltejs/mcp` (or AG0-pinned version).
+- [ ] Playwright entry is `npx @playwright/mcp@latest` (or AG0-pinned version).
+- [ ] Every server key in the committed `.cursor/mcp.json` is on a documented
+      official-servers allowlist in `agentic/ide-mcp/README.md`; `verify-ide-mcp` fails
+      if an unlisted server key appears (proves the policy is load-bearing, not prose).
 - [ ] `agentic/ide-mcp/llms/` contains Svelte prompts index; README tells agents when to
       use file vs MCP `get-documentation`.
 - [ ] `verify-ide-mcp` offline mode exits 0 in CI; live mode documented for students.
 - [ ] `AGENTS.md` discovery map links this harness and states Docker MCP ≠ IDE MCP.
-- [ ] React MCP either verified portable or `DEFERRED` with decision id in report.
+- [ ] React MCP: no server key present anywhere in the committed default config;
+      `README.md` states the "no official server exists" reason, not "deferred."
+- [ ] GitHub MCP, if documented at all, exists only under `agentic/ide-mcp/examples/`
+      and is absent from the committed `.cursor/mcp.json`.
 - [ ] `git grep -n '@modelcontextprotocol/server' services/frontend/package.json`
       returns 0 (unless lab authorized).
 - [ ] Full existing suite still green.
 - [ ] Negative: removing `.cursor/mcp.json` makes offline verify fail (proves the check
       is load-bearing).
+- [ ] Negative: injecting an unlisted server key into a scratch copy of `.cursor/mcp.json`
+      makes `verify-ide-mcp` fail (proves the allowlist check is load-bearing, not decorative).
 
 ## Risks
 
 - npx-on-first-agent-call surprises air-gapped students — document Node/npm prerequisite.
 - HTTP Astro MCP blocked on campus networks — document stdio fallback.
 - Treating IDE MCP outages as product bugs — keep checklists separate.
-- Promoting untrusted React MCP into the default cohort attack surface.
+- A future contributor re-adds a third-party "convenience" server (React or otherwise)
+  without reading the official-only policy — the CI allowlist check, not just this
+  document, is what actually prevents that.
+- `@modelcontextprotocol/server-filesystem` misconfigured with too broad a root would
+  hand an agent read/write over the student's whole home directory — must be pinned to
+  the repo root in the committed config, never left as a default/unset argument.

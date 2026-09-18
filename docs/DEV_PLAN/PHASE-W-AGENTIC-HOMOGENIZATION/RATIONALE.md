@@ -111,11 +111,14 @@ server.
 | Question | Plan answer |
 | --- | --- |
 | Project-level so students benefit? | **Yes** — commit `.cursor/mcp.json` + `agentic/ide-mcp/` |
-| Where save Astro/Svelte MCP JSON? | Project `.cursor/mcp.json`; examples for Desktop under `agentic/ide-mcp/examples/` |
+| Where save MCP JSON? | Project `.cursor/mcp.json`; examples for Desktop/opt-in servers under `agentic/ide-mcp/examples/` |
 | HTTP vs stdio Astro? | Prefer HTTP; document `mcp-remote` fallback |
 | Svelte official? | `npx -y @sveltejs/mcp` + vendor `llms.txt` |
-| React Smithery? | Not cohort-default until portable; no OneDrive paths |
-| `@modelcontextprotocol/*` in frontend? | **No** for docs MCP consumption |
+| Playwright official? | `npx @playwright/mcp@latest` (Microsoft) — browser automation, framework-agnostic |
+| MCP-org reference servers? | `filesystem` (scoped to repo root only), `git`, `fetch` — default-on or documented opt-in, instructor's call |
+| React MCP? | **Settled, no entry — not a "revisit later" TODO.** No official server exists (Meta does not publish one); a third-party substitute is never cohort-default regardless of convenience |
+| GitHub MCP? | Official but credentialed (OAuth/PAT) — individually opt-in example only (`agentic/ide-mcp/examples/github.json`), never the committed default |
+| `@modelcontextprotocol/*` in frontend? | **No** for docs MCP consumption (running reference servers via `npx` at IDE-config time does not add them to `package.json`) |
 | Docker MCP? | Application only — sibling discovery, not IDE config |
 
 ## Pedagogical stake

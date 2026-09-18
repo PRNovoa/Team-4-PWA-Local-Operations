@@ -51,8 +51,10 @@ Closing: each phase → VERIFYING → `PHASE-AGn-COLD-REVIEW.md` → amend if ne
   stubs with real frontmatter; CI and teaching generators keep working paths.
 - **Discovery:** `AGENTS.md` links `agentic/` and names product MCP (`services/mcp`)
   + Astro/Oracle as siblings — harness does not swallow the MCP server.
-- **Student IDE:** AG6 commits project-level Astro + Svelte MCP + `llms.txt` index;
-  Docker MCP stays application-only; React MCP deferred unless portable.
+- **Student IDE:** AG6 commits project-level MCP for official/vendor-maintained servers
+  only (Astro, Svelte, Playwright, MCP-org reference `filesystem`/`git`/`fetch`) +
+  `llms.txt` index; Docker MCP stays application-only; React gets **no entry, settled**
+  (no official server exists); GitHub MCP is opt-in-only, never the committed default.
 
 ## Live snapshot (2026-09-18)
 

@@ -32,7 +32,7 @@ privacy). Dual-model / extra MCP validators are specified in
 | AG3 | [PHASES/AG3-landing-stubs.md](PHASES/AG3-landing-stubs.md) | `.cursor/` and `.claude/` stubs with real frontmatter + redirect only (`.cursor/mcp.json` is AG6 tooling, not a skill body) | **DONE** (2026-09-18) — 3-line redirect stubs, `.claude` correctly left untouched per W0 §2, cold-reviewed PASS ([`PHASE-AG3-REPORT.md`](PHASE-AG3-REPORT.md)) |
 | AG4 | [PHASES/AG4-rewrite-references.md](PHASES/AG4-rewrite-references.md) | Evergreen docs, generators, CI path comments updated; discovery map includes IDE harness pointer | **DONE** (2026-09-18) — `AGENTS.md` discovery map + edit-home table live, cold-reviewed PASS ([`PHASE-AG4-REPORT.md`](PHASE-AG4-REPORT.md)) |
 | AG5 | [PHASES/AG5-verify-and-merge-gate.md](PHASES/AG5-verify-and-merge-gate.md) | Full verification + pedagogical merge note + PR checklist; merge only by named human | **DONE-with-MERGE_DEFERRED** (2026-09-18) — PR [#21](https://github.com/ruvebal/ttod/pull/21) open against `main`, cold-reviewed PASS, `AG6_DEFERRED` recorded ([`PHASE-AG5-REPORT.md`](PHASE-AG5-REPORT.md)). Merge itself awaits the product owner. |
-| AG6 | [PHASES/AG6-student-ide-harness.md](PHASES/AG6-student-ide-harness.md) | Project-level IDE MCP (Astro+Svelte), `llms.txt` index, verify script, harness roles in `AGENTS.md` / `agentic/ide-mcp` | READY (AG4 DONE) — `AG5_DEFERRED_AG6` recorded, so AG6 may proceed without waiting on the merge decision; DONE when offline verify is load-bearing and React MCP is accepted-portable or deferred |
+| AG6 | [PHASES/AG6-student-ide-harness.md](PHASES/AG6-student-ide-harness.md) | Project-level IDE MCP (Astro+Svelte+Playwright+MCP-org reference), `llms.txt` index, verify script, harness roles in `AGENTS.md` / `agentic/ide-mcp` | READY (AG4 DONE) — `AG6_DEFERRED` recorded in `PHASE-AG5-REPORT.md`, so AG6 may proceed without waiting on the merge decision; DONE when offline verify (incl. the official-servers allowlist check) is load-bearing and React ships with no entry per its settled policy |
 
 **Harness note:** Gate column first word is the harness status token
 (`READY|BLOCKED|IN_PROGRESS|VERIFYING|COLD_REVIEW|DONE`); prose after it is human-facing.
@@ -57,7 +57,11 @@ docs/DEV_PLAN/PHASE-W-AGENTIC-HOMOGENIZATION/PHASE-W-AGENTIC-HOMOGENIZATION-CASC
 - Creating the branch before AG0 DONE and AG1 Acceptance
 - Adding @modelcontextprotocol/* to services/frontend just to consume docs MCPs
 - Treating Docker services/mcp as an IDE MCP server
-- Shipping Smithery React MCP with absolute OneDrive paths as cohort default
+- Shipping any third-party/community MCP server as cohort-default — official/vendor-maintained
+  or `modelcontextprotocol`-org reference servers only (React gets no entry at all: no official
+  server exists, and a third-party substitute is never acceptable regardless of convenience)
+- Shipping GitHub MCP (or any credentialed server) in the committed default config — opt-in
+  example only, per its own OAuth/PAT credential-in-git rule
 
 ## Programme
 Execute the next incomplete phase only, in order AG0 → AG6.
