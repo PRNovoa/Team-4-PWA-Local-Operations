@@ -85,7 +85,13 @@ Don't trust "it works on my machine" — your own editor may have global MCP con
 a warm `npx` cache, or an already-authenticated tool that a genuinely fresh student
 clone would not have. Run this from a **throwaway checkout**, not your regular one:
 
-1. `git worktree add /tmp/ttod-student-sim main` (or the branch you're testing).
+1. `git worktree add --detach /tmp/ttod-student-sim <branch-under-test>` — detached, not a
+   second checkout of the branch by name, since your primary clone may already have that
+   branch checked out (worktrees can't share a branch across two working directories).
+   Sanity-check before opening the IDE: `ls /tmp/ttod-student-sim/.cursor/mcp.json` and
+   `ls /tmp/ttod-student-sim/agentic/ide-mcp/` should both list real files — if the harness
+   only exists on a feature branch (not yet merged to `main`), simulating against `main`
+   proves nothing; point `<branch-under-test>` at the branch that actually has it.
 2. Open **that folder** as a fresh Cursor window (single root — see warning above).
 3. Confirm each committed server shows connected/green in Cursor's MCP panel —
    no manual install step beyond opening the folder.

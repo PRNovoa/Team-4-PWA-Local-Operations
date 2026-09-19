@@ -100,9 +100,15 @@ at all, not a third-party substitute.
    b. **"Confirm it like a new co-developer would" — README walkthrough, run from a clean
       checkout, not the instructor's tuned environment.** A short, numbered section in
       `agentic/ide-mcp/README.md`:
-      1. `git worktree add /tmp/ttod-student-sim main` (or the branch under test) — a
-         throwaway checkout with no pre-existing global Cursor state assumed, closest
-         reproduction of "student just cloned the repo" available without a second machine.
+      1. `git worktree add --detach /tmp/ttod-student-sim <branch-under-test>` — detached,
+         not a second checkout of the branch by name, since the primary clone may already
+         have that branch checked out (a worktree can't share a branch across two working
+         directories). Point `<branch-under-test>` at whichever branch actually holds the
+         harness — simulating against `main` proves nothing while AG6 lives on its own
+         branch. Sanity-check before opening the IDE: `.cursor/mcp.json` and
+         `agentic/ide-mcp/` should both exist in the new worktree. Throwaway, no
+         pre-existing global Cursor state assumed — closest reproduction of "student just
+         cloned the repo" available without a second machine.
       2. Open **that folder** (single-root, per the multi-root caveat in
          `AGENTIC-HARNESS.md` §4) as a fresh Cursor window.
       3. Confirm each committed server shows connected/green in Cursor's MCP panel — no manual
