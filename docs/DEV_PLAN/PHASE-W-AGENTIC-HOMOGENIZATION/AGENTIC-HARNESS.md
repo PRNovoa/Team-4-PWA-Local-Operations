@@ -193,3 +193,21 @@ AG6 delivers `agentic/ide-mcp/scripts/verify-ide-mcp.sh` (or `.py`) that:
 4. Prints a student-facing PASS/FAIL checklist for Week-0 setup.
 
 Product Docker MCP health remains `make up` + existing MCP tests — separate check.
+
+## 9. Student-simulation smoke test — "wired and ready," not just "config parses"
+
+`verify-ide-mcp` (§8) is a config-shape and allowlist gate — it does not prove a server
+actually speaks MCP, and it runs from the instructor's own already-tuned machine, which can
+mask a bug a genuinely fresh student clone would hit. AG6 additionally delivers
+`agentic/ide-mcp/scripts/simulate-student-check.sh`, which sends a real MCP `initialize`
+JSON-RPC request to every committed stdio server and an HTTP `initialize` to Astro's endpoint,
+asserting a well-formed response — not just that the process starts or `--help` exits 0. This
+is a **live** check (network + `npx` fetch required), kept separate from the offline CI gate.
+
+Alongside it, `agentic/ide-mcp/README.md` carries a short "confirm it like a new co-developer
+would" walkthrough: open a throwaway `git worktree` of the branch under test (no pre-existing
+global Cursor state assumed), confirm each server shows connected in Cursor's MCP panel, and
+ask one real, checkable question per server (an exact quoted doc sentence, a live
+accessibility-tree snapshot) — a fluent but unverifiable answer is a fail, since model memory
+can fake a docs summary but only a real MCP round-trip returns something checkable. The AG6
+phase report records what was actually asked and returned, not a checkbox from memory.

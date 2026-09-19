@@ -71,6 +71,47 @@ at all, not a third-party substitute.
 8. Explicit non-install: no `@modelcontextprotocol/server|client` in frontend
    `package.json` unless a separate optional lab is authorized. (Running reference servers via
    `npx` at IDE-config time does not add them to `package.json` — that distinction stays intact.)
+9. **Student-simulation smoke test — "am I actually wired," not just "does the JSON parse."**
+   `verify-ide-mcp` (deliverable 5) checks config shape and the allowlist; it does not prove a
+   server actually speaks MCP or that a fresh co-developer, not the instructor's already-tuned
+   machine, would see it work. Two parts, both required, because neither alone is trustworthy:
+
+   a. **Automated protocol-level probe** —
+      `agentic/ide-mcp/scripts/simulate-student-check.sh` (or `.py`), runnable standalone
+      without Cursor or Claude Code open. For each **stdio** server in the committed
+      `.cursor/mcp.json` (`svelte`, `playwright`, `filesystem`, `git`, `fetch` if enabled), it
+      spawns the exact committed command (`npx -y @sveltejs/mcp`, etc.), sends a real MCP
+      `initialize` JSON-RPC request over stdin, and asserts a well-formed `initialize` response
+      comes back on stdout within a timeout — proof the server actually starts and speaks MCP,
+      not just that `npx --help` exits 0. For the **HTTP** Astro server, it performs the same
+      `initialize` handshake as an HTTP POST against `https://mcp.docs.astro.build/mcp`
+      (skippable offline, matching the existing offline/live split in deliverable 5). Exit
+      nonzero and name the failing server if any handshake fails or times out — this is a
+      *live* check (network + `npx` fetch required), documented as such, never folded into the
+      offline CI gate deliverable 5 already owns.
+   b. **"Confirm it like a new co-developer would" — README walkthrough, run from a clean
+      checkout, not the instructor's tuned environment.** A short, numbered section in
+      `agentic/ide-mcp/README.md`:
+      1. `git worktree add /tmp/ttod-student-sim main` (or the branch under test) — a
+         throwaway checkout with no pre-existing global Cursor state assumed, closest
+         reproduction of "student just cloned the repo" available without a second machine.
+      2. Open **that folder** (single-root, per the multi-root caveat in
+         `AGENTIC-HARNESS.md` §4) as a fresh Cursor window.
+      3. Confirm each committed server shows connected/green in Cursor's MCP panel — no manual
+         install step beyond opening the folder.
+      4. Ask the agent one *real*, verifiable question per server whose answer only a working
+         MCP call (not model memory) could get right — e.g. "use the Svelte MCP to fetch the
+         current `$state` rune docs and quote one exact sentence," "use the Playwright MCP to
+         take an accessibility snapshot of `http://localhost:4321`" (with `make up` running).
+         A plausible-sounding but unverifiable answer is a **fail**, not a pass — model memory
+         can fake a docs summary; only a real tool call returns something checkable against the
+         live source.
+      5. `git worktree remove /tmp/ttod-student-sim` when done — this is a one-off simulation,
+         not a standing worktree to maintain (same pattern as the review-worktree escape hatch
+         in `docs/public/guides/reviewing-cohort-prs.md`).
+      Record the outcome (which servers passed the live question, which didn't) in the AG6
+      phase report as evidence — "I ran the walkthrough, here's what each server actually
+      returned" — not a checkbox ticked from memory.
 
 ## Scope
 
@@ -97,8 +138,11 @@ live) that also enforces the official-servers allowlist. Do not add
 explicitly authorized. Do not treat Docker MCP as IDE MCP. React MCP: no
 entry — no official server exists; do not substitute a third-party one.
 GitHub MCP: opt-in example only, never in the committed default (credential
-handling). Full suite + offline verify green. Stop at VERIFYING. Do not mark
-DONE; hand off for cold review.
+handling). Build simulate-student-check (real MCP initialize handshakes, not
+process-spawn checks) and actually run the README walkthrough from a
+throwaway git worktree — record what each server returned in the phase
+report, not a checkbox from memory. Full suite + offline verify green. Stop
+at VERIFYING. Do not mark DONE; hand off for cold review.
 ```
 
 ## Acceptance
@@ -127,6 +171,14 @@ DONE; hand off for cold review.
       is load-bearing).
 - [ ] Negative: injecting an unlisted server key into a scratch copy of `.cursor/mcp.json`
       makes `verify-ide-mcp` fail (proves the allowlist check is load-bearing, not decorative).
+- [ ] `simulate-student-check` performs a real MCP `initialize` handshake (not just process
+      spawn / `--help`) against every stdio server in the committed config, and the HTTP
+      handshake against Astro's endpoint when network is allowed; documented as a live check,
+      separate from `verify-ide-mcp`'s offline CI gate.
+- [ ] The README's "confirm it like a new co-developer would" walkthrough was actually run
+      from a throwaway `git worktree`, not just written — the AG6 phase report names which
+      server(s) answered a real, checkable question correctly and quotes what each returned
+      (a plausible-sounding but unverifiable answer counts as a fail, not a pass).
 
 ## Risks
 
@@ -139,3 +191,12 @@ DONE; hand off for cold review.
 - `@modelcontextprotocol/server-filesystem` misconfigured with too broad a root would
   hand an agent read/write over the student's whole home directory — must be pinned to
   the repo root in the committed config, never left as a default/unset argument.
+- "It works on the instructor's machine" is not evidence: global user-level Cursor config,
+  a warm `npx` cache, or an already-authenticated tool can mask a project-config bug that
+  a genuinely fresh student clone would hit. The student-simulation deliverable exists
+  specifically to catch that gap — running it from the instructor's normal, already-tuned
+  working copy instead of the throwaway worktree defeats its purpose.
+- A tool call that returns a fluent but fabricated-sounding answer can look like a pass at a
+  glance — the walkthrough's questions must have a checkable, specific answer (an exact
+  quoted sentence, a real accessibility-tree snapshot) precisely so a model-memory guess is
+  distinguishable from a real MCP round-trip.
