@@ -13,7 +13,9 @@ Cloning this repo gets you a working `.cursor/mcp.json`. It does not get you a c
 server — those are two different claims, and this project treats the gap between them as
 something to prove, not assume. This page covers what's committed, why only certain servers
 ever qualify, and three separate ways to confirm it's actually wired: an offline config check,
-a live protocol handshake, and a walkthrough you run yourself from a throwaway checkout.
+a live protocol handshake, and a walkthrough you run yourself from a throwaway checkout. For
+why this project verifies this deliberately rather than trusting a green checkmark, see
+[Agentic development as a governed practice]({{ '/research/agentic-development/' | relative_url }}).
 
 ## What's committed, and why
 
