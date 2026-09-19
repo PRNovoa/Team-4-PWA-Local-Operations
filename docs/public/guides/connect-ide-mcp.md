@@ -54,6 +54,66 @@ running application has its **own**, separate MCP server for read-only corpus re
 consumed by the product itself at runtime, not by your IDE. An outage in one says nothing about
 the other; don't debug your editor because the app misbehaved, or the other way around.
 
+<figure class="mcp-layers-diagram" role="group" aria-label="Three separate MCP surfaces in this project">
+<svg viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mcp-layers-title mcp-layers-desc" style="width:100%;height:auto;font-family:ui-sans-serif,system-ui,sans-serif;">
+<title id="mcp-layers-title">Three MCP surfaces, three unrelated processes</title>
+<desc id="mcp-layers-desc">Column one: your IDE's committed .cursor/mcp.json runs astro-docs, svelte, playwright, and filesystem, per collaborator, at development time. Column two: the running application's own services/mcp FastMCP server serves read-only quote retrieval from ttod.yml to the Astro frontend through the backend, shared, at runtime. Column three: a separate studio-level export feeds DevIAC's cross-repo vector knowledge base, offline and batch. The three surfaces share the initials MCP but are otherwise unrelated; an outage in one says nothing about the others.</desc>
+<rect x="0" y="0" width="920" height="380" fill="#fbf8f1"/>
+<g font-size="12" fill="#665e52">
+  <text x="20" y="26" font-weight="700" font-size="13" fill="#211c15">Your IDE</text>
+  <text x="20" y="42">.cursor/mcp.json · per collaborator · dev-time</text>
+  <text x="336" y="26" font-weight="700" font-size="13" fill="#211c15">The running app</text>
+  <text x="336" y="42">services/mcp · shared · runtime</text>
+  <text x="652" y="26" font-weight="700" font-size="13" fill="#211c15">Studio ingest</text>
+  <text x="652" y="42">cross-repo export · offline, batch</text>
+</g>
+<rect x="16" y="56" width="268" height="308" rx="12" fill="#f1eadb" stroke="#d5c8ae"/>
+<rect x="332" y="56" width="268" height="308" rx="12" fill="#eef2ec" stroke="#c8d6cc"/>
+<rect x="648" y="56" width="256" height="308" rx="12" fill="#eaf1f7" stroke="#c7dbe8"/>
+<g font-size="12.5" fill="#211c15">
+  <rect x="34" y="76" width="232" height="34" rx="8" fill="#fffdf8" stroke="#8f8068"/>
+  <text x="48" y="97">astro-docs · HTTP</text>
+  <rect x="34" y="118" width="232" height="34" rx="8" fill="#fffdf8" stroke="#8f8068"/>
+  <text x="48" y="139">svelte · npx, stdio</text>
+  <rect x="34" y="160" width="232" height="34" rx="8" fill="#fffdf8" stroke="#8f8068"/>
+  <text x="48" y="181">playwright · npx, stdio</text>
+  <rect x="34" y="202" width="232" height="34" rx="8" fill="#fffdf8" stroke="#8f8068"/>
+  <text x="48" y="223">filesystem · sandboxed to repo</text>
+  <rect x="34" y="256" width="232" height="34" rx="8" fill="#fffdf8" stroke="#b8a980" stroke-dasharray="3,3"/>
+  <text x="48" y="277">github · opt-in only</text>
+  <text x="34" y="330" font-size="11" fill="#665e52">react → no entry (none official)</text>
+</g>
+<g font-size="12.5" fill="#211c15">
+  <rect x="350" y="90" width="232" height="34" rx="8" fill="#fffdf8" stroke="#486e5b"/>
+  <text x="364" y="111">Astro frontend</text>
+  <rect x="350" y="150" width="232" height="34" rx="8" fill="#fffdf8" stroke="#486e5b"/>
+  <text x="364" y="171">backend · FastMCP client</text>
+  <rect x="350" y="210" width="232" height="34" rx="8" fill="#fffdf8" stroke="#486e5b"/>
+  <text x="364" y="231">services/mcp · FastMCP server</text>
+  <rect x="350" y="270" width="232" height="34" rx="8" fill="#fffdf8" stroke="#486e5b"/>
+  <text x="364" y="291">ttod.yml · governed corpus</text>
+  <path d="M466 124 L466 150" stroke="#486e5b" stroke-width="1.5" marker-end="url(#arrow-app)"/>
+  <path d="M466 184 L466 210" stroke="#486e5b" stroke-width="1.5" marker-end="url(#arrow-app)"/>
+  <path d="M466 244 L466 270" stroke="#486e5b" stroke-width="1.5" marker-end="url(#arrow-app)"/>
+</g>
+<g font-size="12.5" fill="#211c15">
+  <rect x="664" y="120" width="224" height="34" rx="8" fill="#fffdf8" stroke="#245d92"/>
+  <text x="678" y="141">exports/ttod.json</text>
+  <rect x="664" y="180" width="224" height="34" rx="8" fill="#fffdf8" stroke="#245d92"/>
+  <text x="678" y="201">DevIAC · vector ingest</text>
+  <rect x="664" y="240" width="224" height="34" rx="8" fill="#fffdf8" stroke="#245d92"/>
+  <text x="678" y="261">sibling studio research projects</text>
+  <path d="M776 154 L776 180" stroke="#245d92" stroke-width="1.5" marker-end="url(#arrow-studio)"/>
+  <path d="M776 214 L776 240" stroke="#245d92" stroke-width="1.5" marker-end="url(#arrow-studio)"/>
+</g>
+<defs>
+  <marker id="arrow-app" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#486e5b"/></marker>
+  <marker id="arrow-studio" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#245d92"/></marker>
+</defs>
+</svg>
+<figcaption>Same three letters, three unrelated processes. An outage in one column says nothing about the others — this guide is only about the left one.</figcaption>
+</figure>
+
 ## First time in the IDE: servers start disabled — that's expected
 
 Opening this folder loads the config; it does not connect anything. Cursor treats
