@@ -146,6 +146,63 @@ rule keeps it out of the committed default. Document it only under
 `agentic/ide-mcp/examples/github.json` for students/instructors who want it
 individually.
 
+**Why opt-in, pedagogically — this is not just a security footnote:** the other
+cohort-default servers (Astro, Svelte, Playwright, the MCP-org reference set)
+are safe to commit *because they carry no secret* — anyone who clones the repo
+can run them with zero setup, and that zero-setup property is exactly what
+"every co-developer gets it on clone" means in practice. A GitHub PAT or OAuth
+token is a **personal credential tied to one student's account**; committing
+one to `.cursor/mcp.json` would mean either (a) every student silently shares
+one instructor's token — a single point of failure and an attribution mess the
+moment someone's automated PR looks like it came from the instructor, or (b)
+each student is expected to overwrite the committed file with their own
+secret, which trains them to treat "put a token in a file that `git status`
+shows as clean" as a normal, then a required, habit. Both outcomes are the
+opposite of what the course should teach about credential hygiene. Keeping it
+as a **named, opt-in example file** instead does three pedagogical things at
+once: it still tells students the tool exists and exactly how wire it up if
+they want it; it makes the commit-vs-don't-commit boundary a visible, teachable
+line rather than an invisible default; and it means the cohort-default config
+— the one every student actually runs on Day 0 — never depends on anyone
+having set up a credential first, so setup friction stays at zero for the
+servers that don't need one.
+
+**Refinement — `.env` changes *how* opt-in works, not *whether* it's opt-in.**
+Cursor's `.cursor/mcp.json` supports an `envFile` field (stdio servers) plus
+`${env:NAME}` interpolation, and Claude Code's `.mcp.json` supports `${VAR}` /
+`${VAR:-default}` expansion (from the shell environment, not from a `.env`
+file directly — the two clients differ here). Both mean the *config* — which
+server, which env-var name it expects — can be committed with zero secret
+material in it; only the value has to stay out of git. That is a genuinely
+better mechanism than asking a student to paste a token straight into a JSON
+file, and the opt-in example should use it: `agentic/ide-mcp/examples/github.json`
+carries the server block referencing `${env:GITHUB_PERSONAL_ACCESS_TOKEN}` (or
+Cursor's `envFile` pointing at `.env`), shipped alongside a committed
+`.env.example` (variable name only, no value) with `.env` itself gitignored.
+Opting in becomes: merge the block, copy `.env.example` → `.env`, drop in your
+own token — never "paste your secret into a file the repo already tracks."
+
+This does **not** move the `github` entry into the committed cohort default,
+though. Even with the secret safely externalized, the *entry itself* sitting
+in every student's `.cursor/mcp.json` means every student who hasn't done that
+opt-in setup sees a disconnected/red server in their MCP panel from the moment
+they open the folder — which fails the same "fresh clone just works, nothing
+red by default" bar the student-simulation smoke test (deliverable 9) is built
+to enforce. Presence, not just secrecy, is what makes a server cohort-default;
+GitHub MCP fails that bar regardless of how well the credential is handled.
+
+**SSH is not a substitute — it authenticates a different thing.** An SSH key
+lets a student `git clone`/`push` over `git@github.com:...`; it authenticates
+git's own transport protocol. `github-mcp-server` calls GitHub's REST/GraphQL
+API, which is a different credential surface entirely — its own documentation
+lists exactly three supported auth modes (OAuth browser login, Personal Access
+Token via `GITHUB_PERSONAL_ACCESS_TOKEN`, GitHub App auth) and none of them is
+an SSH key; it also does not read an existing `gh auth login` session/token
+automatically. Every student already having SSH access configured for normal
+git operations is good practice on its own merits, but it does not unlock or
+simplify this MCP server's setup — the PAT/OAuth step is separate and
+unavoidable if a student wants it.
+
 **Rejected alternative — studio-hosted MCP gateway for students:** DevIAC's
 own `mcp.crea-comm.loc` gateway is LAN-only by permanent architectural
 constraint (`deviac/docs/DEV_PLAN/DEVIAC-STUDIO-READINESS/RATIONALE.md`:

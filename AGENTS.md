@@ -189,8 +189,9 @@ If you only staged a proposal, confirm `ttod.yml` hash unchanged and `pending/*.
 ```text
 AGENTS.md                          ← root contract (read first)
   ├── agentic/                     ← IDE agent harness (rules, skills, packs)
-  │     └── report-steward/        ← evidence + privacy watcher (CI uses this)
-  ├── .cursor/ · .claude/          ← landings only (tool loaders)
+  │     ├── report-steward/        ← evidence + privacy watcher (CI uses this)
+  │     └── ide-mcp/                ← student IDE MCP configs, llms index, verify scripts
+  ├── .cursor/ · .claude/          ← landings only (tool loaders); .cursor/mcp.json = IDE MCP client config
   ├── services/mcp/                ← product FastMCP (read-only corpus retrieval)
   ├── services/frontend/ (Astro)   ← UI; Oracle island talks to backend
   ├── services/backend/            ← FastMCP *client* → mcp-server
@@ -201,6 +202,15 @@ AGENTS.md                          ← root contract (read first)
 `.claude` landings. **Product MCP:** [`services/mcp/`](services/mcp/) — read-only FastMCP for
 the Oracle/Astro stack (`make up`). Not a skill pack; do not relocate under `agentic/`.
 **Studio MCP ingest:** `exports/ttod.json` → DevIAC (separate consumer, table above).
+
+**IDE MCP ≠ Docker MCP — two different "MCP"s, do not conflate them.** `.cursor/mcp.json`
+(edit-home: [`agentic/ide-mcp/`](agentic/ide-mcp/)) configures **development-time** MCP
+servers your coding agent calls from inside the IDE (Astro/Svelte/Playwright docs, a
+sandboxed filesystem tool) — official/vendor-maintained servers only, see
+[`agentic/ide-mcp/README.md`](agentic/ide-mcp/README.md). `services/mcp/` is the
+**running product's** own FastMCP server, consumed by the Oracle/Astro stack at runtime.
+Same three letters, unrelated processes, unrelated audiences — an IDE MCP outage is not a
+product bug, and a product MCP outage is not fixed by touching `.cursor/mcp.json`.
 
 **Why this layout, in one classroom line:** `.cursor` and `.claude` are doorways. `agentic/`
 is the room. Merging a homogenization branch like `agentic/homogenize-landings` is like

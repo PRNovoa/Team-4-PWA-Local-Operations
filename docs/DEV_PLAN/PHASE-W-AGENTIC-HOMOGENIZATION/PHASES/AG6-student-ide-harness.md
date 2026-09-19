@@ -62,10 +62,16 @@ at all, not a third-party substitute.
    - `@modelcontextprotocol/server-fetch` (MCP-org reference) — general web-content fetch,
      useful when a framework has no dedicated docs MCP (covers gaps like React's).
    - GitHub's official `github-mcp-server` (`github/github-mcp-server`) is **explicitly not
-     cohort-default**: it requires OAuth or a PAT, and this project's own rule bars credential
-     distribution in git. Document it only as an **individually opt-in, instructor-approved**
-     example under `agentic/ide-mcp/examples/github.json`, never in the committed
-     `.cursor/mcp.json`.
+     cohort-default** — not only because of the credential, but because a `github` entry in the
+     committed `.cursor/mcp.json` would show disconnected/red for every student who hasn't set
+     one up, failing the fresh-clone "nothing red by default" bar (deliverable 9). Ship it as an
+     **opt-in pair**: `agentic/ide-mcp/examples/github.json` (server block referencing
+     `${env:GITHUB_PERSONAL_ACCESS_TOKEN}`, or Cursor's `envFile` pointing at `.env`) plus a
+     committed `.env.example` (variable name only, no value) with `.env` gitignored. No SSH-key
+     option exists for this server — it only supports OAuth, PAT, or GitHub App auth, and does
+     not read an existing `gh auth login` session; a student's SSH-based git access does not
+     help with this setup step. Opting in is: merge the block, copy `.env.example` → `.env`,
+     add your own token — never paste a secret into a file the repo tracks.
    - No official standalone TypeScript-language-server MCP was found as of this phase's
      authoring; do not fabricate one into the pack. Re-check when AG6 executes, not before.
 8. Explicit non-install: no `@modelcontextprotocol/server|client` in frontend
