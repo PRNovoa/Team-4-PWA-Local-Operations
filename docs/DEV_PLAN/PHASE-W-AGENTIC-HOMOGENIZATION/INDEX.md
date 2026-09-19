@@ -6,15 +6,15 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 
 # Phase W — Agentic Homogenization
 
-**Status:** AG0–AG5 DONE (2026-09-18; AG5 is DONE-with-MERGE_DEFERRED). Decision frozen at
-[`DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`](../DECISIONS/W0-2026-09-18-AGENTIC-HOME.md),
-cold-reviewed PASS. Branch `agentic/homogenize-landings` pushed to `origin`; **[PR
-#21](https://github.com/ruvebal/ttod/pull/21) open against `main`**, cold-reviewed PASS, not
-yet merged. All AG0–AG5 work (edit-home + discovery map in `AGENTS.md`, bodies under
-`agentic/`, `.cursor` landings) cold-reviewed PASS with zero blocking findings across five
-independent reviews. AG6 remains PROPOSED — no student IDE harness shipped; `AG6_DEFERRED`
-recorded, does not block the merge decision. **Next action: product owner reviews PR #21 and
-records MERGE_APPROVED / MERGE_REJECTED** — merge itself is outside any agent's authority.
+**Status:** AG0–AG5 merged to `main` via [PR #21](https://github.com/ruvebal/ttod/pull/21)
+(2026-09-18/19). **AG6 DONE-with-one-open-item** (2026-09-19): student IDE MCP harness
+(`.cursor/mcp.json` — Astro/Svelte/Playwright/`filesystem`) built and live-verified — a real
+MCP `initialize` handshake against every committed server, 4/4 pass, independently reproduced
+by cold review, not just written — on branch `agentic/ag6-student-ide-harness`, pushed, not
+yet merged/PR'd. Open item: deliverable 9b's manual Cursor-GUI walkthrough needs a named human
+([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)). **Next action: open a PR for AG6 (or fold it
+into a merge decision) whenever the product owner is ready**, and separately, someone runs the
+9b walkthrough.
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 

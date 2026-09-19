@@ -1,6 +1,9 @@
 # PHASE-AG6-REPORT.md
 
-**Status:** VERIFYING — implementer does not self-certify DONE; awaiting cold review
+**Status:** DONE-with-one-open-item (2026-09-19) — cold-reviewed PASS, zero discrepancies,
+including an independent live re-run of the MCP handshake evidence. Open item: deliverable
+9b's manual GUI walkthrough still needs a human. See
+[`PHASE-AG6-COLD-REVIEW.md`](PHASE-AG6-COLD-REVIEW.md).
 **Runbook:** [`PHASES/AG6-student-ide-harness.md`](PHASES/AG6-student-ide-harness.md)
 **Branch:** `agentic/ag6-student-ide-harness` (new — AG6 proceeds independently of AG0–AG5's
 already-merged `agentic/homogenize-landings`, per its own status line)
@@ -135,5 +138,10 @@ either skipping the bullet silently or fabricating a walkthrough result.
 - [ ] The README walkthrough was actually run from a throwaway `git worktree` — **not done**,
       requires a human at a GUI IDE; written and ready, explicitly not claimed as executed.
 
-Stopping here at VERIFYING. Do not mark DONE — handing off for cold review. The one open
-Acceptance box (manual GUI walkthrough) is a known, named gap, not an oversight to catch.
+Cold review independently re-ran the live `simulate-student-check.py` handshake itself
+(network + npx, not just reading the code) and got byte-for-byte matching output — 4/4 real
+passes — plus reproduced both negative tests and the full suite. Zero discrepancies found.
+Promoted to DONE-with-one-open-item: deliverable 9b's manual Cursor-GUI walkthrough still
+needs a named human at a graphical IDE — neither this implementer nor the cold reviewer (both
+CLI agents) can perform it, and the reviewer independently confirmed no feasible substitute
+was overlooked.

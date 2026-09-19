@@ -1,9 +1,11 @@
 # AG6 — Student IDE harness (MCP configs, llms index, existence probes)
 
-**Status:** READY — AG0 map, AG3 landings policy, and AG4 discovery map are all DONE
-(2026-09-18); `AG6_DEFERRED` is recorded in `PHASE-AG5-REPORT.md`, so this phase does not
-block PR #21's merge and may proceed independently, on its own branch or the same one, at
-separate explicit authorization.  
+**Status:** DONE-with-one-open-item (2026-09-19) — `.cursor/mcp.json` (Astro/Svelte/
+Playwright/filesystem), `verify-ide-mcp.py`, and `simulate-student-check.py` all built and
+live-verified (real MCP handshakes, 4/4 pass, independently reproduced by cold review) on
+branch `agentic/ag6-student-ide-harness`; not yet merged. Open item: deliverable 9b's manual
+Cursor-GUI walkthrough needs a named human. See `../PHASE-AG6-REPORT.md` and
+`../PHASE-AG6-COLD-REVIEW.md`.  
 **Depends on:** AG0 discovery-map freeze — satisfied, see `../PHASE-AG0-REPORT.md` and
 `../PHASE-AG4-REPORT.md`
 
