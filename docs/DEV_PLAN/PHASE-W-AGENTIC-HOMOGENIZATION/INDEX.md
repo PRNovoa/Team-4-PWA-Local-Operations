@@ -7,14 +7,14 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 # Phase W — Agentic Homogenization
 
 **Status:** AG0–AG5 merged to `main` via [PR #21](https://github.com/ruvebal/ttod/pull/21)
-(2026-09-18/19). **AG6 DONE-with-one-open-item** (2026-09-19): student IDE MCP harness
-(`.cursor/mcp.json` — Astro/Svelte/Playwright/`filesystem`) built and live-verified — a real
-MCP `initialize` handshake against every committed server, 4/4 pass, independently reproduced
-by cold review, not just written — on branch `agentic/ag6-student-ide-harness`, pushed, not
-yet merged/PR'd. Open item: deliverable 9b's manual Cursor-GUI walkthrough needs a named human
-([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)). **Next action: open a PR for AG6 (or fold it
-into a merge decision) whenever the product owner is ready**, and separately, someone runs the
-9b walkthrough.
+(2026-09-18/19). **AG6 DONE** (2026-09-19): student IDE MCP harness (`.cursor/mcp.json` —
+Astro/Svelte/Playwright/`filesystem`) built and fully verified at every layer — offline config
+gate, live protocol handshake (4/4, independently reproduced by cold review), **and** a
+complete human-run manual walkthrough with real per-server tool calls (live Astro/Svelte docs
+content, a real Playwright navigation, a confirmed filesystem sandbox boundary) — on branch
+`agentic/ag6-student-ide-harness`, pushed, not yet merged/PR'd
+([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)). **Next action: open a PR for AG6 whenever the
+product owner is ready.**
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 

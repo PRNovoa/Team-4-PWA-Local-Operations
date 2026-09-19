@@ -1,8 +1,8 @@
 # PHASE-AG6-REPORT.md
 
-**Status:** DONE-with-one-open-item (2026-09-19) — cold-reviewed PASS, zero discrepancies,
-including an independent live re-run of the MCP handshake evidence. Open item: deliverable
-9b's manual GUI walkthrough still needs a human. See
+**Status:** DONE (2026-09-19) — cold-reviewed PASS, zero discrepancies, including an
+independent live re-run of the MCP handshake evidence, plus the product owner's own complete
+five-step manual walkthrough (deliverable 9b) with real tool-call results per server. See
 [`PHASE-AG6-COLD-REVIEW.md`](PHASE-AG6-COLD-REVIEW.md).
 **Runbook:** [`PHASES/AG6-student-ide-harness.md`](PHASES/AG6-student-ide-harness.md)
 **Branch:** `agentic/ag6-student-ide-harness` (new — AG6 proceeds independently of AG0–AG5's
@@ -101,9 +101,31 @@ config — a one-time manual enable click per server, not a bug in this config �
 previously documented here. `agentic/ide-mcp/README.md` and this runbook's own walkthrough
 text both said "no manual install step beyond opening the folder," which undersold this by
 one click; both corrected in the same pass as this update (README § "First time in the IDE:
-servers start disabled — that's expected", runbook step 3). Steps 4–5 (asking each server a
-real checkable question, tearing down the worktree) remain not yet run — 9b is still open,
-now more precisely: partial, not zero.
+servers start disabled — that's expected", runbook step 3).
+
+**Update 2 (2026-09-19, human-run, complete):** the product owner then ran steps 4–5 for
+real, from the same detached worktree, after enabling all four servers. Real tool calls, not
+just handshakes:
+
+| Server | Real tool call | Result |
+| --- | --- | --- |
+| `astro-docs` | `search_astro_docs("content collections")` | Live official Astro docs hits returned |
+| `svelte` | `list-sections` + `get-documentation("$state")` | Live Svelte 5 `$state` rune documentation returned |
+| `playwright` | Navigate to `https://example.com` | Succeeded |
+| `filesystem` | Sandbox scope check | Confirmed scoped to the worktree root (`/private/tmp/ttod-student-sim`), not the home directory |
+
+All four connected and answered a real, checkable question — not a plausible-sounding guess.
+Deliverable 9b is complete: all five walkthrough steps actually run, by a named human, with
+results recorded here rather than assumed. `git worktree remove` teardown is the tester's own
+housekeeping, not something this report needs to independently confirm.
+
+**Scope note on the same audit:** the same session also probed several MCPs outside AG6's
+scope — user-level DevIAC servers (a different repo, `~/src/deviac`, broken interpreter path)
+and the TTOD product Compose stack (`services/mcp` via `make up`, not running in that
+checkout). Both are real findings but neither is a Phase W/AG6 defect: AG6's committed
+`.cursor/mcp.json` never touches either, and `AGENTS.md`'s own discovery map already states
+IDE MCP and product MCP are unrelated processes. Tracked as separate, out-of-cascade
+follow-ups, not folded into this phase's Acceptance.
 
 ## Verification
 
@@ -149,15 +171,18 @@ now more precisely: partial, not zero.
 - [x] Negative: injecting an unlisted server key makes `verify-ide-mcp` fail (proven).
 - [x] `simulate-student-check` performs a real MCP `initialize` handshake against every
       committed server, including the HTTP one — proven, 4/4 pass, evidence quoted above.
-- [~] The README walkthrough was actually run from a throwaway `git worktree` — **partial**:
-      product owner ran steps 1–3 for real (see § Deliverable 9b update above), surfacing and
-      fixing a real doc gap (the Cursor per-server enable-click). Steps 4–5 (real checkable
-      questions per server, worktree teardown) still open.
+- [x] The README walkthrough was actually run from a throwaway `git worktree` — **complete**:
+      product owner ran all five steps for real (see § Deliverable 9b updates above), finding
+      and documenting the Cursor per-server enable-click, then confirming all four servers
+      answer real, checkable tool calls once enabled.
 
 Cold review independently re-ran the live `simulate-student-check.py` handshake itself
 (network + npx, not just reading the code) and got byte-for-byte matching output — 4/4 real
 passes — plus reproduced both negative tests and the full suite. Zero discrepancies found.
-Promoted to DONE-with-one-open-item: deliverable 9b's manual Cursor-GUI walkthrough still
-needs a named human at a graphical IDE — neither this implementer nor the cold reviewer (both
-CLI agents) can perform it, and the reviewer independently confirmed no feasible substitute
-was overlooked.
+Promoted to DONE-with-one-open-item at cold-review time: deliverable 9b's manual Cursor-GUI
+walkthrough still needed a named human at a graphical IDE — neither this implementer nor the
+cold reviewer (both CLI agents) could perform it, and the reviewer independently confirmed no
+feasible substitute was overlooked. The product owner subsequently ran that walkthrough in
+full (see § Deliverable 9b updates above), closing the last open item. Status updated to DONE
+without requiring a second cold-review pass, since the human-run walkthrough is exactly the
+evidence the cold reviewer already said it could not itself produce or substitute for.
