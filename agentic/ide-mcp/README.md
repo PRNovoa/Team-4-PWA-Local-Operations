@@ -57,6 +57,21 @@ Cursor can fail to load a project's `.cursor/mcp.json` from a **multi-root**
 folder) as a single root — this is the one setup detail that silently breaks
 everything else in this file if skipped.
 
+## First time in the IDE: servers start disabled — that's expected
+
+Opening this folder loads the config; it does not connect the servers. Cursor (and MCP
+clients generally) treat project-committed MCP config as untrusted by default — every
+server here shows **disabled**, not connected, until you flip it on once in Cursor's own
+MCP settings panel (Settings → MCP, or the panel's own enable/toggle control — exact
+wording varies by Cursor version). This is a one-time, per-server trust step, the same
+category as a "do you trust this workspace" prompt, not a sign that this config is broken
+or that setup failed. Zero-install (nothing to run beforehand) is still true; zero-click
+is not — plan for one click per server on Day 0.
+
+If a server still fails to connect *after* you enable it, that's a real problem worth
+reporting — `scripts/simulate-student-check.py` (below) is the tool to confirm whether the
+server itself is reachable, independent of Cursor's UI state.
+
 ## Verifying it's actually wired
 
 Two scripts, two different questions:
@@ -93,8 +108,9 @@ clone would not have. Run this from a **throwaway checkout**, not your regular o
    only exists on a feature branch (not yet merged to `main`), simulating against `main`
    proves nothing; point `<branch-under-test>` at the branch that actually has it.
 2. Open **that folder** as a fresh Cursor window (single root — see warning above).
-3. Confirm each committed server shows connected/green in Cursor's MCP panel —
-   no manual install step beyond opening the folder.
+3. Enable each server in Cursor's MCP panel (the one-time trust step from "First time
+   in the IDE" above — expected, not a bug), then confirm each shows connected/green.
+   Nothing to install first; the one click per server is the only manual step.
 4. Ask the agent one *real*, checkable question per server — one only a working
    tool call, not model memory, could answer correctly:
    - Svelte: "use the Svelte MCP to fetch the current `$state` rune docs and quote

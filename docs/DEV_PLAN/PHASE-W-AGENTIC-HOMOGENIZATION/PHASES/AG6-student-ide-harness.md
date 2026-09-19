@@ -111,8 +111,14 @@ at all, not a third-party substitute.
          cloned the repo" available without a second machine.
       2. Open **that folder** (single-root, per the multi-root caveat in
          `AGENTIC-HARNESS.md` §4) as a fresh Cursor window.
-      3. Confirm each committed server shows connected/green in Cursor's MCP panel — no manual
-         install step beyond opening the folder.
+      3. Enable each server in Cursor's MCP panel — a required one-time trust step for any
+         project-committed MCP config (servers start **disabled**, not connected, until
+         flipped on; this is Cursor's own security gate, not a sign the config is broken) —
+         then confirm each shows connected/green. Nothing to install beforehand; the one
+         click per server is the only manual step. **Confirmed by direct testing during this
+         phase, not assumed:** the four TTOD servers do start disabled in a fresh worktree,
+         while a pre-existing personal/global server the tester had already trusted showed
+         connected — exactly the asymmetry this step exists to explain, not paper over.
       4. Ask the agent one *real*, verifiable question per server whose answer only a working
          MCP call (not model memory) could get right — e.g. "use the Svelte MCP to fetch the
          current `$state` rune docs and quote one exact sentence," "use the Playwright MCP to

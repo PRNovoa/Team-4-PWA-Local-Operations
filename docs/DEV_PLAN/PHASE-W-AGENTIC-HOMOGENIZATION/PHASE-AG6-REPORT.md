@@ -91,6 +91,20 @@ human still needs to actually run it and record what came back, per the runbook'
 Acceptance bullet ("actually run, not just written"). Flagging this explicitly rather than
 either skipping the bullet silently or fabricating a walkthrough result.
 
+**Update (2026-09-19, human-run, partial):** the product owner ran steps 1–3 of the
+walkthrough for real, from a `git worktree add --detach` checkout of this branch, and found
+the first genuinely useful piece of 9b evidence: all four TTOD servers (`astro-docs`,
+`filesystem`, `playwright`, `svelte`) showed **disabled**, not connected, on first opening the
+folder in Cursor, while a pre-existing personal/global server the tester had already trusted
+showed connected. This is Cursor's own per-server trust gate for project-committed MCP
+config — a one-time manual enable click per server, not a bug in this config — and it was not
+previously documented here. `agentic/ide-mcp/README.md` and this runbook's own walkthrough
+text both said "no manual install step beyond opening the folder," which undersold this by
+one click; both corrected in the same pass as this update (README § "First time in the IDE:
+servers start disabled — that's expected", runbook step 3). Steps 4–5 (asking each server a
+real checkable question, tearing down the worktree) remain not yet run — 9b is still open,
+now more precisely: partial, not zero.
+
 ## Verification
 
 - `python3 agentic/ide-mcp/scripts/verify-ide-mcp.py` → all offline checks PASS.
@@ -135,8 +149,10 @@ either skipping the bullet silently or fabricating a walkthrough result.
 - [x] Negative: injecting an unlisted server key makes `verify-ide-mcp` fail (proven).
 - [x] `simulate-student-check` performs a real MCP `initialize` handshake against every
       committed server, including the HTTP one — proven, 4/4 pass, evidence quoted above.
-- [ ] The README walkthrough was actually run from a throwaway `git worktree` — **not done**,
-      requires a human at a GUI IDE; written and ready, explicitly not claimed as executed.
+- [~] The README walkthrough was actually run from a throwaway `git worktree` — **partial**:
+      product owner ran steps 1–3 for real (see § Deliverable 9b update above), surfacing and
+      fixing a real doc gap (the Cursor per-server enable-click). Steps 4–5 (real checkable
+      questions per server, worktree teardown) still open.
 
 Cold review independently re-ran the live `simulate-student-check.py` handshake itself
 (network + npx, not just reading the code) and got byte-for-byte matching output — 4/4 real
