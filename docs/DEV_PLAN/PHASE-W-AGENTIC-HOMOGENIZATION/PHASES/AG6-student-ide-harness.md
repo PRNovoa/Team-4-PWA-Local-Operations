@@ -1,9 +1,12 @@
 # AG6 — Student IDE harness (MCP configs, llms index, existence probes)
 
-**Status:** READY — AG0 map, AG3 landings policy, and AG4 discovery map are all DONE
-(2026-09-18); `AG6_DEFERRED` is recorded in `PHASE-AG5-REPORT.md`, so this phase does not
-block PR #21's merge and may proceed independently, on its own branch or the same one, at
-separate explicit authorization.  
+**Status:** DONE (2026-09-19) — `.cursor/mcp.json` (Astro/Svelte/Playwright/filesystem),
+`verify-ide-mcp.py`, and `simulate-student-check.py` all built and live-verified (real MCP
+handshakes, 4/4 pass, independently reproduced by cold review); deliverable 9b's manual
+walkthrough completed in full by the product owner, including real per-server tool calls
+(live Astro/Svelte docs content, a real Playwright navigation, a confirmed filesystem sandbox
+boundary). On branch `agentic/ag6-student-ide-harness`; not yet merged. See
+`../PHASE-AG6-REPORT.md` and `../PHASE-AG6-COLD-REVIEW.md`.  
 **Depends on:** AG0 discovery-map freeze — satisfied, see `../PHASE-AG0-REPORT.md` and
 `../PHASE-AG4-REPORT.md`
 
@@ -62,10 +65,16 @@ at all, not a third-party substitute.
    - `@modelcontextprotocol/server-fetch` (MCP-org reference) — general web-content fetch,
      useful when a framework has no dedicated docs MCP (covers gaps like React's).
    - GitHub's official `github-mcp-server` (`github/github-mcp-server`) is **explicitly not
-     cohort-default**: it requires OAuth or a PAT, and this project's own rule bars credential
-     distribution in git. Document it only as an **individually opt-in, instructor-approved**
-     example under `agentic/ide-mcp/examples/github.json`, never in the committed
-     `.cursor/mcp.json`.
+     cohort-default** — not only because of the credential, but because a `github` entry in the
+     committed `.cursor/mcp.json` would show disconnected/red for every student who hasn't set
+     one up, failing the fresh-clone "nothing red by default" bar (deliverable 9). Ship it as an
+     **opt-in pair**: `agentic/ide-mcp/examples/github.json` (server block referencing
+     `${env:GITHUB_PERSONAL_ACCESS_TOKEN}`, or Cursor's `envFile` pointing at `.env`) plus a
+     committed `.env.example` (variable name only, no value) with `.env` gitignored. No SSH-key
+     option exists for this server — it only supports OAuth, PAT, or GitHub App auth, and does
+     not read an existing `gh auth login` session; a student's SSH-based git access does not
+     help with this setup step. Opting in is: merge the block, copy `.env.example` → `.env`,
+     add your own token — never paste a secret into a file the repo tracks.
    - No official standalone TypeScript-language-server MCP was found as of this phase's
      authoring; do not fabricate one into the pack. Re-check when AG6 executes, not before.
 8. Explicit non-install: no `@modelcontextprotocol/server|client` in frontend
@@ -92,13 +101,25 @@ at all, not a third-party substitute.
    b. **"Confirm it like a new co-developer would" — README walkthrough, run from a clean
       checkout, not the instructor's tuned environment.** A short, numbered section in
       `agentic/ide-mcp/README.md`:
-      1. `git worktree add /tmp/ttod-student-sim main` (or the branch under test) — a
-         throwaway checkout with no pre-existing global Cursor state assumed, closest
-         reproduction of "student just cloned the repo" available without a second machine.
+      1. `git worktree add --detach /tmp/ttod-student-sim <branch-under-test>` — detached,
+         not a second checkout of the branch by name, since the primary clone may already
+         have that branch checked out (a worktree can't share a branch across two working
+         directories). Point `<branch-under-test>` at whichever branch actually holds the
+         harness — simulating against `main` proves nothing while AG6 lives on its own
+         branch. Sanity-check before opening the IDE: `.cursor/mcp.json` and
+         `agentic/ide-mcp/` should both exist in the new worktree. Throwaway, no
+         pre-existing global Cursor state assumed — closest reproduction of "student just
+         cloned the repo" available without a second machine.
       2. Open **that folder** (single-root, per the multi-root caveat in
          `AGENTIC-HARNESS.md` §4) as a fresh Cursor window.
-      3. Confirm each committed server shows connected/green in Cursor's MCP panel — no manual
-         install step beyond opening the folder.
+      3. Enable each server in Cursor's MCP panel — a required one-time trust step for any
+         project-committed MCP config (servers start **disabled**, not connected, until
+         flipped on; this is Cursor's own security gate, not a sign the config is broken) —
+         then confirm each shows connected/green. Nothing to install beforehand; the one
+         click per server is the only manual step. **Confirmed by direct testing during this
+         phase, not assumed:** the four TTOD servers do start disabled in a fresh worktree,
+         while a pre-existing personal/global server the tester had already trusted showed
+         connected — exactly the asymmetry this step exists to explain, not paper over.
       4. Ask the agent one *real*, verifiable question per server whose answer only a working
          MCP call (not model memory) could get right — e.g. "use the Svelte MCP to fetch the
          current `$state` rune docs and quote one exact sentence," "use the Playwright MCP to

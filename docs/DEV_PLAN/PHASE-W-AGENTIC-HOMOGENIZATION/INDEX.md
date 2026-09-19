@@ -6,15 +6,15 @@ Author: Rubén Vega Balbás PhD · 2026-09-18
 
 # Phase W — Agentic Homogenization
 
-**Status:** AG0–AG5 DONE (2026-09-18; AG5 is DONE-with-MERGE_DEFERRED). Decision frozen at
-[`DECISIONS/W0-2026-09-18-AGENTIC-HOME.md`](../DECISIONS/W0-2026-09-18-AGENTIC-HOME.md),
-cold-reviewed PASS. Branch `agentic/homogenize-landings` pushed to `origin`; **[PR
-#21](https://github.com/ruvebal/ttod/pull/21) open against `main`**, cold-reviewed PASS, not
-yet merged. All AG0–AG5 work (edit-home + discovery map in `AGENTS.md`, bodies under
-`agentic/`, `.cursor` landings) cold-reviewed PASS with zero blocking findings across five
-independent reviews. AG6 remains PROPOSED — no student IDE harness shipped; `AG6_DEFERRED`
-recorded, does not block the merge decision. **Next action: product owner reviews PR #21 and
-records MERGE_APPROVED / MERGE_REJECTED** — merge itself is outside any agent's authority.
+**Status:** AG0–AG5 merged to `main` via [PR #21](https://github.com/ruvebal/ttod/pull/21)
+(2026-09-18/19). **AG6 DONE** (2026-09-19): student IDE MCP harness (`.cursor/mcp.json` —
+Astro/Svelte/Playwright/`filesystem`) built and fully verified at every layer — offline config
+gate, live protocol handshake (4/4, independently reproduced by cold review), **and** a
+complete human-run manual walkthrough with real per-server tool calls (live Astro/Svelte docs
+content, a real Playwright navigation, a confirmed filesystem sandbox boundary) — on branch
+`agentic/ag6-student-ide-harness`, pushed, not yet merged/PR'd
+([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)). **Next action: open a PR for AG6 whenever the
+product owner is ready.**
 **Author:** Rubén Vega Balbás PhD · 2026-09-18
 **Readers:** product owner (rationale first); implementer (orchestrator second).
 
