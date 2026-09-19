@@ -1,18 +1,24 @@
 <!--
 PHASE-W — Agentic homogenization (tool-neutral agentic/ as source of truth;
-.cursor / .claude as thin landings). Planning pack only — no branch, no moves.
-Author: Rubén Vega Balbás PhD · 2026-09-18
+.cursor / .claude as thin landings). AG0–AG6 all merged to main via PR #21 and #22.
+Author: Rubén Vega Balbás PhD · 2026-09-18, closed 2026-09-19.
 -->
 
 # Phase W — Agentic Homogenization
 
-**Status:** AG0–AG5 merged to `main` via [PR #21](https://github.com/ruvebal/ttod/pull/21)
-(2026-09-18/19). **AG6 DONE** (2026-09-19): student IDE MCP harness (`.cursor/mcp.json` —
-Astro/Svelte/Playwright/`filesystem`) built and fully verified at every layer — offline config
-gate, live protocol handshake (4/4, independently reproduced by cold review), **and** a
-complete human-run manual walkthrough with real per-server tool calls (live Astro/Svelte docs
-content, a real Playwright navigation, a confirmed filesystem sandbox boundary) — on branch
-`agentic/ag6-student-ide-harness`, pushed, not yet merged/PR'd
+**Status: COMPLETE.** AG0–AG5 merged to `main` via
+[PR #21](https://github.com/ruvebal/ttod/pull/21); AG6 merged via
+[PR #22](https://github.com/ruvebal/ttod/pull/22) (`main`@`1ca1e686`, 2026-09-19,
+`--admin` merge — required `typecheck-and-build` check had not run against the branch, same
+as PR #21). Every phase closed through its own VERIFYING → cold review → report cycle, seven
+independent cold reviews total, zero unresolved findings. Student IDE MCP harness
+(`.cursor/mcp.json` — Astro/Svelte/Playwright/`filesystem`) is live on `main`, verified at
+every layer: offline config gate, live protocol handshake (4/4, independently reproduced by
+cold review), **and** a complete human-run manual walkthrough with real per-server tool calls
+(live Astro/Svelte docs content, a real Playwright navigation, a confirmed filesystem sandbox
+boundary). The product's own Compose MCP (`services/mcp`) was separately sanity-checked live
+(real `initialize` handshake + `tools/list` against the running container) — confirmed
+working, untouched by this cascade, exactly as the discovery map says it should be.
 ([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)). **Next action: open a PR for AG6 whenever the
 product owner is ready.**
 **Author:** Rubén Vega Balbás PhD · 2026-09-18

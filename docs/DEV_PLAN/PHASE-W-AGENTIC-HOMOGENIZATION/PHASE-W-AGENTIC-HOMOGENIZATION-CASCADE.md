@@ -1,6 +1,6 @@
 # Phase W — Technical Director Cascade (Agentic Homogenization)
 
-**Status:** PROPOSED · planning pack only (2026-09-18).  
+**Status:** COMPLETE — AG0–AG6 all merged to `main` (PR #21, PR #22; 2026-09-18/19).  
 **Does not authorize:** creating the branch, moving files, rewriting landings, merging to
 `main`, mutating `ttod.yml`, or renaming `~/src/.agents/` without an AG0 decision.  
 **Depends on:** Phase Q governance; existing `agentic/report-steward/` pack; studio
@@ -31,8 +31,8 @@ privacy). Dual-model / extra MCP validators are specified in
 | AG2 | [PHASES/AG2-migrate-bodies-into-agentic.md](PHASES/AG2-migrate-bodies-into-agentic.md) | Bodies of TTOD-scoped rules/skills/agents live under `agentic/`; `report-steward` undisturbed; seed `agentic/README.md` pointing at harness annex | **DONE** (2026-09-18) — byte-identical moves confirmed (SHA-256), 219 tests + strict validate green, cold-reviewed PASS ([`PHASE-AG2-REPORT.md`](PHASE-AG2-REPORT.md)) |
 | AG3 | [PHASES/AG3-landing-stubs.md](PHASES/AG3-landing-stubs.md) | `.cursor/` and `.claude/` stubs with real frontmatter + redirect only (`.cursor/mcp.json` is AG6 tooling, not a skill body) | **DONE** (2026-09-18) — 3-line redirect stubs, `.claude` correctly left untouched per W0 §2, cold-reviewed PASS ([`PHASE-AG3-REPORT.md`](PHASE-AG3-REPORT.md)) |
 | AG4 | [PHASES/AG4-rewrite-references.md](PHASES/AG4-rewrite-references.md) | Evergreen docs, generators, CI path comments updated; discovery map includes IDE harness pointer | **DONE** (2026-09-18) — `AGENTS.md` discovery map + edit-home table live, cold-reviewed PASS ([`PHASE-AG4-REPORT.md`](PHASE-AG4-REPORT.md)) |
-| AG5 | [PHASES/AG5-verify-and-merge-gate.md](PHASES/AG5-verify-and-merge-gate.md) | Full verification + pedagogical merge note + PR checklist; merge only by named human | **DONE-with-MERGE_DEFERRED** (2026-09-18) — PR [#21](https://github.com/ruvebal/ttod/pull/21) open against `main`, cold-reviewed PASS, `AG6_DEFERRED` recorded ([`PHASE-AG5-REPORT.md`](PHASE-AG5-REPORT.md)). Merge itself awaits the product owner. |
-| AG6 | [PHASES/AG6-student-ide-harness.md](PHASES/AG6-student-ide-harness.md) | Project-level IDE MCP (Astro+Svelte+Playwright+MCP-org reference), `llms.txt` index, verify script, harness roles in `AGENTS.md` / `agentic/ide-mcp` | **DONE** (2026-09-19) — offline + live (real MCP handshake) verification pass, cold-reviewed with independent reproduction, **and** the human-run manual walkthrough completed with real per-server tool calls; branch `agentic/ag6-student-ide-harness` pushed, not merged ([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)) |
+| AG5 | [PHASES/AG5-verify-and-merge-gate.md](PHASES/AG5-verify-and-merge-gate.md) | Full verification + pedagogical merge note + PR checklist; merge only by named human | **DONE, merged** — PR [#21](https://github.com/ruvebal/ttod/pull/21), cold-reviewed PASS, merged by the product owner (`--admin`, required check hadn't run) ([`PHASE-AG5-REPORT.md`](PHASE-AG5-REPORT.md)) |
+| AG6 | [PHASES/AG6-student-ide-harness.md](PHASES/AG6-student-ide-harness.md) | Project-level IDE MCP (Astro+Svelte+Playwright+MCP-org reference), `llms.txt` index, verify script, harness roles in `AGENTS.md` / `agentic/ide-mcp` | **DONE, merged** — offline + live (real MCP handshake) verification pass, cold-reviewed with independent reproduction, **and** the human-run manual walkthrough completed with real per-server tool calls; merged to `main` via [PR #22](https://github.com/ruvebal/ttod/pull/22) ([`PHASE-AG6-REPORT.md`](PHASE-AG6-REPORT.md)) |
 
 **Harness note:** Gate column first word is the harness status token
 (`READY|BLOCKED|IN_PROGRESS|VERIFYING|COLD_REVIEW|DONE`); prose after it is human-facing.

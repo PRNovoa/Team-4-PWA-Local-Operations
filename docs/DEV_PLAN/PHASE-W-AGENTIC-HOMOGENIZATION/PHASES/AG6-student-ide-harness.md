@@ -1,12 +1,13 @@
 # AG6 — Student IDE harness (MCP configs, llms index, existence probes)
 
-**Status:** DONE (2026-09-19) — `.cursor/mcp.json` (Astro/Svelte/Playwright/filesystem),
-`verify-ide-mcp.py`, and `simulate-student-check.py` all built and live-verified (real MCP
-handshakes, 4/4 pass, independently reproduced by cold review); deliverable 9b's manual
-walkthrough completed in full by the product owner, including real per-server tool calls
-(live Astro/Svelte docs content, a real Playwright navigation, a confirmed filesystem sandbox
-boundary). On branch `agentic/ag6-student-ide-harness`; not yet merged. See
-`../PHASE-AG6-REPORT.md` and `../PHASE-AG6-COLD-REVIEW.md`.  
+**Status:** DONE, MERGED (2026-09-19) — `.cursor/mcp.json` (Astro/Svelte/Playwright/
+filesystem), `verify-ide-mcp.py`, and `simulate-student-check.py` all built and live-verified
+(real MCP handshakes, 4/4 pass, independently reproduced by cold review); deliverable 9b's
+manual walkthrough completed in full by the product owner, including real per-server tool
+calls (live Astro/Svelte docs content, a real Playwright navigation, a confirmed filesystem
+sandbox boundary). Merged to `main` via [PR #22](https://github.com/ruvebal/ttod/pull/22)
+(`--admin`, required check hadn't run). See `../PHASE-AG6-REPORT.md` and
+`../PHASE-AG6-COLD-REVIEW.md`.  
 **Depends on:** AG0 discovery-map freeze — satisfied, see `../PHASE-AG0-REPORT.md` and
 `../PHASE-AG4-REPORT.md`
 

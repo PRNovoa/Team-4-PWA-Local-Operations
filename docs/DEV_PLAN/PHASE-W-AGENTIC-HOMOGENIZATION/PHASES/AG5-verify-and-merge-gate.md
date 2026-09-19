@@ -1,10 +1,10 @@
 # AG5 — Verify, pedagogical merge note, and human merge gate
 
-**Status:** DONE-with-MERGE_DEFERRED (2026-09-18) — full verification green, pedagogical note
-landed in `AGENTS.md`, PR [#21](https://github.com/ruvebal/ttod/pull/21) opened against
-`main`, cold-reviewed PASS with zero blocking findings. **Not merged** — merge is a
-named-human act; see `../PHASE-AG5-REPORT.md` § Merge decision for the exact commands left
-for the product owner.  
+**Status:** DONE, MERGED (2026-09-18/19) — full verification green, pedagogical note landed
+in `AGENTS.md`, PR [#21](https://github.com/ruvebal/ttod/pull/21) cold-reviewed PASS with zero
+blocking findings, then merged into `main` by the product owner via
+`gh pr merge 21 --merge --delete-branch --admin` (the required `typecheck-and-build` check
+hadn't run against the branch). See `../PHASE-AG5-REPORT.md` § Merge decision.  
 **Depends on:** AG0–AG4 complete on `agentic/homogenize-landings` — satisfied, see
 `../PHASE-AG4-REPORT.md`
 
