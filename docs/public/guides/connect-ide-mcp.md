@@ -38,9 +38,10 @@ standing decision, revisited only if that changes. React context stays file/docs
 **GitHub's MCP is opt-in only, never the committed default.** Not only because it needs a
 personal credential, but because a `github` entry in everyone's config would show
 disconnected/red for every collaborator who hasn't set one up — failing the one bar this
-project actually holds itself to: a fresh clone should show nothing red by default. To opt in:
-copy the repo root's `.env.example` to `.env`, set your own `GITHUB_PERSONAL_ACCESS_TOKEN`
-there, and merge the `github` block from
+project actually holds itself to: a fresh clone should show nothing red by default. The server
+itself runs via its own official Docker image — this project already requires Docker for
+`make up`, so opting in adds no new tooling. To opt in: copy the repo root's `.env.example` to
+`.env`, set your own `GITHUB_PERSONAL_ACCESS_TOKEN` there, and merge the `github` block from
 [`examples/github.json`](https://github.com/ruvebal/ttod/blob/main/agentic/ide-mcp/examples/github.json)
 into your own `.cursor/mcp.json`. The config references `${env:GITHUB_PERSONAL_ACCESS_TOKEN}` —
 never paste a token into a file this repo tracks.
