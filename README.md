@@ -83,8 +83,8 @@ suite, is listed in [`AGENTS.md`](AGENTS.md).
 **Iván (@Gonsiii11) <ivan.herrera@alumnos.udit.es>**: Developer, Front End II  
 **Pablo Novoa Rodríguez (@PRNovoa) <pablo.novoa@alumnos.udit.es>**: PWA Local Operations  
 **Gonzalo Pérez Fernández-Corugedo (@gpfc-git) <gonzalo.perez.fernandezcorugedo@alumnos.udit.es>**: Knowledge Graph Developer   
-**Gonzalo Sanchez Alvarez (@gontugithub) <gonzalo.sanchez@alum.udit.es>**: Content i18n & proposals  
-**Gabriel Calvo Ballesteros (@gabrielcclv) <gabriel.calvo@alumnos.udit.es>**: Content i18n & proposals  
+**Gonzalo Sanchez Alvarez (@gontugithub) <gonzalo.sanchez@alum.udit.es>**: Content i18n & Proposals  
+**Gabriel Calvo Ballesteros (@gabrielcclv) <gabriel.calvo@alumnos.udit.es>**: Content i18n & Proposals  
 
 
 ## License
