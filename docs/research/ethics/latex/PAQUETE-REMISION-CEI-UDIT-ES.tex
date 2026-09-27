@@ -72,6 +72,9 @@
 \vspace{0.55em}
 \AuthoritiesBlock
 
+\vspace{0.35em}
+\DocsPrototypeNote
+
 \vspace{0.7em}
 \noindent{\sffamily\bfseries\small Documentos de este PDF (requisitos del comunicado)}\\[0.3em]
 \begin{enumerate}
@@ -82,6 +85,8 @@
   \item Autorizaciones institucionales (checklist + pendientes)
   \item Hoja de información y formulario de consentimiento (plantilla estudiante)
   \item Declaración de exclusión de la línea filosófica paralela
+  \item Declaración de autoría asistida por IA (transparencia del PI)
+  \item Autoría de producto y licencia MIT (equidad del grupo)
 \end{enumerate}
 
 \vspace{0.4em}
@@ -91,9 +96,6 @@
 \texttt{FORMULARIO-SOLICITUD-CEI-UDIT-RELLENO.docx}) +
 adjuntos firmados fuera de git (autorización departamental; consentimientos firmados
 según vía del CEI).}
-
-\vspace{0.5em}
-\LegalEntities
 
 %======================================================================
 % 1. CARTA
@@ -107,6 +109,8 @@ de IA agentica y trabajo en grupo. La actividad docente fue autorizada
 pedagógicamente con antelación. La participación en investigación (uso secundario
 seudonimizado de artefactos de proceso) es \textbf{voluntaria} e independiente de
 la calificación. La autorización de imagen/comunicación (ítem~G) es opcional y separable.
+La autoría de producto (\emph{README} / MIT, ítem~H) es plano docente distinto del corpus
+investigador seudonimizado.
 
 \textbf{No se pretende} demostrar causalmente que la IA <<mejora el aprendizaje>>.
 Se pretende describir \textbf{cómo se aprende haciendo} y qué principios de diseño
@@ -180,7 +184,7 @@ en un producto real, asistido por IA agentica y en grupo, constituye
         otorgan consentimiento de uso investigador.
   \item \textbf{Exclusión del corpus:} no consentidos; menores/vulnerables sin
         salvaguarda adicional; artefactos de compañeros no consentidos.
-  \item \textbf{n:} 8 (README del proyecto; excluido el PI). Corpus: $n_{\mathrm{consent}}\leq 8$.
+  \item \textbf{n:} 8 (\emph{README} del proyecto; excluido el PI). Corpus: $n_{\mathrm{consent}}\leq 8$.
   \item \textbf{Reclutamiento:} no externo; la actividad es la asignatura.
 \end{itemize}
 
@@ -204,9 +208,10 @@ paralela \textbf{excluida} (Anexo~7).
 Docencia curso 2026--27 · dictamen tras remisión · análisis tras notas · difusión
 académica (JENUI~$\rightarrow$~ITiCSE) tras análisis.
 
-\subsection*{Referencias principales (Chicago author--date)}
-\noindent{\small Espina metodológica --- títulos completos; misma lista canónica que
-\texttt{docs/public/research/methodology.md}.}
+% Chicago author–date
+\subsection*{Referencias principales}
+\noindent{\small Columna metodológica --- títulos completos; misma lista canónica que
+\path{docs/public/research/methodology.md}.}
 \ChicagoMethodsRefs
 
 %======================================================================
@@ -330,6 +335,8 @@ también se distribuye como PDF separado
 \begin{itemize}
   \item Estudio: aprendizaje haciendo en grupo \TTODfull\ / Front-End~II.
   \item Docencia sigue igual con o sin consentimiento investigador ni autorización de imagen.
+  \item Autoría de producto + MIT (ítem~H): crédito en \emph{README} por área; código bajo
+        \texttt{LICENSE-CODE} --- distinto del corpus investigador.
   \item Investigación = uso seudonimizado de artefactos de evaluación (PRs,
         declaración de IA, notas de defensa), tras dictamen y cierre de notas.
   \item Ítem~G (opcional): imagen en LinkedIn/medios/publicaciones/revistas internas UDIT/web público.
@@ -348,8 +355,9 @@ también se distribuye como PDF separado
   \textbf{\#} & \textbf{Declaración} & \textbf{Sí} \\
   \midrule
   A & Actividad docente del grupo \TTODfull & $\square$ \\
+  H & Autoría de producto + MIT (\emph{README} / \texttt{LICENSE-CODE}) & $\square$ \\
   B & Uso investigador secundario seudonimizado de artefactos de proceso & $\square$ \\
-  C & Corpus investigador: sin categorías especiales; sin identificadores publicados & $\square$ \\
+  C & Corpus investigador sin identificadores; \emph{README} = plano distinto (H) & $\square$ \\
   D & Encuesta/entrevista (solo si se activa en el futuro) & N/A \\
   E & Grabación audio/vídeo de defensa o entrevista (solo si se activa) & N/A \\
   F & Difusión de extractos no identificativos (opcional) & $\square$ \\
@@ -384,6 +392,26 @@ datos de estudiantes ni artefactos de la Cohorte Front-End~II.
 
 Esta remisión se limita al estudio pedagógico de caso descrito en los Anexos~1--6.
 
+%======================================================================
+% 8. AUTORÍA ASISTIDA POR IA (PI)
+%======================================================================
+\AnnexTitle{8.\ Declaración de autoría asistida por IA (transparencia del PI)}
+
+\AIAuthorshipDeclaration
+
+%======================================================================
+% 9. AUTORÍA / MIT COHORTE
+%======================================================================
+\AnnexTitle{9.\ Autoría de producto y licencia MIT (equidad del grupo)}
+
+\AuthorshipLicenseBlock
+
+\vspace{0.6em}
+\noindent{\small
+Dos planos: (A)~producto/docencia --- nombres en \emph{README} y código MIT;
+(B)~investigación --- corpus seudonimizado tras consentimiento~B.
+No se contradicen. Ver también \texttt{DATA-MINIMIZATION-STATEMENT.md}.}
+
 \vspace{1.2em}
 \noindent{\color{rulegray}\hrule height 0.4pt}
 \vspace{0.5em}
@@ -393,5 +421,8 @@ Esta remisión se limita al estudio pedagógico de caso descrito en los Anexos~1
 \noindent{\footnotesize\color{uditnavy}
 Fin del paquete de anexos. Formulario CEI Word:
 \texttt{FORMULARIO-SOLICITUD-CEI-UDIT-RELLENO.docx}.}
+
+\vspace{0.5em}
+\LegalEntities
 
 \end{document}

@@ -50,7 +50,8 @@
   UDIT Escuela de Formación Profesional, S.L.\ · NIF B09963117.}%
 }
 
-% Role (left) | Name + email only (right) — no role text repeated
+% Role (left) | Name + email only (right) — no role text repeated.
+% Legal entity NIFs: call \LegalEntities only on the last page of each PDF.
 \newcommand{\AuthoritiesBlock}{%
   \noindent{\sffamily\bfseries\small Autoridades de investigación / Research authorities}\\[0.25em]
   \noindent
@@ -64,11 +65,66 @@
     \textbf{IP del grupo ECSIT} &
       Rafael Conde Melguizo, PhD ---
       \href{mailto:rafael.conde@udit.es}{rafael.conde@udit.es}\\[0.2em]
+    \textbf{Directora OTRI / OTC} &
+      Dra.\ Adiela Batista Delgado ---
+      \href{mailto:otc@udit.es}{otc@udit.es}\\[0.2em]
     \textbf{CEI UDIT} &
       \href{mailto:comite.etica.investigacion@udit.es}{comite.etica.investigacion@udit.es}
   \end{tabularx}%
-  \par\vspace{0.35em}%
-  \LegalEntities
+}
+
+% Product authorship + MIT (cohort equity) — distinct from research corpus.
+\newcommand{\AuthorshipLicenseBlock}{%
+  \noindent{\sffamily\bfseries\small Autoría de producto y licencias (MIT + CC BY-NC-SA)}\\[0.35em]
+  \noindent{\small
+  El \textbf{código} del producto TTOD se licencia bajo \textbf{MIT}
+  (\texttt{LICENSE-CODE}): copyright del PI y de los \textbf{contribuidores
+  individuales} listados en el \emph{README} (\emph{Development Team}), salvo aviso distinto
+  en un archivo. Quien aporta código licencia esa aportación bajo el mismo MIT
+  (\emph{inbound = outbound}); conserva el crédito de autoría. Figurar en el
+  \emph{README} por rol o área es \textbf{crédito de producto}, no publicación del corpus
+  investigador seudonimizado.}\\[0.35em]
+  \noindent{\small
+  El \textbf{conocimiento Tao} (citas en \texttt{ttod.yml}, docs y \emph{sources}) permanece
+  bajo \textbf{CC BY-NC-SA~4.0} (\texttt{LICENSE-CONTENT}).
+  \textbf{No hay contradicción:} MIT cubre el software; CC BY-NC-SA el corpus de
+  sabiduría. Crédito MIT del grupo \textbf{no} relicencia las citas; aportar código
+  \textbf{no} pone el Tao bajo MIT. La imagen en medios sigue siendo el ítem~G
+  (opcional). Detalle: \texttt{AUTORIA-LICENCIA-COHORTE-ES.md}.}%
+}
+
+% Public documentation prototype (not the production Oráculo app).
+\newcommand{\DocsPrototypeNote}{%
+  \noindent{\footnotesize\color{uditink}
+  Documentación pública del proyecto (prototipo documental; \textbf{no} es el despliegue
+  de la aplicación Oráculo):
+  \url{https://ruvebal.github.io/ttod/}}%
+}
+
+% PI AI-assisted authorship (not student I2 AI-use declaration).
+\newcommand{\AIAuthorshipDeclaration}{%
+  \noindent{\sffamily\bfseries\small Autoría asistida por IA --- transparencia del PI}\\[0.35em]
+  \noindent{\small
+  Rubén Vega Balbás, PhD
+  (\href{mailto:ruvebal@crea-comm.net}{ruvebal@crea-comm.net} ·
+  \href{mailto:ruben.vega@udit.es}{ruben.vega@udit.es})
+  preparó este paquete de investigación y remisión ética en el entorno de estudio
+  \textbf{crea-comm.net} --- un \emph{harness} agentico local con recuperación
+  asistida por MCP, contexto RAG desde \emph{vaults} de currículo e investigación, y un
+  modelo de voz académica afinado sobre su propia escritura. El forjado consultó
+  fuentes de \emph{vault}; cada cita pública (Autor, Año) fue contrastada contra ese
+  \emph{vault} antes de su aceptación. Prompts, borradores del modelo y enmiendas humanas quedan
+  archivados para evaluación posterior. El \textbf{juicio editorial y la
+  responsabilidad del texto final} corresponden al autor.}\\[0.45em]
+  \noindent{\small\color{uditink}
+  \textbf{No confundir} con la declaración de uso de IA del alumnado (instrumento~I2 /
+  rúbrica Front-End~II): aquella es traza pedagógica del grupo; \textbf{esta}
+  declaración cubre solo la autoría del paquete institucional y ético por el PI.}\\[0.35em]
+  \noindent{\footnotesize
+  Fecha de forjado: 2026-09-27 · Estudio: crea-comm.net · \emph{harness}: paquete ético TTOD\\
+  Fundamentos del instructor:
+  \href{https://ruvebal.github.io/web-atelier-udit/lessons/en/react/ai-assisted-development-foundations/}{AI-Assisted Development Foundations}
+  (Web Atelier UDIT).}%
 }
 
 \newcommand{\StudyMetaPI}{%
@@ -124,5 +180,22 @@
   \item Wohlin, Claes, Per Runeson, Martin Höst, Magnus C.~Ohlsson, Björn Regnell, and Anders Wesslén. 2012.
         \emph{Experimentation in Software Engineering}. Berlin: Springer.
         \url{https://doi.org/10.1007/978-3-642-29044-2}.
+\end{itemize}%
+}
+
+% Pedagogical grounding for departmental A1 (dept brief + CER-adjacent evidence)
+\newcommand{\ChicagoPedagogicalRefs}{%
+\begin{itemize}
+  \item Nikolić, Dragan, and Marijana Basta Nikolić. 2026.
+        ``Designing AI-Resilient Assessment in Higher Education: A Four-Pillar Conceptual Framework.''
+        \emph{Frontiers in Artificial Intelligence}.
+        \url{https://doi.org/10.3389/frai.2026.1841682}.
+  \item Shihab, Md Istiak Hossain, Christopher Hundhausen, Ahsun Tariq, Summit Haque,
+        Yunhan Qiao, and Brian Wise Mulanda. 2025.
+        ``The Effects of GitHub Copilot on Computing Students' Programming Effectiveness,
+        Efficiency, and Processes in Brownfield Coding Tasks.''
+        In \emph{Proceedings of the 2025 ACM Conference on International Computing Education
+        Research V.~1}.
+        \url{https://doi.org/10.1145/3702652.3744219}.
 \end{itemize}%
 }

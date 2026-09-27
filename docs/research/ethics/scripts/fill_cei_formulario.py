@@ -14,11 +14,16 @@ from __future__ import annotations
 
 import argparse
 import html
+import os
 import re
 import shutil
 import tempfile
 import zipfile
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
+ETHICS_DIR = REPO_ROOT / "docs" / "research" / "ethics"
+TEMPLATE_NAME = "Formulario de Solicitud de Evaluacion Etica_WORD.docx"
 
 # ---------------------------------------------------------------------------
 # Field values — keep in sync with FORMULARIO-SOLICITUD-CEI-UDIT-ES.md
@@ -326,15 +331,15 @@ def fill_docx(template: Path, out: Path) -> None:
                     zout.write(path, path.relative_to(work).as_posix())
 
 
+def default_template_path() -> Path:
+    if env := os.environ.get("UDIT_CEI_TEMPLATE"):
+        return Path(env).expanduser()
+    return Path(os.path.expanduser("~")) / "projects" / "ruvebal" / "scholar" / "udit" / "research" / TEMPLATE_NAME
+
+
 def main() -> None:
-    default_template = Path(
-        "/Users/ruvebal/projects/ruvebal/scholar/udit/research/"
-        "Formulario de Solicitud de Evaluacion Etica_WORD.docx"
-    )
-    default_out = Path(
-        "/Users/ruvebal/src/ttod/docs/research/ethics/"
-        "FORMULARIO-SOLICITUD-CEI-UDIT-RELLENO.docx"
-    )
+    default_template = default_template_path()
+    default_out = ETHICS_DIR / "FORMULARIO-SOLICITUD-CEI-UDIT-RELLENO.docx"
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--template", type=Path, default=default_template)
     ap.add_argument("--out", type=Path, default=default_out)
