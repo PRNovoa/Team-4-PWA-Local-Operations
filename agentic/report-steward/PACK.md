@@ -2,7 +2,7 @@
 name: report-steward
 purpose: Evidence-state reporting workflow and the public-privacy watcher that CI runs.
 surfaces: [agents, skills, rules, scripts]
-landings: []
+landings: [.cursor/rules/public-privacy.mdc, .cursor/rules/spanish-research-prose.mdc]
 mirrors: []
 locks: [.github/workflows/public-docs-pages.yml, Makefile, tests/test_public_privacy_watcher.py]
 external_readers: [The studio cascade-forge skill mentions this pack by name]
@@ -21,6 +21,7 @@ Maintained by `@crea-comm.net` for reusable, agent-oriented engineering reports.
 | `skills/evidence-state-report/references/report-contract.md` | report schema and claim tests |
 | `rules/evidence-reporting.md` | concise repository rule |
 | `rules/public-privacy.md` | public-output privacy boundary |
+| `rules/spanish-research-prose.md` | Spanish ethics/institutional prose (columna metodológica; italics for loanwords) |
 | `scripts/check_public_privacy.py` | deterministic tracked-text watcher (paths, hosts, phases, empty `<a>`) |
 
 The pack is source material, not an automatic installation. A host studio may map the agent,

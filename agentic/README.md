@@ -69,6 +69,8 @@ because JSON cannot redirect.
 | Doorway | Points at |
 | --- | --- |
 | `.cursor/rules/ttod-editing.mdc` | `ttod-editing/rules/ttod-editing.md` |
+| `.cursor/rules/public-privacy.mdc` | `report-steward/rules/public-privacy.md` |
+| `.cursor/rules/spanish-research-prose.mdc` | `report-steward/rules/spanish-research-prose.md` |
 | `.cursor/skills/public-docs-i18n/SKILL.md` | `public-docs-i18n/skills/public-docs-i18n/SKILL.md` |
 | `.cursor/mcp.json` | **the exception:** an identical copy of `ide-mcp/mcp.cursor.json`; the tree test compares the parsed JSON, and `ide-mcp/scripts/verify-ide-mcp.py` is the stricter gate (allowlist and digest) |
 | `.claude/agents/cascade-*.md` | the studio's shared agents, outside this repository |
