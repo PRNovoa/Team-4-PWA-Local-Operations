@@ -67,3 +67,16 @@ docs/research/ethics/**/*.docx
 !docs/research/ethics/latex/
 !docs/research/ethics/*.md
 
+# LaTeX build junk under ethics latex (keep .tex; never commit aux/log/out/toc)
+docs/research/ethics/latex/*.aux
+docs/research/ethics/latex/*.log
+docs/research/ethics/latex/*.out
+docs/research/ethics/latex/*.toc
+docs/research/ethics/latex/*.fls
+docs/research/ethics/latex/*.fdb_latexmk
+docs/research/ethics/latex/*.synctex.gz
+
+# LibreOffice lock files
+docs/research/ethics/.~lock.*
+.~lock.*
+
