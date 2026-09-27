@@ -97,9 +97,17 @@ suite, is listed in [`AGENTS.md`](AGENTS.md).
 
 ## License
 
-Code is MIT ([`LICENSE-CODE`](LICENSE-CODE)); content — `ttod.yml` quotes, `docs/`,
-`sources/` — is CC BY-NC-SA 4.0 ([`LICENSE-CONTENT`](LICENSE-CONTENT)), per
+Code is MIT ([`LICENSE-CODE`](LICENSE-CODE)): copyright Rubén Vega Balbás, PhD and
+individual contributors listed under **Development Team** (and any NOTICE), except where
+a file states otherwise. Cohort code contributions are inbound MIT (same terms out).
+Content — `ttod.yml` quotes, `docs/`, `sources/` — is CC BY-NC-SA 4.0
+([`LICENSE-CONTENT`](LICENSE-CONTENT)), per
 [`docs/DEV_PLAN/DECISIONS/Q0-2026-08-18-RIGHTS-LICENSE-NC.md`](docs/DEV_PLAN/DECISIONS/Q0-2026-08-18-RIGHTS-LICENSE-NC.md).
+**Not contradictory:** MIT is the software surface; CC BY-NC-SA is the Tao knowledge
+surface. README product authorship does not relicense the quotes.
+
+Product authorship credit (who built which part) lives in **Development Team** above; that
+naming is separate from any pseudonymized research corpus.
 
 ## Agent contract
 
