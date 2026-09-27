@@ -39,6 +39,14 @@ Tao of Development) existe en el proyecto pero está **aparada** y **no forma pa
 solicitud ni usa datos de estudiantes
 ([`../STRAND-A-PHILOSOPHICAL-PARKED.md`](../STRAND-A-PHILOSOPHICAL-PARKED.md)).
 
+En paralelo, mantener Oráculo **en producción** sostiene una vía **operativa**: TTOD es un
+**caso a escala reducida** de **aplicación agentica con gobernanza de procedencia** y
+**corpus autorizado** propio (aforismos Tao). Eso permite estudiar, con datos reales de
+operación, la infraestructura / *DevOps* de un sistema de conocimiento agentico con IA
+local en producción — complementaria a la vía filosófica y a este estudio pedagógico.
+Esa línea de fondos/producción **no** se tramita ante el CEI; se documenta en el paquete
+institucional.
+
 ---
 
 ## 2. Pregunta de investigación

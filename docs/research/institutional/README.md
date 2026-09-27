@@ -31,7 +31,7 @@ Lo que **faltaba** para enviar y firmar es la carta formal + hoja de conformidad
 | Archivo | Uso |
 | ------- | --- |
 | [`SOLICITUD-AUTORIZACION-PEDAGOGICA-ES.md`](SOLICITUD-AUTORIZACION-PEDAGOGICA-ES.md) | Carta a Sandra + Fernando (A1) |
-| [`SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md`](SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md) | Fondos ≥24 meses de producción / hosting |
+| [`SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md`](SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md) | Fondos ≥24 meses · caso agentico con gobernanza de procedencia / vía *DevOps* |
 | [`PAQUETE-INSTITUCIONAL-DEPT-INVESTIGACION-ES.pdf`](PAQUETE-INSTITUCIONAL-DEPT-INVESTIGACION-ES.pdf) | Blend tipográfico (logos UDIT/ECSIT) + A1 + fondos + **Anexo 4 fundamentación / columna metodológica** + autoría IA/MIT |
 | [`../ethics/DECLARACION-AUTORIA-ASISTIDA-POR-IA-ES.md`](../ethics/DECLARACION-AUTORIA-ASISTIDA-POR-IA-ES.md) | Fuente MD de la transparencia del PI |
 

@@ -61,6 +61,13 @@ final no debería ser la única huella valorada: trazas de proceso y defensa ora
 visible el razonamiento (véase brief
 [`../DEPARTMENT-DECISION-BRIEF.md`](../DEPARTMENT-DECISION-BRIEF.md) y referencias allí).
 
+Además, Oráculo en producción es un **caso a escala reducida** de **aplicación agentica con
+gobernanza de procedencia** (corpus autorizado Tao): abre una vía operativa / *DevOps*
+sobre infraestructura de conocimiento agentico con IA local, complementaria a la vía
+filosófica (Strand A, aparada) y a la remisión pedagógica/ética (Strand B). El apoyo de
+fondos para producción se solicita por separado
+([`SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md`](SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md)).
+
 ## 5. Decisiones concretas que se piden firmar
 
 | # | Decisión | Sí / No |

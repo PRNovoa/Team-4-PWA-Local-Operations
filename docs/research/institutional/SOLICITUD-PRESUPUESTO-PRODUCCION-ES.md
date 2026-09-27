@@ -32,7 +32,14 @@ durante al menos **dos años**, de modo que:
 1. el grupo y grupos siguientes puedan demostrar un producto vivo (no solo local);
 2. el estudio de caso pedagógico (tras dictamen CEI) conserve un entorno estable de referencia;
 3. ECSIT / UDIT dispongan de un demostrador público alineado con innovación docente y
-   tecnología.
+   tecnología;
+4. se pueda investigar, con datos reales de operación, la infraestructura y las prácticas
+   *DevOps* que exige un **sistema de conocimiento agentico** con **IA local en producción**.
+
+Oráculo es un **caso a escala reducida** de **aplicación agentica con gobernanza de
+procedencia**: consulta un **corpus autorizado** propio (la colección de aforismos Tao),
+no un corpus abierto indiferenciado. Esa vía **operativa / de producción** es
+complementaria a la vía filosófica (Strand A, aparada) y al estudio pedagógico (Strand B).
 
 Esta solicitud es **independiente** de la remisión al CEI y de la autorización pedagógica
 (A1). Puede tramitarse en paralelo.
@@ -73,8 +80,11 @@ nombre en DNS.
 ## 4. Justificación breve
 
 Sin producción estable, la evidencia de *aprender haciendo* en producto real se degrada a
-demos locales efímeras. Un horizonte de **≥ 24 meses** cubre al menos un ciclo completo
-docente + ventana de análisis/publicación del caso, y deja margen a un segundo grupo.
+demos locales efímeras — y también se pierde la evidencia **operativa** (disponibilidad,
+despliegue, coste, soberanía de modelos locales) que solo un servicio vivo puede aportar.
+Un horizonte de **≥ 24 meses** cubre al menos un ciclo completo docente + ventana de
+análisis/publicación del caso, deja margen a un segundo grupo, y sostiene el caso de
+estudio *DevOps* / infraestructura para conocimiento agentico en producción.
 
 ## 5. Entregables de control (si se concede)
 

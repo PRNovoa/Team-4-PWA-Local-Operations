@@ -41,6 +41,17 @@ programación (Fischer et al. 2024). Se usa Wohlin et al. (2012) para situar el 
 
 Una línea filosófica paralela (Strand A) está **aparada** y **no** usa datos de estudiantes.
 
+**Producción y procedencia (vía operativa).** Mantener Oráculo **en producción** no es solo
+continuidad docente: TTOD es un **caso a escala reducida** de **aplicación agentica con
+gobernanza de procedencia** — la plataforma consulta un **corpus autorizado** propio (la
+colección de aforismos Tao), no un corpus abierto indiferenciado. Eso abre investigación
+**operativa** sobre la infraestructura y las prácticas *DevOps* que exige un sistema de
+conocimiento agentico con **IA local en producción**, complementaria a la vía filosófica
+(Strand A) y a este estudio pedagógico (Strand B). Sin despliegue estable, esa evidencia
+queda en demos locales efímeras. El apoyo presupuestario de producción se tramita por
+canal institucional distinto del CEI
+([`../institutional/SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md`](../institutional/SOLICITUD-PRESUPUESTO-PRODUCCION-ES.md)).
+
 ---
 
 ## 2. Objetivos
