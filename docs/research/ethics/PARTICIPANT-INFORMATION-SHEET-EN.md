@@ -5,7 +5,7 @@
 **Affiliation:** UDIT — Technology Area · Research group **ECSIT**  
 (*Technology and Innovation from and for Education, Culture and Society*)  
 **Group:** [ECSIT at udit.es](https://www.udit.es/lineas-de-investigacion/grupo-de-investigacion-innovacion-y-tecnologia-desde-y-para-la-educacion-la-cultura-y-la-sociedad/)  
-**Version:** 2026-09-26
+**Version:** 2026-09-27
 
 ---
 
@@ -22,12 +22,17 @@ this study and **does not** use your coursework.
 ## 2. Why am I being asked?
 
 Because you are already part of the Front-End II teaching activity. The course continues the
-same way **whether or not** you consent to research use of your artifacts.
+same way **whether or not** you consent to research use of your artifacts or image use.
+Product authorship (README credit) and the MIT code license are part of the teaching product
+practice (consent item **H**).
 
 ## 3. What would I do?
 
 **As a student (teaching):** develop, review, declare AI use, and defend decisions — as already
-set out in the course materials.
+set out in the course materials. Code you contribute to the course product is licensed under
+**MIT** ([`LICENSE-CODE`](../../../LICENSE-CODE)), and you are named as an **author** in the
+README (Development Team) for the role/area you work on. That is **product credit**, not the
+research corpus. See [`AUTORIA-LICENCIA-COHORTE-ES.md`](AUTORIA-LICENCIA-COHORTE-ES.md).
 
 **As a research participant (optional and separate):** allow, **once the ethics protocol is
 authorized** and **after relevant grades are filed**, **pseudonymized** analysis (no name or
@@ -37,15 +42,25 @@ declarations, structured defence notes, and non-identifying technical excerpts.
 The **minimal** study does **not** ask for private-life surveys, special-category data, or
 audio/video recording (recording would need a separate, later consent item if ever proposed).
 
-## 4. Personal data
+**Optional image consent (item G):** photographs / group captures in project communications
+(LinkedIn, press, UDIT journals, public site). README credit does **not** replace item G.
 
-The study is designed so that **your personal data are not placed at stake** as a research
-object: names and identifiers will not be published; any research corpus will be
-**pseudonymized** and access-restricted. Grades and academic identity stay in ordinary teaching
-systems and **outside** the research corpus.
+## 4. Personal data (research) vs product authorship
 
-You may withdraw research consent without grade consequence. Aggregated, non-identifying
-publications cannot be “unpublished”; you would be told if that situation arises.
+**Research:** the study is designed so that **your personal data are not placed at stake** as
+the object of research analysis: the research corpus (if authorized) will not publish names,
+emails, or direct identifiers; it will be **pseudonymized** and access-restricted. Grades stay
+in ordinary teaching systems, outside the research corpus.
+
+**Product / equity:** as developers of a real product, you **are** named (with area of work) in
+the README and, where relevant, in product credits or figures, under the MIT code license.
+That is intentional authorship equity — a separate plane from research minimization
+([`AUTORIA-LICENCIA-COHORTE-ES.md`](AUTORIA-LICENCIA-COHORTE-ES.md)).
+
+You may withdraw research consent without grade effect. Withdrawing B does **not**, by itself,
+require removing authorship credit for code already merged (normal open-source practice).
+Aggregated, non-identifying publications cannot be “unpublished”; you would be told if that
+situation arises.
 
 ## 5. Benefits and risks
 

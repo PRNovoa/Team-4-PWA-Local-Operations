@@ -64,7 +64,7 @@ frente a la literatura centrada en CS1).
 | Aspecto | Descripción |
 | ------- | ----------- |
 | Población | Estudiantes matriculados en Front-End II que participan en la entrega del grupo TTOD |
-| Tamaño | **n = 8** estudiantes-desarrolladores (README del proyecto, excluido el PI). Corpus investigador: solo consentimiento B (**n_consent ≤ 8**) |
+| Tamaño | **n = 8** estudiantes-desarrolladores (*README* del proyecto, excluido el PI). Corpus investigador: solo consentimiento B (**n_consent ≤ 8**) |
 | Menores / vulnerables | Si hubiera menores de edad o situaciones de especial vulnerabilidad, se aplicarán salvaguardas adicionales institucionales antes de incluir sus artefactos en el corpus investigador |
 | Reclutamiento | No hay reclutamiento externo; la actividad es la propia asignatura. La **participación en investigación** (uso secundario de artefactos) es **voluntaria** e independiente de la nota |
 

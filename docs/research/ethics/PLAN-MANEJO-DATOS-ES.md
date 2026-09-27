@@ -65,7 +65,7 @@ Seudonimización ──► Corpus investigador (acceso restringido)
 | Activo | Dónde | Medidas |
 | ------ | ----- | ------- |
 | Corpus seudonimizado | Almacenamiento institucional / cifrado del PI o custodio | Acceso mínimo; sin nube pública de estudiantes |
-| Mapa seudónimo | Offline / vault cifrado | Separado del corpus |
+| Mapa seudónimo | Offline / *vault* cifrado | Separado del corpus |
 | Consentimientos firmados | Archivo departamental / custodio | Ver `SIGNED-CONSENTS-CUSTODY.md` |
 | Git del producto TTOD | Remotos del curso | No es el corpus investigador |
 

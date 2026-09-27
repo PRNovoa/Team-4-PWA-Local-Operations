@@ -93,7 +93,7 @@ pedagógicos observables (*aprender haciendo*)?
 | ------- | ----------- |
 | Inclusión | Matriculados en Front-End II que participan en la entrega del grupo TTOD y otorgan consentimiento B (uso investigador) |
 | Exclusión del corpus investigador | Quienes no consienten; menores/vulnerables sin salvaguarda adicional aprobada |
-| n | **8** estudiantes-desarrolladores (README del proyecto, 2026-09; excluido el PI). Corpus: n_consent ≤ 8 |
+| n | **8** estudiantes-desarrolladores (*README* del proyecto, 2026-09; excluido el PI). Corpus: n_consent ≤ 8 |
 | Reclutamiento | No externo; la actividad es la asignatura. El consentimiento investigador es opt-in |
 
 ---
@@ -156,7 +156,8 @@ Sin pretensiones de causalidad. Plan de publicación:
 
 ---
 
-## 12. Referencias principales (espina metodológica — Chicago)
+<!-- Chicago author–date -->
+## 12. Referencias principales (columna metodológica)
 
 - Brown, Neil C. C., and Mark Guzdial. 2024. “Confidence vs Insight: Big and Rich Data in Computing Education Research.” In *Proceedings of the 55th ACM Technical Symposium on Computer Science Education V. 1*, 158–64. https://doi.org/10.1145/3626252.3630813.
 - Fischer, Björn, Berit Barthelmes, Sven Eric Panitz, Eva-Maria Iwer, and Ralf Dörner. 2024. “Seeking Consent for Programming Process Data Collection with Trustee-Based Encryption.” In *Proceedings of the 2024 ACM Conference on International Computing Education Research V.1*, 131–42. https://doi.org/10.1145/3632620.3671125.

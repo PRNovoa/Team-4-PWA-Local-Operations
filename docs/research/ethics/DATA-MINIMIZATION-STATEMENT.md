@@ -13,14 +13,22 @@ Declaración de minimización de datos — Strand B.
 ## 1. Claim for the committee (careful wording)
 
 The study is designed so that **student personal data are not placed at stake** as an object of
-research interest:
+**research** interest (the analysis corpus):
 
 - No special-category data (health, ideology, religion, sexual life, biometrics, ethnic origin).
 - No research survey of private life, family, finances, or health.
 - No research collection of location tracking, device fingerprinting, or covert monitoring.
-- No publication of student names, emails, photographs, or identifiable GitHub handles.
+- No publication of student names, emails, photographs, or identifiable GitHub handles
+  **inside the research corpus or research papers** as identifiers of research subjects.
 - Research analysis, if authorized, uses a **pseudonymized process corpus** derived from
   artifacts already produced for assessment.
+
+**Product authorship is a separate plane:** cohort developers are **named as authors** in the
+repository *README* (*Development Team*) for the product areas they build, and code contributions
+are under MIT ([`LICENSE-CODE`](../../../LICENSE-CODE)). That naming is pedagogical / product
+equity, not research publication of a personal-data dataset. See
+[`AUTORIA-LICENCIA-COHORTE-ES.md`](AUTORIA-LICENCIA-COHORTE-ES.md). Optional image use in
+communications remains consent item **G**.
 
 **Honest legal note:** under GDPR / LOPDGDD, pseudonymized process data can still constitute
 personal data if re-identification is reasonably possible. The protocol therefore:
@@ -28,7 +36,9 @@ personal data if re-identification is reasonably possible. The protocol therefor
 1. strips direct identifiers before research use;
 2. keeps the research corpus confidential and access-restricted;
 3. sets retention and destruction rules;
-4. never treats the corpus as open anonymous data.
+4. never treats the corpus as open anonymous data;
+5. does **not** treat *README* authorship credit as a substitute for research consent (B) or
+   image consent (G).
 
 The pedagogical **grades and identifiable academic records** remain in ordinary teaching systems
 and are **outside** the research corpus.

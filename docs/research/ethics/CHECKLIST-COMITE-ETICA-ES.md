@@ -21,7 +21,7 @@ Mapa de lo que el comunicado pide frente a lo que **ya hay** en el repositorio y
 
 ## Qué falta todavía (acción humana / institucional)
 
-1. **n del grupo:** **8** (README Development Team, excluido PI). **Tasa de consentimiento B** aún por registrar en custodia offline.
+1. **n del grupo:** **8** (*README* *Development Team*, excluido PI). **Tasa de consentimiento B** aún por registrar en custodia offline.
 2. **Autorización departamental firmada** (correo/acta) — no basta el brief interno
    [`../DEPARTMENT-DECISION-BRIEF.md`](../DEPARTMENT-DECISION-BRIEF.md).
 3. **Contacto del DPO / delegado de protección de datos** en hoja de información (institucional: `dpd@udit.es`).
@@ -39,10 +39,12 @@ Mapa de lo que el comunicado pide frente a lo que **ya hay** en el repositorio y
 | Documento | ¿Incluir en remisión? |
 | --------- | --------------------- |
 | [`ETHICS-COMMITTEE-SUBMISSION-ES.md`](ETHICS-COMMITTEE-SUBMISSION-ES.md) | Sí — carta / solicitud |
+| [`AUTORIA-LICENCIA-COHORTE-ES.md`](AUTORIA-LICENCIA-COHORTE-ES.md) | Sí — autoría de producto + MIT (ítem H); distinto del corpus investigador |
+| [`DECLARACION-AUTORIA-ASISTIDA-POR-IA-ES.md`](DECLARACION-AUTORIA-ASISTIDA-POR-IA-ES.md) | Sí — transparencia del PI (no confundir con I2 del alumnado) |
 | [`../STRAND-A-PHILOSOPHICAL-PARKED.md`](../STRAND-A-PHILOSOPHICAL-PARKED.md) | Sí, breve — declara exclusión |
 | [`../DEPARTMENT-DECISION-BRIEF.md`](../DEPARTMENT-DECISION-BRIEF.md) | Sí como anexo de encuadre pedagógico; **más** la autorización firmada |
 | Extracto guía docente / encargo Entrega 1 | Sí — fuera o dentro según derechos |
-| Bibliografía / espina metodológica | Dentro del protocolo § referencias |
+| Bibliografía / columna metodológica | Dentro del protocolo § referencias |
 | Profield inheritance / claim registry | **No** — interno del estudio |
 | Firmas de consentimiento escaneadas | **No en git**; sí en el expediente del comité según su vía |
 
