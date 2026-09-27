@@ -36,6 +36,10 @@ docente.
 2. Coordinación de carga y coherencia de evaluación (persona designada / dirección de grado).
 3. Que la actividad **funcione pedagógicamente aunque no se recoja ningún dato** para
    investigación.
+4. Que el código del producto se gestione bajo **MIT** (`LICENSE-CODE`) con **crédito de
+   autoría** del alumnado en el *README* (*Development Team*) por rol/área — plano docente
+   distinto del corpus investigador seudonimizado
+   ([`AUTORIA-LICENCIA-COHORTE-ES.md`](../ethics/AUTORIA-LICENCIA-COHORTE-ES.md)).
 
 ## 3. Qué no se confunde con esta autorización
 
@@ -43,7 +47,9 @@ docente.
   por separado ante el **Comité de Ética en Investigación (CEI)**
   (`comite.etica.investigacion@udit.es`).
 - Esta carta **no** autoriza investigación, open data de repositorios estudiantiles, ni
-  publicación de datos personales.
+  publicación de identificadores en el **corpus investigador**.
+- Figurar como autor/a en el *README* (producto) **no** es lo mismo que consentir el uso
+  investigador (ítem B) ni la difusión de imagen (ítem G).
 - Las calificaciones **no** dependen del consentimiento investigador ni de la
   autorización de imagen (ítem G del formulario de participantes).
 

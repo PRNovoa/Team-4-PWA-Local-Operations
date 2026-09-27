@@ -14,7 +14,7 @@ Importes = propuestas orientativas a confirmar; no son facturas ni compromisos.
 | Sandra Garrido — `sandra.garrido@udit.es` | Coordinación grados tecnológicos / viabilidad docente |
 | Fernando Blázquez Piñeiro — `fernando.blazquez@udit.es` | Dirección de grados / prioridad académica |
 | Rafael Conde Melguizo, PhD — `rafael.conde@udit.es` | IP ECSIT / alineación con líneas del grupo |
-| Oficina de investigación / OTRI / fondo interno `[completar email]` | Canal de fondos competitivos o internos |
+| Dra. Adiela Batista Delgado — `otc@udit.es` | Directora OTRI / OTC · canal de transferencia / fondos |
 
 **Proyecto:** 道 The Tao of Development (TTOD) — plataforma Oráculo (Cohorte Front-End II +
 continuidad pública/docente)  
@@ -43,19 +43,30 @@ Esta solicitud es **independiente** de la remisión al CEI y de la autorización
 | -------- | ----------- | --------------------------------- |
 | **H1** Hosting / compute | VPS o equivalente (stack Compose: frontend, backend, MCP, Postgres si aplica; Ollama según política de soberanía) | **[completar €]** · orden de magnitud típico pequeño VPS: ~15–60 €/mes → ~360–1 440 € / 24 meses |
 | **H2** Almacenamiento / copias | Backups cifrados, retención acordada | **[completar €]** |
-| **H3** Dominio / TLS / DNS | Si se usa subdominio institucional o externo | **[completar €]** o coste absorbido por UDIT |
-| **H4** Contingencia (10–15 %) | Incidencias, migraciones menores | **[completar €]** |
-| **Total propuesto** | Suma H1–H4 | **[completar €]** |
+| **H3** Contingencia (10–15 %) | Incidencias, migraciones menores | **[completar €]** |
+| **Total propuesto** | Suma H1–H3 | **[completar €]** |
 
 > Las cifras son **propuestas a validar** con servicios informáticos / investigación.
-> Preferencia de soberanía del estudio: infra local/LAN (p. ej. Lilith) cuando sea viable;
-> si el coste se internaliza como horas de máquina UDIT, sustituir H1 por **imputación
-> interna** y dejar constancia en esta tabla.
+> Preferencia: **servicios** de hosting institucional UDIT cuando sea viable (sin nombrar
+> hosts privados del estudio). Si el coste se internaliza, sustituir H1 por **imputación
+> institucional** y dejar constancia en esta tabla.
+
+### Dominio / TLS / DNS — **fuera** de esta solicitud (titular del contenido)
+
+No se pide partida UDIT para dominio ni certificados. El conocimiento Tao está bajo
+**CC BY-NC-SA 4.0** ([`LICENSE-CONTENT`](../../../LICENSE-CONTENT)); el PI / estudio
+crea-comm.net, como titular de ese contenido, **registra y mantiene el dominio (y TLS)
+como propiedad propia**, no con fondos universitarios. Motivo: si cesan partidas o
+cambia la política institucional, el nombre y la continuidad pública del conocimiento
+no deben quedar atrapados en un activo que la universidad pueda retirar. El apoyo
+solicitado aquí cubre **compute / almacenamiento del servicio**, no la titularidad del
+nombre en DNS.
 
 ## 3. Qué no se pide aquí
 
 - Nómina del PI ni carga docente adicional (salvo que el centro lo proponga).
 - Licencias cloud de LLM (el diseño del estudio es Ollama / local-first).
+- **Dominio / TLS / DNS** (véase §2 — coste y titularidad del steward / titular CC).
 - Open data de repositorios de estudiantes.
 - Sustituir el dictamen del CEI.
 
@@ -94,9 +105,9 @@ Firma: ______________________ Fecha: ____ / ____ / ________
 
 Firma: ______________________ Fecha: ____ / ____ / ________
 
-### Oficina de investigación / OTRI (si aplica)
+### Dra. Adiela Batista Delgado — Directora OTRI / OTC (`otc@udit.es`)
 
-Nombre: ______________________ Firma: ______________________ Fecha: ____ / ____ / ________
+Firma: ______________________ Fecha: ____ / ____ / ________
 
 ---
 
