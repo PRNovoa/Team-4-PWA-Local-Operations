@@ -77,23 +77,26 @@ suite, is listed in [`AGENTS.md`](AGENTS.md).
 
 ## Development Team
 
-**Rubén Vega Balbás, PhD. (@ruvebal) <ruben.vega@udit.es>**: Product owner, product manager
+Format (same for every student): **Name (@github) &lt;email&gt;**: Team *N* — *module title*.
+Module titles match the [team task board](https://ruvebal.github.io/ttod/teaching/assignments/).
 
-**Rodrigo García Sánchez (@nbfrodri) <rodrigo.garcia.sanchez@alumnos.udit.es>**: Developer, Oracle Terminal
+**Rubén Vega Balbás, PhD (@ruvebal) <ruben.vega@udit.es>**: Product owner · product manager
 
-**Àvila Rodriguez Andrea <andrea.avila@alumnos.udit.es>**: Developer, Oracle Terminal
+**Gonzalo Sanchez Alvarez (@gontugithub) <gonzalo.sanchez@alum.udit.es>**: Team 1 — Content, i18n & Proposals UI
 
-**Alejandro Blanco Rodríguez (@alexxblaro16) <alejandro.blanco@alum.udit.es>**: Developer, Front End II
+**Gabriel Calvo Ballesteros (@gabrielcclv) <gabriel.calvo@alumnos.udit.es>**: Team 1 — Content, i18n & Proposals UI
 
-**Iván Herrera Gonzalez (@Gonsiii11) <ivan.herrera@alumnos.udit.es>**: Developer, Front End II
+**Gonzalo Pérez Fernández-Corugedo (@gpfc-git) <gonzalo.perez.fernandezcorugedo@alumnos.udit.es>**: Team 2 — Knowledge Graph
 
-**Pablo Novoa Rodríguez (@PRNovoa) <pablo.novoa@alumnos.udit.es>**: PWA Local Operations
+**Rodrigo García Sánchez (@nbfrodri) <rodrigo.garcia.sanchez@alumnos.udit.es>**: Team 3 — Oracle Terminal
 
-**Gonzalo Pérez Fernández-Corugedo (@gpfc-git) <gonzalo.perez.fernandezcorugedo@alumnos.udit.es>**: Knowledge Graph Developer
+**Andrea Ávila Rodríguez <andrea.avila@alumnos.udit.es>**: Team 3 — Oracle Terminal
 
-**Gonzalo Sanchez Alvarez (@gontugithub) <gonzalo.sanchez@alum.udit.es>**: Content i18n & Proposals
+**Pablo Novoa Rodríguez (@PRNovoa) <pablo.novoa@alumnos.udit.es>**: Team 4 — PWA & Local Operations
 
-**Gabriel Calvo Ballesteros (@gabrielcclv) <gabriel.calvo@alumnos.udit.es>**: Content i18n & Proposals
+**Alejandro Blanco Rodríguez (@alexxblaro16) <alejandro.blanco@alum.udit.es>**: Team 5 — Accounts, Library, Proposals & Public API
+
+**Iván Herrera Gonzalez (@Gonsiii11) <ivan.herrera@alumnos.udit.es>**: Team 5 — Accounts, Library, Proposals & Public API
 
 ## License
 
