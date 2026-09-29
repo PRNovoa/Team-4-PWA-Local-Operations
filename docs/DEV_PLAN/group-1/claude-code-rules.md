@@ -1,5 +1,11 @@
 # Instrucciones locales — Equipo 1 (Content, i18n & Proposals UI)
 
+> **REVISIÓN REQUERIDA — no ejecutar prompts todavía.**  
+> El plan de Equipo 1 (`PLAN-EQUIPO1.md`) está en semáforo **rojo** hasta que un PR de enmienda
+> sea aprobado y fusionado por el profesor. No uses este archivo ni los prompts del plan para
+> generar código de tareas mientras el plan no esté en verde. Ver comentario en
+> [PR #28](https://github.com/ruvebal/ttod/pull/28#issuecomment-5876497526).
+
 Contrato general del proyecto (del profesor, manda sobre este archivo si hay conflicto):
 @AGENTS.md
 

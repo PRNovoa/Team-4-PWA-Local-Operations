@@ -1,9 +1,19 @@
 # Equipo 1 — Content, i18n & Proposals UI
 
+> **Estado del plan: REVISIÓN REQUERIDA — no ejecutar todavía.**  
+> Este documento está en `main` como **borrador de proceso** (evidencia de planificación).  
+> Un pase de revisión (Bugbot + profesor) encontró desajustes con el árbol actual de `main`.  
+> **No abráis PRs de código de las tareas T1–T9 ni lancéis los prompts de Claude Code** hasta que:  
+> (1) exista un PR de *enmienda* del plan que corrija los hallazgos,  
+> (2) el profesor lo apruebe en GitHub (*Approve*), y  
+> (3) ese PR esté fusionado en `main`.  
+> Hasta entonces el semáforo del plan está en **rojo**. Las fichas canónicas de tarea mandan sobre este plan si chocan:  
+> [`/teaching/tasks/`](https://ruvebal.github.io/ttod/teaching/assignments/) · hallazgos en el [comentario de #28](https://github.com/ruvebal/ttod/pull/28#issuecomment-5876497526).
+
 Plan de trabajo del Equipo 1 (pareja) en el proyecto **TTOD — The Tao of Development**.
 Recoge las 9 tareas con su detalle, el reparto entre **Persona A** y **Persona B**, el calendario del sprint y, en las tareas 1 a 6, un prompt listo para usar con Claude Code.
 
-> Fuente canónica de cada tarea: `docs/DEV_PLAN/ASSIGNMENTS/ASSIGNMENT-content-taskN.md` en el repositorio `ruvebal/ttod`. Si este README y esos archivos no coinciden, mandan esos archivos.
+> Fuente canónica de cada tarea: `docs/DEV_PLAN/ASSIGNMENTS/ASSIGNMENT-content-taskN.md` en el repositorio `ruvebal/ttod` (y las páginas públicas enlazadas desde el tablero). Si este plan y esas fichas no coinciden, **mandan esas fichas**.
 
 ---
 
