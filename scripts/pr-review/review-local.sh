@@ -36,15 +36,21 @@ PROMPT_FILE=$(mktemp)
 REVIEW_FILE=$(mktemp)
 trap 'rm -f "$DIFF_FILE" "$PROMPT_FILE" "$REVIEW_FILE"' EXIT
 
+# Keep in sync with PROMPT_BUILDER_VERSION in build-prompt.sh (footer stamp).
+PROMPT_BUILDER_VERSION="$(
+  sed -n 's/^PROMPT_BUILDER_VERSION="\([^"]*\)".*/\1/p' scripts/pr-review/build-prompt.sh | head -1
+)"
+PROMPT_BUILDER_VERSION="${PROMPT_BUILDER_VERSION:-unknown}"
+
 gh pr diff "$PR" > "$DIFF_FILE"
 scripts/pr-review/build-prompt.sh "$BRANCH" "$DIFF_FILE" > "$PROMPT_FILE"
 
-echo "Reviewing PR #$PR (branch: $BRANCH) with $OLLAMA_MODEL at $OLLAMA_BASE_URL ..." >&2
+echo "Reviewing PR #$PR (branch: $BRANCH) with $OLLAMA_MODEL at $OLLAMA_BASE_URL (prompt-builder=$PROMPT_BUILDER_VERSION) ..." >&2
 
-python3 - "$OLLAMA_BASE_URL" "$OLLAMA_MODEL" "$PROMPT_FILE" "$REVIEW_FILE" <<'PYEOF'
+python3 - "$OLLAMA_BASE_URL" "$OLLAMA_MODEL" "$PROMPT_FILE" "$REVIEW_FILE" "$PROMPT_BUILDER_VERSION" <<'PYEOF'
 import json, sys, urllib.error, urllib.request
 
-base_url, model, prompt_file, out_file = sys.argv[1:5]
+base_url, model, prompt_file, out_file, builder_version = sys.argv[1:6]
 chat_url = f"{base_url.rstrip('/')}/api/chat"
 
 with open(prompt_file) as f:
@@ -80,9 +86,17 @@ except urllib.error.HTTPError as exc:
 
 text = result.get("message", {}).get("content", "")
 with open(out_file, "w") as f:
-    f.write(f"### 🤖 Automated review (hybrid rubric — local {model}, comment only)\n\n")
+    f.write(
+        f"### 🤖 Automated review (hybrid rubric — local {model}, "
+        f"prompt-builder {builder_version}, comment only)\n\n"
+    )
     f.write(text)
-    f.write("\n\n---\n*Generated locally, no cloud API cost. Does not approve or block merge — a human review is still required.*\n")
+    f.write(
+        "\n\n---\n"
+        f"*Generated locally with `scripts/pr-review/build-prompt.sh` "
+        f"**v{builder_version}**, no cloud API cost. Does not approve or "
+        f"block merge — a human review is still required.*\n"
+    )
 PYEOF
 
 if [ "$POST_FLAG" = "--post" ]; then

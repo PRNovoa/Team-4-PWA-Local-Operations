@@ -95,7 +95,9 @@ Run every command below from the `ttod-review` worktree, not your main checkout.
    [Contributing → Automated review]({{ '/guides/contributing/#automated-review' | relative_url }}))
    using your local Ollama, and posts it as a PR comment. Drop `POST=1` to just print it to your
    terminal first if you want to read it before it goes public. Treat it as a first pass: it tells
-   you where to look, not what to conclude.
+   you where to look, not what to conclude. The bot must label each bullet `MUST FIX:` or `NIT:`;
+   when you `--request-changes`, elevate **MUST FIX** items only — NITs stay comments or stay off
+   the request.
 3. **Check it out to actually run it.**
    ```bash
    gh pr checkout <N>
@@ -118,11 +120,12 @@ It's a manual step, not one that fires on every push — you decide when to re-r
 local model won't always catch what a larger one would. Two situations call for you to run a
 review yourself, deliberately, on top of it:
 
-- **A PR the local review under-covered** — its branch name didn't match the `<seam>-task<N>`
-  convention, so it only got the generic rubric, not the task-specific one. Run
-  `/code-review <N> --comment` in your own Claude Code session for a fresh pass with real task
-  context attached, rather than reading the local comment's generic-only version as if it were the
-  full picture.
+- **A PR the local review under-covered** — its branch name didn't match `<seam>-task<N>` *and*
+  didn't match a known short alias (e.g. Equipo 5's `task/2-personal-library` → `accounts-task2`
+  inside `build-prompt.sh`), so it only got the generic rubric. Check the stderr line
+  `pr-review: brief=…` from `make review-pr`. If `brief=none`, rename the branch or run
+  `/code-review <N> --comment` with the right task sheet attached — don't treat a generic-only
+  bot comment as the full picture.
 - **A PR you're about to request changes on** — post your own comment referencing the specific
   acceptance line from that task's own [detail sheet]({{ '/teaching/tasks/' | relative_url }})
   (there is no in-app `ASSIGNMENT.md` — the detail sheet on this site is the canonical source, and
