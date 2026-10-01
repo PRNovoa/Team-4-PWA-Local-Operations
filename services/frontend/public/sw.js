@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'ttod-pwa-stub-';
-const CACHE_NAME = `${CACHE_PREFIX}v3`;
+const CACHE_NAME = `${CACHE_PREFIX}v4`;
 const PROOF_ASSET = '/visual-system/tokens.css';
 
 const OFFLINE_PAGES = ['/en/oracle', '/es/oracle'];
@@ -75,18 +75,73 @@ self.addEventListener('activate', (event) => {
   })());
 });
 
+async function storeResponse(cache, request, response) {
+  // Store successful, complete responses.
+  if (!response.ok || response.status === 206) return;
+
+  try {
+    await cache.put(request, response.clone());
+  } catch (error) {
+    console.warn('PWA cache write failed:', error);
+  }
+}
+
+async function cacheFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  const cached = await cache.match(request);
+
+  if (cached) return cached;
+
+  const response = await fetch(request);
+  await storeResponse(cache, request, response);
+  return response;
+}
+
+async function networkFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  let response;
+
+  try {
+    // Attempt a fresh request instead of using the browser HTTP cache.
+    response = await fetch(request, { cache: 'no-store' });
+  } catch (error) {
+    const cached = await cache.match(request);
+
+    if (cached) return cached;
+    throw error;
+  }
+
+  // Return HTTP errors normally; fallback is for network failures.
+  await storeResponse(cache, request, response);
+  return response;
+}
+
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
-  if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
+  const request = event.request;
+  const url = new URL(request.url);
+
+  if (
+    request.method !== 'GET' ||
+    url.origin !== self.location.origin
+  ) {
+    return;
+  }
+
+  // API data should be fresh whenever the network is available.
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
 
   const selectedPage = OFFLINE_PAGES.includes(url.pathname);
-  const staticAsset = url.pathname.startsWith('/_astro/') ||
-    url.pathname.startsWith('/visual-system/');
-  if (!selectedPage && !staticAsset) return;
 
-  event.respondWith((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    const cached = await cache.match(event.request);
-    return cached ?? fetch(event.request);
-  })());
+  const staticAsset =
+    url.pathname.startsWith('/_astro/') ||
+    url.pathname.startsWith('/visual-system/') ||
+    url.pathname.startsWith('/assets/');
+
+  // Preserve Task 2's offline pages and reuse cached static assets.
+  if (selectedPage || staticAsset) {
+    event.respondWith(cacheFirst(request));
+  }
 });
