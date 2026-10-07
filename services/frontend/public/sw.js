@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'ttod-pwa-stub-';
-const CACHE_NAME = `${CACHE_PREFIX}v4`;
+const CACHE_NAME = `${CACHE_PREFIX}v5`;
 const PROOF_ASSET = '/visual-system/tokens.css';
 
 const OFFLINE_PAGES = ['/en/oracle', '/es/oracle'];
