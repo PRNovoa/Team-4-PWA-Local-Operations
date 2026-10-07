@@ -18,8 +18,10 @@ npm run pwa:guard
 ```
 
 The full command checks the caller contract, runs the checker's regression checks,
-Astro diagnostics and TypeScript, builds the frontend, and runs six queue browser
-scenarios. It stops after a failed phase. It starts its own built frontend on
+Astro diagnostics and TypeScript, builds the frontend, and runs the PWA browser
+cases selected by `playwright.pwa.config.ts`. Task 4 supplies six queue scenarios;
+Task 5 adds two manifest/icon checks, for eight cases in total. It stops after a
+failed phase. It starts its own built frontend on
 `127.0.0.1:4327`, refuses to reuse an existing server there, and stops that server
 when the browser suite finishes. Docker, Ollama and backend credentials are not
 needed. On Linux, Playwright may also need its documented browser system
@@ -60,6 +62,7 @@ a time; stop the watcher before running a separate full check.
 | Application gates | Existing Astro diagnostics, TypeScript and production build must pass. |
 | Browser integration | Real built Oracle pages, real service worker and real IndexedDB exercise English/Spanish offline UI submission, reload persistence, equal timestamps, sequential replay, repeated online events, competing tabs, and accessibility. |
 | Migration and recovery | An actual version-1 database is upgraded without losing payloads, IDs, timestamps, synced flags or error reports. HTTP 503, empty/invalid streams and a synced transaction aborted **after request success** must retain pending work and stop the pass. A later reconnect must recover in order. |
+| Manifest/icon checks (Task 5) | The new spec checks the served manifest/page metadata, required PNG/SVG entries, HTTP/MIME/PNG data and actual decoded PNG dimensions. It does not install the app. |
 
 Browser tests deliberately control Oracle SSE responses to make success and failure
 reproducible. They verify the frontend queue contract, not backend inference or
@@ -67,9 +70,27 @@ server-side exactly-once execution. The prior Task 4 live-backend smoke outcome 
 recorded separately in the contract note. Tests follow the project's
 [Unit 5 testing strategy](https://ruvebal.github.io/web-atelier-udit/lessons/en/feii/unit-5-testing-strategy/).
 
+### Task 5 manifest/icon selection
+
+The authored `e2e/pwa-installability.spec.ts` adds two metadata/icon cases. They run
+alongside the six queue cases through the `testMatch` property inside `defineConfig`
+in **`playwright.pwa.config.ts`**:
+
+```ts
+testMatch: /pwa-(?:queue-reconnect|installability)\.spec\.ts/,
+```
+
+Keep the general `playwright.config.ts` free of that PWA-only filter so the normal
+suite continues to include all existing coverage. The initial Task 5 run failed
+because the matcher was misplaced in the general config, including a stray
+top-level copy. That configuration has been corrected; the full local guard now
+passes all eight cases. The [Task 5 install note](pwa-install-quality.md) records
+separate CDP install/relaunch checks and developer-reported Brave installation.
+
 The watcher covers `src/`, `public/`, `contracts/`, `e2e/`, `scripts/`, package and
 lock files, frontend TypeScript/Astro/Playwright configuration, the frontend CI
-workflow, and these two PWA notes. It ignores generated build/test output. It sees
+workflow, `docs/pwa-offline-queue.md` and `docs/pwa-compatibility-monitor.md`. It
+ignores generated build/test output. It sees
 uncommitted edits and files arriving through a branch checkout or merge, but does
 not fetch branches or inspect another team's unpublished work. Other configuration
 changes can be checked with a manual full run.
@@ -142,7 +163,7 @@ A passing check covers this checkout and these scenarios. It cannot prove every
 semantic change safe or replace the Team 3 agreement on payloads, helper APIs,
 replay ownership and synced semantics. Team 3 acknowledgment remains pending.
 
-## Local verification
+## Local verification — Task 4 history
 
 The full guard passed locally on 2026-10-07, including five checker regression
 checks, zero Astro diagnostics, TypeScript/build and all six isolated Chromium
@@ -151,6 +172,18 @@ recovery, patch validity, lock exclusion and clean shutdown. The complete browse
 suite passed all 29 checks against the rebuilt local stack; the existing six
 frontend unit/component checks and repository validation plus 236 Python checks
 also passed. No hosted Actions run is claimed.
+
+### Task 5 verification
+
+After correcting the misplaced matcher, a fresh full guard passed locally on
+2026-10-07, including the caller contract, five checker regressions, zero Astro
+diagnostics, TypeScript/build and all eight isolated Chromium cases in 10.9 seconds.
+This is verification of the applied Task 5 checkout, separate from the historical
+queue-only run above. The complete Chromium suite also passed all 31 tests against
+the rebuilt Docker application in 25.2 seconds. The developer subsequently reported
+successful manual installation; standalone launch and installed accessibility
+details remain unreported. See the install-quality note for evidence status.
+No hosted Actions result is claimed.
 
 AI assistance designed and implemented this checker, regression coverage, CI
 extension and documentation, and ran local verification. The existing Task 4

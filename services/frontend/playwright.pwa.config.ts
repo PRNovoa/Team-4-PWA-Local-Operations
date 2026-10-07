@@ -5,7 +5,7 @@ import base from './playwright.config';
 // SSE responses exercise queue behavior without Docker, models, or credentials.
 const origin = 'http://127.0.0.1:4327';
 export default defineConfig(base, {
-  testMatch: /pwa-queue-reconnect\.spec\.ts/,
+  testMatch: /pwa-(?:queue-reconnect|installability)\.spec\.ts/,
   fullyParallel: false,
   workers: 1,
   retries: 0,
