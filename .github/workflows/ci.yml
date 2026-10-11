@@ -35,6 +35,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run test
+
       - run: npm run check
 
       # Unit + component tests (vitest). Excludes e2e/ (Playwright) and dist/.
