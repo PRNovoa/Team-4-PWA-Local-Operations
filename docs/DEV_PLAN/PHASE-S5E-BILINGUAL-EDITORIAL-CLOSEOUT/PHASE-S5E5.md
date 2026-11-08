@@ -1,8 +1,8 @@
 # PHASE-S5E5 — independent cold audit and edition package
 
-> **Track:** release evidence; no publication in this phase.  
-> **Status:** BLOCKED until S5E3 DONE and S5E4 DONE.  
-> **Depends on:** complete review ledger and correction disposition.  
+> **Track:** release evidence; no publication in this phase.
+> **Status:** BLOCKED until S5E3 DONE and S5E4 DONE.
+> **Depends on:** complete review ledger and correction disposition.
 > **Out of scope:** public release, deployment, unsupported citation claims.
 
 ## Goal

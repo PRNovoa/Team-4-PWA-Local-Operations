@@ -1,8 +1,8 @@
 # PHASE-S5E3 — exhaustive pair review
 
-> **Track:** bilingual editorial judgment; canonical reads only.  
-> **Status:** BLOCKED until S5E2 is DONE and the owner-approved private ledger is available.  
-> **Depends on:** frozen S5E1 policy and adjudicated proposal queue.  
+> **Track:** bilingual editorial judgment; canonical reads only.
+> **Status:** BLOCKED until S5E2 is DONE and the owner-approved private ledger is available.
+> **Depends on:** frozen S5E1 policy and adjudicated proposal queue.
 > **Out of scope:** writing corrections into `ttod.yml`; model-determined verdicts.
 
 ## Goal

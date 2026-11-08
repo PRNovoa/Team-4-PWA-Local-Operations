@@ -22,7 +22,7 @@ Tracked pack delta vs `c99282ac` (docs only):
 - `PHASE-S5E-CASCADE.md`
 - `PHASE-S5E0.md`
 
-Untracked implementer artifact: `PHASE-S5E0-REPORT.md`.  
+Untracked implementer artifact: `PHASE-S5E0-REPORT.md`.
 Runner artifact (not implementer-owned): `PHASE-S5E0-VERIFY-LOG.md`.
 
 Store invariant:

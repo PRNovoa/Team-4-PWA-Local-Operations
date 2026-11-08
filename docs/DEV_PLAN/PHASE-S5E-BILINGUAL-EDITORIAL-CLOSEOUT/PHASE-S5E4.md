@@ -1,8 +1,8 @@
 # PHASE-S5E4 — governed canonical corrections
 
-> **Track:** atomic TTOD repository transaction, only if the approved list is nonempty.  
-> **Status:** BLOCKED until S5E3 DONE and an itemized correction list exists.  
-> **Depends on:** explicit product-owner approval of exact items and text.  
+> **Track:** atomic TTOD repository transaction, only if the approved list is nonempty.
+> **Status:** BLOCKED until S5E3 DONE and an itemized correction list exists.
+> **Depends on:** explicit product-owner approval of exact items and text.
 > **Out of scope:** hand-editing YAML, accepting unreviewed text, deleting/reusing quote IDs.
 
 ## Goal

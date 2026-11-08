@@ -10,7 +10,7 @@ test -f "$pack/EDITORIAL-TRANSLATION-POLICY.md"
 test -f "$pack/TTOD-ES-GLOSSARY.yml"
 test -f "$pack/EDITORIAL-REVIEW-LEDGER.schema.json"
 test -f "$decisions"
-python -m json.tool "$pack/EDITORIAL-REVIEW-LEDGER.schema.json" >/dev/null
+.venv/bin/python -m json.tool "$pack/EDITORIAL-REVIEW-LEDGER.schema.json" >/dev/null
 .venv/bin/python -c 'import yaml,sys; yaml.safe_load(open(sys.argv[1], encoding="utf-8"))' "$pack/TTOD-ES-GLOSSARY.yml"
 grep -Fq 'EDITORIAL_POLICY_APPROVED' "$decisions"
 grep -Fq 'EDITORIAL-DECISION-2026-11-08-CODA' "$decisions"

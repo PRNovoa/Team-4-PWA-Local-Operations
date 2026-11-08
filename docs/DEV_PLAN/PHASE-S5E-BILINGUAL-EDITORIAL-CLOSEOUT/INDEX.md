@@ -2,7 +2,7 @@
 
 # Phase S5E — bilingual editorial closeout
 
-**Status:** ACTIVE cascade; S5E0 is DONE; S5E1 is READY.
+**Status:** ACTIVE cascade; S5E0–S5E1 DONE; S5E2 is READY.
 **Product claim:** TTOD has complete English–Spanish structural coverage; this cascade builds the
 review evidence and decisions needed to describe and release that edition responsibly.
 **Engineering claim:** seven ordered phases use runnable Cascade Forge gates, preserve canonical
@@ -32,8 +32,8 @@ Cascade Forge reads the first word of the Gate cell.
 | Step | File | Deliverable | Gate |
 | ---: | --- | --- | --- |
 | 0 | [PHASE-S5E0.md](PHASE-S5E0.md) | Reconciled baseline and adjudication register | DONE — cold review F1–F3 P2; verify log exit 0 |
-| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Approved editorial policy, glossary, and ledger design | READY — S5E0 DONE; integrate worktree before start |
-| 2 | [PHASE-S5E2.md](PHASE-S5E2.md) | Human decisions for residual translation proposals | BLOCKED — policy approved |
+| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Approved editorial policy, glossary, and ledger design | DONE — cold review F1 fixed; verify exit 0 |
+| 2 | [PHASE-S5E2.md](PHASE-S5E2.md) | Human decisions for residual translation proposals | READY — EDITORIAL_POLICY_APPROVED; integrate worktree before start |
 | 3 | [PHASE-S5E3.md](PHASE-S5E3.md) | Exhaustive human review ledger for every in-scope pair | BLOCKED — S5E2 DONE, ledger location approved |
 | 4 | [PHASE-S5E4.md](PHASE-S5E4.md) | Approved corrections or verified NOT_NEEDED outcome | BLOCKED — correction list approved |
 | 5 | [PHASE-S5E5.md](PHASE-S5E5.md) | Cold audit and edition evidence package | BLOCKED — S5E3 and S5E4 DONE |

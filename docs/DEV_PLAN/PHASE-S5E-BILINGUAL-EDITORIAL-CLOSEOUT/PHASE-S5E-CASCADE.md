@@ -8,15 +8,17 @@ separate files in this directory.
 
 ## Programme (do not invert)
 
-The Gate cell's first word is the Cascade Forge runner's state token. After S5E0, only S5E1 is READY
-(once this worktree is integrated into the harness base commit). Accepted-ID linkage denominator is
-230; blackbox-validation denominator is 229 (plus 1 studio: `wis-033`).
+The Gate cell's first word is the Cascade Forge runner's state token. S5E0–S5E1 are DONE; S5E2 is
+READY after this worktree is integrated into the harness base. Private ledger canonical path:
+`/Users/ruvebal/src/ttod/_private/editorial/EDITORIAL-REVIEW-LEDGER.json` via
+`TTOD_EDITORIAL_LEDGER`. Accepted-ID linkage denominator is 230; blackbox-validation denominator is
+229 (plus 1 studio: `wis-033`).
 
 | Step | File | Deliverable | Gate |
 | ---: | --- | --- | --- |
 | 0 | [PHASE-S5E0.md](PHASE-S5E0.md) | Read-only baseline, current vault run state, and editorial decision record | DONE — cold review F1–F3 P2; verify log exit 0 |
-| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Frozen editorial policy, glossary, decision register, ledger schema/location | READY — S5E0 DONE; integrate worktree before start |
-| 2 | [PHASE-S5E2.md](PHASE-S5E2.md) | Human disposition for each residual alternate proposal | BLOCKED — EDITORIAL_POLICY_APPROVED |
+| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Frozen editorial policy, glossary, decision register, ledger schema/location | DONE — cold review F1 fixed; verify exit 0 |
+| 2 | [PHASE-S5E2.md](PHASE-S5E2.md) | Human disposition for each residual alternate proposal | READY — EDITORIAL_POLICY_APPROVED; integrate worktree before start |
 | 3 | [PHASE-S5E3.md](PHASE-S5E3.md) | Two-pass human review of every in-scope pair | BLOCKED — queue adjudicated and private ledger approved |
 | 4 | [PHASE-S5E4.md](PHASE-S5E4.md) | Approved corrections applied atomically, or verified NOT_NEEDED | BLOCKED — CANONICAL_CORRECTIONS_APPROVED or empty signed list |
 | 5 | [PHASE-S5E5.md](PHASE-S5E5.md) | Independent cold audit, alignment/coverage files, edition statement | BLOCKED — S5E3 DONE and S5E4 DONE |

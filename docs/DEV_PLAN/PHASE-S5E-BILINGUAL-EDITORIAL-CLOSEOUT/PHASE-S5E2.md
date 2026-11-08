@@ -1,8 +1,8 @@
 # PHASE-S5E2 — residual proposal adjudication
 
-> **Track:** proposal review only.  
-> **Status:** BLOCKED until `EDITORIAL_POLICY_APPROVED`.  
-> **Depends on:** S5E1 DONE.  
+> **Track:** proposal review only.
+> **Status:** BLOCKED until `EDITORIAL_POLICY_APPROVED`.
+> **Depends on:** S5E1 DONE.
 > **Out of scope:** canonical mutation, acceptance, deleting proposal history, blanket rejection.
 
 ## Goal

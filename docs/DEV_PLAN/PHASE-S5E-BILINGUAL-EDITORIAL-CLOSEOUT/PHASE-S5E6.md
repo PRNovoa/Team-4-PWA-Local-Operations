@@ -1,8 +1,8 @@
 # PHASE-S5E6 — programme reconciliation and closeout
 
-> **Track:** programme documentation and final verification.  
-> **Status:** BLOCKED until S5E5 is DONE and the product-owner release decision is recorded.  
-> **Depends on:** complete cold audit and edition package.  
+> **Track:** programme documentation and final verification.
+> **Status:** BLOCKED until S5E5 is DONE and the product-owner release decision is recorded.
+> **Depends on:** complete cold audit and edition package.
 > **Out of scope:** publishing, merging, tagging, or adding a new corpus milestone.
 
 ## Goal

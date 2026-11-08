@@ -1,8 +1,8 @@
 # PHASE-S5E1 — editorial policy and ledger contract
 
-> **Track:** editorial policy and review tooling.  
-> **Status:** BLOCKED until S5E0 is DONE.  
-> **Depends on:** S5E0 cold review and human-approved decision record.  
+> **Track:** editorial policy and review tooling.
+> **Status:** DONE.
+> **Depends on:** S5E0 cold review and human-approved decision record.
 > **Out of scope:** reviewing or mutating quotes/proposals; calling models or vaults.
 
 ## Goal
