@@ -12,9 +12,11 @@ reached the same conclusion.
 | **decision** | Preserve; the wording is correct and intentional |
 | **authority** | Rubén Vega Balbás, product owner / author |
 | **decided_at** | 2026-11-08 |
+| **rationale** | Product-owner intent: the authored Spanish wording is correct and intentional |
 | **effect** | Supersedes the S4 report's current recommendation for this item |
 | **historical record** | Keep `PHASE-S4-REPORT.md` unchanged as evidence of the earlier assessment |
 | **constraint** | Do not automatically promote the “Codifica” alternate proposal |
 
 The earlier S4 response judged the phrase through a literal-translation lens. The product owner has
 confirmed the authored phrase. Future reviewers must treat this as intent, not an open defect.
+`PHASE-S4-REPORT.md` remains byte-identical to `HEAD` (verified `git diff HEAD -- docs/DEV_PLAN/PHASE-S4-REPORT.md` empty during S5E0).

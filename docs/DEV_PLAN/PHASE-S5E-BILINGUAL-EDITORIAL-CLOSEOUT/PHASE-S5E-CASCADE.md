@@ -1,19 +1,21 @@
 # Technical director — TTOD bilingual editorial closeout (S5E0–S5E6)
 
 **Status:** ACTIVE. Execute one phase at a time, in order. The phase prompts and exit gates are
-separate files in this directory.  
+separate files in this directory.
 **Evidence:** [INDEX.md](INDEX.md) · [RATIONALE.md](RATIONALE.md) ·
-[FINDINGS-2026-11-08.md](FINDINGS-2026-11-08.md).  
+[FINDINGS-2026-11-08.md](FINDINGS-2026-11-08.md).
 **Parent plan:** [`PHASE-S5-BILINGUAL-CORPUS-TRANSLATION-PLAN.md`](../PHASE-S5-BILINGUAL-CORPUS-TRANSLATION-PLAN.md).
 
 ## Programme (do not invert)
 
-The Gate cell's first word is the Cascade Forge runner's state token. Only S5E0 is initially READY.
+The Gate cell's first word is the Cascade Forge runner's state token. After S5E0, only S5E1 is READY
+(once this worktree is integrated into the harness base commit). Accepted-ID linkage denominator is
+230; blackbox-validation denominator is 229 (plus 1 studio: `wis-033`).
 
 | Step | File | Deliverable | Gate |
 | ---: | --- | --- | --- |
-| 0 | [PHASE-S5E0.md](PHASE-S5E0.md) | Read-only baseline, current vault run state, and editorial decision record | READY — evidence snapshot and validation transcript |
-| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Frozen editorial policy, glossary, decision register, ledger schema/location | BLOCKED — S5E0 DONE |
+| 0 | [PHASE-S5E0.md](PHASE-S5E0.md) | Read-only baseline, current vault run state, and editorial decision record | DONE — cold review F1–F3 P2; verify log exit 0 |
+| 1 | [PHASE-S5E1.md](PHASE-S5E1.md) | Frozen editorial policy, glossary, decision register, ledger schema/location | READY — S5E0 DONE; integrate worktree before start |
 | 2 | [PHASE-S5E2.md](PHASE-S5E2.md) | Human disposition for each residual alternate proposal | BLOCKED — EDITORIAL_POLICY_APPROVED |
 | 3 | [PHASE-S5E3.md](PHASE-S5E3.md) | Two-pass human review of every in-scope pair | BLOCKED — queue adjudicated and private ledger approved |
 | 4 | [PHASE-S5E4.md](PHASE-S5E4.md) | Approved corrections applied atomically, or verified NOT_NEEDED | BLOCKED — CANONICAL_CORRECTIONS_APPROVED or empty signed list |

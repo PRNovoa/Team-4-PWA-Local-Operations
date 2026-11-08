@@ -1,8 +1,8 @@
 # PHASE-S5E0 — baseline and decision register
 
-> **Track:** read-only evidence across TTOD and the Lao Tzu source pipeline.  
-> **Status:** READY.  
-> **Depends on:** none.  
+> **Track:** read-only evidence across TTOD and the Lao Tzu source pipeline.
+> **Status:** DONE.
+> **Depends on:** none.
 > **Out of scope:** editing canonical/proposal state; changing or stopping the running sibling pipeline; new vault searches or injection.
 
 ## Goal
